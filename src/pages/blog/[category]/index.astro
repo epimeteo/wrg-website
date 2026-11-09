@@ -1,0 +1,41 @@
+---
+// Category listing, e.g. /blog/humidity/. Not in the sitemap, but keeps the
+// parent path of each article from returning a 404.
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import Icon from '../../../components/Icon.astro';
+import { articles, articleHref, type Article } from '../../../data/articles';
+import { routes } from '../../../data/site';
+
+export function getStaticPaths() {
+  const cats = [...new Set(articles.map((a) => a.category))];
+  return cats.map((category) => ({ params: { category }, props: { list: articles.filter((a) => a.category === category) } }));
+}
+const { list } = Astro.props as { list: Article[] };
+const label = list[0].categoryLabel;
+---
+<BaseLayout title={`${label} — Insights`} description={`WRG insights about ${label.toLowerCase()}.`} active="blog" page="insights">
+  <section class="sec ihero bg-canvas" aria-labelledby="t">
+    <div class="wrap">
+      <Breadcrumbs items={[{ label: 'Insights', href: routes.blog }, { label }]} />
+      <div class="art-head">
+        <p class="eyebrow">Insights</p>
+        <h1 class="h1" id="t">{label}</h1>
+      </div>
+    </div>
+  </section>
+  <section class="sec bg-white" style="--st: clamp(32px, 3cqi, 48px)">
+    <div class="wrap">
+      <div class="alist">
+        {list.map((a) => (
+          <article class="arow">
+            <p class="topic">{a.categoryLabel}</p>
+            <div class="stack g8"><h2 class="h3">{a.title}</h2><p class="muted small">{a.summary}</p></div>
+            <a class="go stretch" href={articleHref(a)} aria-label={`Read: ${a.title}`}><Icon name="arrow" /></a>
+          </article>
+        ))}
+      </div>
+      <p style="margin-top: 32px"><a class="lnk" href={routes.blog}>All insights<Icon name="arrow" /></a></p>
+    </div>
+  </section>
+</BaseLayout>

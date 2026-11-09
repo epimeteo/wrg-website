@@ -1,0 +1,68 @@
+---
+import Icon from './Icon.astro';
+import { company, offices, routes } from '../data/site';
+import { services, serviceHref } from '../data/services';
+const year = new Date().getFullYear();
+---
+<div class="wrg-foot">
+  <footer class="foot">
+    <div class="wrap">
+      <div class="foot-grid">
+        <div class="foot-brand">
+          <a class="logo" href="/" aria-label={`${company.name}, home`}>
+            <span class="logo-mark" aria-hidden="true">WRG</span>
+            <span class="logo-txt" aria-hidden="true">{company.name}</span>
+          </a>
+          <p class="small" style="color: var(--od-muted)">{company.name} provides property restoration and reconstruction services, with offices in Miami, West Palm Beach and Smyrna.</p>
+          <div class="stack g8">
+            <span class="foot-h" style="margin-bottom: 0">{company.support}</span>
+            <a class="foot-num" href={company.phone.href}>{company.phone.display}</a>
+            <span class="xs" style="color: var(--od-muted)">{company.phone.vanity}</span>
+          </div>
+          <a class="btn btn-call" href={company.phone.href}><Icon name="phone" /><span>Call now</span></a>
+        </div>
+
+        <nav aria-label="Services">
+          <p class="foot-h">Services</p>
+          <ul class="foot-list">
+            {services.map((s) => <li><a href={serviceHref(s.slug)}>{s.name}</a></li>)}
+            <li><a href={routes.services}>All services</a></li>
+          </ul>
+        </nav>
+
+        <nav aria-label="Company">
+          <p class="foot-h">Company</p>
+          <ul class="foot-list">
+            <li><a href={routes.about}>About WRG</a></li>
+            <li><a href={routes.projects}>Projects</a></li>
+            <li><a href={routes.reviews}>Reviews</a></li>
+            <li><a href={routes.blog}>Insights</a></li>
+            <li><a href={routes.faqs}>FAQ</a></li>
+            <li><a href={routes.careers}>Careers</a></li>
+            <li><a href={routes.contact}>Contact</a></li>
+          </ul>
+        </nav>
+
+        <div>
+          <p class="foot-h">Locations</p>
+          <ul>
+            {offices.map((o, i) => (
+              <li class="foot-office" style={i === offices.length - 1 ? 'border-bottom: 0' : undefined}>
+                <a href={o.href}>{o.key === 'miami' ? 'Miami — Corporate Headquarters' : o.key === 'wpb' ? 'West Palm Beach Office' : 'Atlanta / Smyrna Office'}</a>
+                <address>{o.full}</address>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      <div class="foot-bottom">
+        <p>© {year} {company.name}</p>
+        <ul class="foot-legal" aria-label="Legal">
+          <li><a href={routes.privacy}>Privacy Policy</a></li>
+          <li><a href={routes.terms}>Terms &amp; Conditions</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+</div>

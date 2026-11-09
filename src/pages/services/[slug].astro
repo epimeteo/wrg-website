@@ -1,0 +1,175 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Icon from '../../components/Icon.astro';
+import PhotoSlot from '../../components/PhotoSlot.astro';
+import ReviewFlag from '../../components/ReviewFlag.astro';
+import ReviewNote from '../../components/ReviewNote.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import { services, type Service } from '../../data/services';
+import { company, offices, routes } from '../../data/site';
+
+export function getStaticPaths() {
+  return services.map((s) => ({ params: { slug: s.slug }, props: { s } }));
+}
+const { s } = Astro.props as { s: Service };
+const hasRelated = s.related.length > 0;
+---
+<BaseLayout title={s.title} description={s.description} active="services" page="service">
+  <!-- 1 · Problem + summary + CTA -->
+  <section class="sec ihero bg-canvas" aria-labelledby="t">
+    <div class="wrap">
+      <Breadcrumbs items={[{ label: 'Services', href: routes.services }, { label: s.name }]} />
+      <div class="ihero-grid">
+        <div class="ihero-copy">
+          <p class="eyebrow">Service {s.no}</p>
+          <h1 class="h1" id="t">{s.h1}</h1>
+          <p class="lead">{s.intro}</p>
+          <div class="cta-row">
+            <a class="btn btn-call btn-lg" href={company.phone.href}><Icon name="phone" /><span>Call now</span><span class="num">{company.phone.display}</span></a>
+            <a class="lnk" href="#scope">What the work may include</a>
+          </div>
+        </div>
+        <div class="glance" aria-label="At a glance">
+          <div class="glance-row"><Icon name="phone" /><div><b>First step</b>Call the 24/7 phone team to describe what you have observed.</div></div>
+          <div class="glance-row"><Icon name="building" /><div><b>Properties</b>Homes, condominiums, managed buildings and businesses.</div></div>
+          <div class="glance-row"><Icon name="pin" /><div><b>Offices</b>Miami · West Palm Beach · Smyrna</div></div>
+        </div>
+      </div>
+      <div class="band">
+        <PhotoSlot label={`Photo slot · ${s.photoFile}`} caption={s.photo} depth={0.07} />
+      </div>
+    </div>
+  </section>
+
+  <!-- 2 · When this service may be needed -->
+  <section class="sec bg-white" aria-labelledby="when">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="stack"><p class="eyebrow">Understand the damage</p><h2 class="h2" id="when">When this service may be needed</h2></div>
+        <p class="lead aside">{s.whenIntro}</p>
+      </div>
+      <ul class="when-list">
+        {s.when.map((w, i) => (
+          <li class="when-item rv"><span class="ic" style="font: 650 20px/1 var(--f-d)">{i + 1}</span><p>{w}</p></li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- 3 · Scope -->
+  <section class="sec bg-mist sheet-top" id="scope" aria-labelledby="sc">
+    <div class="wrap">
+      <div class="scope">
+        <div class="split-head">
+          <p class="eyebrow">Understand the service</p>
+          <h2 class="h2" id="sc">What the work may include</h2>
+          <p class="lead">The final scope depends on the assessment of each property and the work agreed for it.</p>
+        </div>
+        <div class="scope-card">
+          <ul class="check">
+            {s.scope.map((x) => <li><Icon name="check" /><span>{x}</span></li>)}
+          </ul>
+          <p class="scope-note">Professional work only. These steps describe what WRG’s team does, not instructions for handling damaged or hazardous materials.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 · Process (localized recovery line) -->
+  <section class="sec sheet dark proc" data-cur="" data-tone="dark" aria-labelledby="pr">
+    <div class="wrap">
+      <div class="proc-grid">
+        <div class="split-head">
+          <p class="eyebrow">How the work moves</p>
+          <h2 class="h2" id="pr">The process, step by step</h2>
+          <p class="proc-flow">{s.flow}</p>
+        </div>
+        <ol class="steps">
+          <li class="rail" aria-hidden="true"></li>
+          {s.steps.map((st, i) => (
+            <li class="step"><span class="step-n">{i + 1}</span><div><h3>{st.t}</h3><p>{st.d}</p></div></li>
+          ))}
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5 · Property context -->
+  <section class="sec bg-canvas" aria-labelledby="pt">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="stack"><p class="eyebrow">Your property</p><h2 class="h2" id="pt">Homes and managed properties</h2></div>
+      </div>
+      <div class="duo">
+        <article class="duo-card"><p class="topic">Residential</p><p>{s.res}</p></article>
+        <article class="duo-card"><p class="topic">Commercial &amp; Property Management</p><p>{s.com}</p></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6 · Offices -->
+  <section class="sec bg-white" aria-labelledby="of">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="stack"><p class="eyebrow">Offices</p><h2 class="h2" id="of">Talk to an office near the property</h2></div>
+        <div class="aside stack g12">
+          <p class="muted">All three offices share the 24/7 phone line: {company.phone.display}.</p>
+          <ReviewFlag>Service availability by office pending confirmation</ReviewFlag>
+        </div>
+      </div>
+      <div class="olist">
+        {offices.map((o) => (
+          <div class="ocard"><b>{o.name}</b><address>{o.full}</address><a class="lnk stretch" href={o.href}>View this location</a></div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 7 · Related evidence / knowledge (omitted when none exists) -->
+  {hasRelated ? (
+    <section class="sec bg-canvas" aria-labelledby="rl">
+      <div class="wrap">
+        <div class="sec-head"><div class="stack"><p class="eyebrow">Related</p><h2 class="h2" id="rl">Evidence and answers</h2></div></div>
+        <div class="related">
+          {s.related.map((r) => (
+            <article class="rel-card rv">
+              {r.photo && <PhotoSlot mini />}
+              <p class="topic">{r.kind}</p>
+              <h3 class="h3">{r.title}</h3>
+              <p class="geo">{r.meta}</p>
+              <a class="lnk stretch" href={r.href}>{r.cta}</a>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  ) : (
+    s.reviewNote && (
+      <section class="sec bg-canvas" style="--st: 0px; --sb: 24px">
+        <div class="wrap"><ReviewNote>{s.reviewNote}</ReviewNote></div>
+      </section>
+    )
+  )}
+
+  <!-- 8 · FAQ -->
+  <section class="sec bg-white" aria-labelledby="fq">
+    <div class="wrap">
+      <div class="faq-grid">
+        <div class="split-head">
+          <p class="eyebrow">Questions</p>
+          <h2 class="h2" id="fq">Before you call</h2>
+          <a class="lnk" href={routes.faqs}>All questions<Icon name="arrow" /></a>
+        </div>
+        <div class="faq">
+          {s.faq.map((f) => (
+            <details><summary>{f.q}<span class="pm" aria-hidden="true"><Icon name="plus" /></span></summary><p class="ans">{f.a}</p></details>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9 · Next step -->
+  <CtaBand label="Next step" title={s.ctaTitle} />
+</BaseLayout>

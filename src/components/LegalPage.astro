@@ -1,0 +1,44 @@
+---
+// Legal page shell. The text must come from WRG; until then the sections
+// render as reading-layout placeholders and the page is marked as pending.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from './Breadcrumbs.astro';
+import ReviewNote from './ReviewNote.astro';
+import { company } from '../data/site';
+interface Props {
+  title: string;
+  description: string;
+  note: string;
+  sections: string[];
+}
+const { title, description, note, sections } = Astro.props;
+---
+<BaseLayout title={title} description={description} page="legal">
+  <section class="sec ihero bg-canvas" aria-labelledby="t">
+    <div class="wrap">
+      <Breadcrumbs items={[{ label: title }]} />
+      <div class="art-head">
+        <p class="eyebrow">Legal</p>
+        <h1 class="h1" id="t">{title}</h1>
+        <ReviewNote title="Content pending client review.">{note}</ReviewNote>
+      </div>
+    </div>
+  </section>
+  <section class="sec bg-white" style="--st: clamp(40px, 4cqi, 56px)">
+    <div class="wrap">
+      <div class="legal">
+        <p class="small muted" style="margin-bottom: 20px">Last updated: pending</p>
+        {sections.map((h) => (
+          <div class="legal-sec">
+            <h2>{h}</h2>
+            <span class="sk" style="width: 100%"></span><span class="sk" style="width: 92%"></span><span class="sk" style="width: 74%"></span>
+          </div>
+        ))}
+        <div class="legal-sec">
+          <h2>Questions</h2>
+          <p class="muted">For questions about this page, call WRG at <a class="tel" href={company.phone.href}>{company.phone.display}</a>.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

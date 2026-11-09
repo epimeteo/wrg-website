@@ -1,0 +1,13 @@
+---
+// Internal review note. Rendered only while PUBLIC_REVIEW_MODE is not "false".
+import Icon from './Icon.astro';
+import { reviewMode } from '../data/site';
+interface Props {
+  title?: string;
+  style?: string;
+}
+const { title = 'Internal review:', style } = Astro.props;
+---
+{reviewMode && (
+  <p class="notice" style={style}><Icon name="info" /><span><b>{title}</b> <slot /></span></p>
+)}

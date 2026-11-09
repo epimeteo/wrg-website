@@ -1,0 +1,46 @@
+---
+// Inline SVG icon set (24×24, 1.8 px stroke, round caps). Decorative by default.
+interface Props {
+  name: keyof typeof paths;
+  class?: string;
+  width?: number;
+}
+const { name, class: cls, width } = Astro.props;
+
+const paths = {
+  phone: '<path d="M6.6 3.5h2.6l1.6 4.2-2.1 1.3a11.5 11.5 0 0 0 6.3 6.3l1.3-2.1 4.2 1.6v2.6a2 2 0 0 1-2.2 2A16.6 16.6 0 0 1 4.6 5.7a2 2 0 0 1 2-2.2z"/>',
+  arrow: '<path d="M5 12h14M13 6l6 6-6 6"/>',
+  plus: '<path d="M12 5v14M5 12h14"/>',
+  close: '<path d="M6 6l12 12M18 6 6 18"/>',
+  check: '<path d="m5 12.5 4.2 4.2L19 7"/>',
+  water: '<path d="M12 3.5s6.5 6.6 6.5 11.1a6.5 6.5 0 0 1-13 0C5.5 10.1 12 3.5 12 3.5z"/><path d="M9 15a3 3 0 0 0 3 3"/>',
+  fire: '<path d="M12 3c.6 3.2 4.8 5.3 4.8 10a4.8 4.8 0 0 1-9.6 0c0-2.3 1.2-3.8 2.4-4.8.2 1.7 1 2.8 2.1 3.2C11 9 11.3 5.6 12 3z"/>',
+  mold: '<circle cx="8.5" cy="9" r="3.2"/><circle cx="16.5" cy="7.5" r="2"/><circle cx="14.5" cy="16" r="3.8"/><circle cx="6.5" cy="17" r="1.5"/>',
+  environmental: '<path d="M5 19.5c-.4-8.3 5.3-14 14.5-14.5.4 9.2-5.6 15-13.6 14.6"/><path d="M5 19.5 13.5 11"/>',
+  reconstruction: '<path d="M3.5 11 12 4l8.5 7"/><path d="M5.5 9.5V20h13V9.5"/><path d="M10 20v-5.5h4V20"/>',
+  pin: '<path d="M12 21s7-6.2 7-11.6a7 7 0 1 0-14 0C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.6"/>',
+  clock: '<circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/>',
+  building: '<rect x="5" y="3.5" width="14" height="17" rx="2.5"/><path d="M9 8h1.5M13.5 8H15M9 12h1.5M13.5 12H15M10 20.5V17h4v3.5"/>',
+  image: '<rect x="3" y="5" width="18" height="14" rx="3"/><circle cx="9" cy="10" r="1.8"/><path d="m20.5 16.5-4.8-4.8L7 19"/>',
+  search: '<circle cx="11" cy="11" r="6.5"/><path d="m20 20-4.2-4.2"/>',
+  info: '<circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16.5v.01"/>',
+  shield: '<path d="M12 3 4.5 6v5.6c0 4.4 3.1 8 7.5 9.4 4.4-1.4 7.5-5 7.5-9.4V6z"/><path d="m9 12 2.2 2.2L15.5 10"/>',
+  people: '<circle cx="9" cy="8.5" r="3"/><path d="M3.5 19c.6-3.2 2.8-5 5.5-5s4.9 1.8 5.5 5"/><circle cx="17" cy="9.5" r="2.4"/><path d="M15.8 14.2c2.3.2 4 1.8 4.7 4.8"/>',
+} as const;
+
+const stroke = name === 'arrow' || name === 'plus' || name === 'close' || name === 'check' ? 2 : name === 'image' ? 1.4 : 1.8;
+---
+<svg
+  class={cls}
+  viewBox="0 0 24 24"
+  width={width}
+  height={width}
+  fill="none"
+  stroke="currentColor"
+  stroke-width={stroke}
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  aria-hidden="true"
+  focusable="false"
+  set:html={paths[name]}
+/>

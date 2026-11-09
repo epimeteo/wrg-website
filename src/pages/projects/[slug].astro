@@ -1,0 +1,90 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Icon from '../../components/Icon.astro';
+import PhotoSlot from '../../components/PhotoSlot.astro';
+import ReviewFlag from '../../components/ReviewFlag.astro';
+import ReviewNote from '../../components/ReviewNote.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import { projects, projectHref, type Project } from '../../data/projects';
+import { routes } from '../../data/site';
+
+export function getStaticPaths() {
+  return projects.map((c) => ({ params: { slug: c.slug }, props: { c } }));
+}
+const { c } = Astro.props as { c: Project };
+const others = projects.filter((p) => p.slug !== c.slug).slice(0, 2);
+const gallery = ['Affected area during the work', 'Equipment or process detail', 'Repaired area', 'Building context', 'Team at work'];
+---
+<BaseLayout title={`${c.name} — Case Study`} description={c.summary} active="projects" page="case">
+  <section class="sec ihero bg-canvas" aria-labelledby="t">
+    <div class="wrap">
+      <Breadcrumbs items={[{ label: 'Projects', href: routes.projects }, { label: c.name }]} />
+      <div class="art-head" style="max-width: 980px">
+        <p class="eyebrow">Case study</p>
+        <h1 class="h1" id="t">{c.name}</h1>
+        <p class="lead" style="max-width: 62ch">{c.summary}</p>
+        <div class="case-hero-meta">
+          <p class="geo"><Icon name="pin" />{c.geo}</p>
+          <div class="tags">{c.services.map((sv) => <span class="tag">{sv.name}</span>)}</div>
+        </div>
+      </div>
+      <div class="case-photo band">
+        <PhotoSlot label={`Project photo · ${c.photo}`} caption={`${c.name}, ${c.geo}. Source: WRG project page`} depth={0.07} />
+      </div>
+      <div class="facts" style="margin-top: 20px">
+        <div class="fact"><b>Location</b>{c.geo}</div>
+        <div class="fact"><b>Property type</b>{c.type}</div>
+        <div class="fact"><b>Executing office</b>Not stated in the project record</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Challenge → approach → documented work (localized line) -->
+  <section class="sec bg-white" data-cur="" aria-labelledby="st">
+    <div class="wrap">
+      <div class="story">
+        <div class="split-head">
+          <p class="eyebrow">The project</p>
+          <h2 class="h2" id="st">From the challenge to the documented work</h2>
+          <p class="muted">Based on WRG’s published project account.</p>
+        </div>
+        <ol class="story-steps">
+          <li class="rail" aria-hidden="true"></li>
+          <li class="story-step"><span class="step-n">1</span><div><p class="topic">Challenge</p><h3>{c.challenge}</h3><p>{c.challengeDetail}</p></div></li>
+          <li class="story-step"><span class="step-n">2</span><div><p class="topic">WRG’s approach</p><h3>{c.approach}</h3><p>{c.approachDetail}</p></div></li>
+          <li class="story-step"><span class="step-n">3</span><div><p class="topic">Documented work</p><ul class="check" style="margin-top: 16px">{c.work.map((w) => <li><Icon name="check" /><span>{w}</span></li>)}</ul></div></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec bg-canvas" aria-labelledby="gl">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="stack"><p class="eyebrow">Gallery</p><h2 class="h2" id="gl">Project images</h2></div>
+        <div class="aside"><ReviewFlag>Authorized photos and alt text pending</ReviewFlag></div>
+      </div>
+      <div class="gallery">
+        {gallery.map((g, i) => <PhotoSlot label={`Gallery ${i + 1}`} caption={g} />)}
+      </div>
+      <ReviewNote title="Source and review:" style="margin-top: 24px">{c.source}. {c.review}</ReviewNote>
+    </div>
+  </section>
+
+  <section class="sec bg-white" aria-labelledby="rl">
+    <div class="wrap">
+      <div class="sec-head"><div class="stack"><p class="eyebrow">Related</p><h2 class="h2" id="rl">Services used and other projects</h2></div></div>
+      <div class="related">
+        {c.services.map((sv) => (
+          <article class="rel-card txt"><p class="topic">Service</p><h3 class="h3">{sv.name}</h3><a class="lnk stretch" href={sv.href}>Explore this service</a></article>
+        ))}
+        {others.map((o) => (
+          <article class="rel-card txt" style="background: var(--mist); border-color: transparent"><p class="topic">Case study</p><h3 class="h3">{o.name}</h3><p class="geo">{o.geo}</p><a class="lnk stretch" href={projectHref(o.slug)}>Read the case study</a></article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CtaBand title="Facing something similar? Talk to WRG about your property." lead="" />
+</BaseLayout>

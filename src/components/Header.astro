@@ -1,0 +1,155 @@
+---
+import Icon from './Icon.astro';
+import { company, offices, routes, type NavKey } from '../data/site';
+import { services, serviceHref } from '../data/services';
+import { projects, projectHref } from '../data/projects';
+import { articles, articleHref } from '../data/articles';
+
+interface Props {
+  active: NavKey;
+}
+const { active } = Astro.props;
+const here = Astro.url.pathname;
+
+type Link = { label: string; href: string };
+type Group = { key: NavKey; label: string; href?: string; links?: Link[] };
+
+const groups: Group[] = [
+  { key: 'home', label: 'Home', href: routes.home },
+  {
+    key: 'services',
+    label: 'Services',
+    links: [{ label: 'Services overview', href: routes.services }, ...services.map((s) => ({ label: s.name, href: serviceHref(s.slug) }))],
+  },
+  {
+    key: 'locations',
+    label: 'Locations',
+    links: [{ label: 'All locations', href: routes.locations }, ...offices.map((o) => ({ label: o.name, href: o.href }))],
+  },
+  {
+    key: 'projects',
+    label: 'Projects',
+    links: [{ label: 'All projects', href: routes.projects }, ...projects.map((p) => ({ label: p.name, href: projectHref(p.slug) }))],
+  },
+  {
+    key: 'about',
+    label: 'About',
+    links: [
+      { label: 'About WRG', href: routes.about },
+      { label: 'Reviews', href: routes.reviews },
+      { label: 'Careers', href: routes.careers },
+    ],
+  },
+  {
+    key: 'blog',
+    label: 'Insights',
+    links: [{ label: 'All insights', href: routes.blog }, ...articles.map((a) => ({ label: a.title, href: articleHref(a) }))],
+  },
+];
+const pad = (n: number) => String(n + 1).padStart(2, '0');
+---
+<header class="hdr" data-wrg-header data-dark="false" data-top="true" data-compact="false">
+  <a class="skip" href="#main">Skip to content</a>
+  <div class="hdr-cq">
+    <div class="hdr-bar">
+      <a class="logo" href="/" aria-label={`${company.name}, home`}>
+        <span class="logo-mark" aria-hidden="true">WRG</span>
+        <span class="logo-txt" aria-hidden="true">{company.name}</span>
+      </a>
+      <p class="hdr-util">{company.support} · <a href={company.phone.href}>{company.phone.display}</a></p>
+      <span class="hdr-sp"></span>
+      <button class="btn-menu" type="button" aria-expanded="false" aria-controls="site-menu" data-menu-open>
+        <span>Menu</span>
+        <span class="mb-ic" aria-hidden="true"><i></i><i></i></span>
+      </button>
+      <a class="btn btn-call btn-sm hdr-call" href={company.phone.href}>
+        <Icon name="phone" />
+        <span>Call now</span>
+      </a>
+      <span class="hdr-prog" aria-hidden="true"></span>
+    </div>
+  </div>
+
+  <div class="menu" id="site-menu" data-open="false" data-menu>
+    <button class="menu-scrim" type="button" tabindex="-1" aria-label="Close menu" data-menu-close></button>
+    <div class="menu-cq">
+      <div class="menu-panel on-dark" role="dialog" aria-modal="true" aria-label="Site menu">
+        <div class="menu-nav">
+          <div class="menu-head">
+            <span class="menu-label">Menu</span>
+            <button class="menu-close" type="button" aria-label="Close menu" data-menu-close>
+              <Icon name="close" />
+            </button>
+          </div>
+          <nav aria-label="Main">
+            <ul class="nav">
+              {groups.map((g, i) => (
+                <li class={`nav-item i${i + 1}`}>
+                  {g.href ? (
+                    <a class:list={['nav-row', { 'is-active': active === g.key }]} href={g.href} aria-current={here === g.href ? 'page' : undefined}>
+                      <span class="lbl"><span class="idx">{pad(i)}</span>{g.label}</span>
+                      <span class="here">Current</span>
+                      <span class="pm" aria-hidden="true"><Icon name="arrow" /></span>
+                    </a>
+                  ) : (
+                    <>
+                      <button
+                        class:list={['nav-row', { 'is-active': active === g.key }]}
+                        type="button"
+                        aria-expanded="false"
+                        aria-controls={`sub-${g.key}`}
+                        data-group={g.key}
+                        data-active-group={active === g.key ? '' : undefined}
+                      >
+                        <span class="lbl"><span class="idx">{pad(i)}</span>{g.label}</span>
+                        <span class="here">Current</span>
+                        <span class="pm" aria-hidden="true"><Icon name="plus" /></span>
+                      </button>
+                      <div class="nav-sub" id={`sub-${g.key}`}>
+                        <div>
+                          <ul>
+                            {g.links!.map((l) => (
+                              <li><a class="sub-link" href={l.href} aria-current={here === l.href ? 'page' : undefined}>{l.label}</a></li>
+                            ))}
+                          </ul>
+                        </div>
+                      </div>
+                    </>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </div>
+
+        <aside class="menu-aside" aria-label="Phone support and offices">
+          <div class="aside-call">
+            <span class="aside-h">{company.support}</span>
+            <a class="aside-num" href={company.phone.href}>{company.phone.display}</a>
+            <span class="small muted">or dial {company.phone.vanity}</span>
+            <a class="btn btn-call" href={company.phone.href}><Icon name="phone" /><span>Call now</span></a>
+          </div>
+          <div>
+            <p class="aside-h" style="margin-bottom: 12px">Offices</p>
+            <ul class="aside-offices">
+              {offices.map((o) => (
+                <li><a href={o.href}><b>{o.name}</b><span>{o.role} · {o.street}</span></a></li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <p class="aside-h" style="margin-bottom: 4px">More</p>
+            <ul class="aside-links">
+              <li><a href={routes.faqs} aria-current={here === routes.faqs ? 'page' : undefined}>FAQ</a></li>
+              <li><a href={routes.contact} aria-current={here === routes.contact ? 'page' : undefined}>Contact</a></li>
+            </ul>
+          </div>
+        </aside>
+
+        <div class="menu-callbar">
+          <a class="btn btn-call btn-lg" href={company.phone.href}>Call now <span class="num">{company.phone.display}</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

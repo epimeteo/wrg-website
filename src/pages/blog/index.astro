@@ -1,0 +1,80 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Icon from '../../components/Icon.astro';
+import PhotoSlot from '../../components/PhotoSlot.astro';
+import ReviewFlag from '../../components/ReviewFlag.astro';
+import { articles, articleHref } from '../../data/articles';
+import { services, serviceHref } from '../../data/services';
+import { company } from '../../data/site';
+const [featured, ...more] = articles;
+const related = services.filter((s) => ['water', 'fire', 'mold'].includes(s.key));
+---
+<BaseLayout title="Insights" description="Practical information about water damage, mold and fire restoration, and the questions property owners and managers often bring to WRG." active="blog" page="insights">
+  <section class="sec ihero bg-canvas" aria-labelledby="t">
+    <div class="wrap">
+      <Breadcrumbs items={[{ label: 'Insights' }]} />
+      <div class="ihero-grid">
+        <div class="ihero-copy">
+          <p class="eyebrow">Insights</p>
+          <h1 class="h1" id="t">Clear answers for property recovery.</h1>
+          <p class="lead">Explore practical information about restoration, project planning and the questions property owners and managers often bring to WRG.</p>
+        </div>
+        <nav class="stack g12" aria-label="Topics">
+          <p class="aside-h" style="color: var(--muted)">Topics</p>
+          <div class="topics">
+            {articles.map((a) => <a href={articleHref(a)}>{a.categoryLabel}</a>)}
+          </div>
+        </nav>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec bg-white" style="--st: clamp(40px, 4cqi, 56px)" aria-labelledby="ft">
+    <div class="wrap">
+      <article class="ifeat on-dark">
+        <PhotoSlot label="Photo slot" caption="Approved WRG photography pending" dark depth={0.05} />
+        <div class="ifeat-body">
+          <p class="topic">Featured · {featured.categoryLabel}</p>
+          <h2 class="h2" id="ft">{featured.title}</h2>
+          <p class="lead">{featured.summary}</p>
+          <a class="lnk stretch" href={articleHref(featured)}>Read the insight<Icon name="arrow" /></a>
+        </div>
+      </article>
+
+      <h2 class="sr">More insights</h2>
+      <div class="alist" style="margin-top: clamp(40px, 5cqi, 64px)">
+        {more.map((a, i) => (
+          <article class={`arow rv${i ? ' d2' : ''}`}>
+            <p class="topic">{a.categoryLabel}</p>
+            <div class="stack g8"><h3>{a.title}</h3><p class="muted small">{a.summary}</p></div>
+            <a class="go stretch" href={articleHref(a)} aria-label={`Read: ${a.title}`}><Icon name="arrow" /></a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="sec bg-mist sheet-top" aria-labelledby="au">
+    <div class="wrap">
+      <div class="duo">
+        <div class="duo-card">
+          <p class="topic">Authors &amp; reviewers</p>
+          <h2 class="h3" id="au">Written from WRG’s knowledge, reviewed by real experts.</h2>
+          <p class="muted small">Author and reviewer names appear only when they have been confirmed. Until then, articles show no byline and no review date.</p>
+          <ReviewFlag>Professional and editorial review pending for all three drafts</ReviewFlag>
+        </div>
+        <div class="duo-card">
+          <p class="topic">Related services</p>
+          <div class="svc-chips">
+            {related.map((s) => <a class="svc-chip" href={serviceHref(s.slug)}>{s.name}</a>)}
+          </div>
+        </div>
+      </div>
+      <div class="callout" style="margin-top: 20px; background: var(--white)">
+        <p class="muted">Have a question about your own property? The 24/7 phone team can talk it through.</p>
+        <a class="lnk" href={company.phone.href}>Call {company.phone.display}</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

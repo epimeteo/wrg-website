@@ -1,0 +1,81 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+<BaseLayout title="Locations" description="WRG offices in Miami and West Palm Beach, Florida, and Smyrna, Georgia, with one 24/7 phone line: (844) 379-9283." active="locations">
+
+    <section class="sec ihero bg-canvas" aria-labelledby="t">
+      <div class="wrap">
+        <nav aria-label="Breadcrumb"><ol class="crumbs"><li><a href="/">Home</a></li><li><span aria-current="page">Locations</span></li></ol></nav>
+        <div class="ihero-grid">
+          <div class="ihero-copy">
+            <p class="eyebrow">Locations</p>
+            <h1 class="h1" id="t">Find your <span class="soft">WRG location.</span></h1>
+            <p class="lead">Explore our offices in Miami, West Palm Beach and Smyrna, serving South Florida and Metro Atlanta. Each location page includes office details, local context and a direct way to reach our 24/7 phone team.</p>
+          </div>
+          <div class="glance" aria-label="Regions">
+            <div class="glance-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.2 7-11.6a7 7 0 1 0-14 0C5 14.8 12 21 12 21z"></path><circle cx="12" cy="9.5" r="2.6"></circle></svg><div><b>South Florida</b>Miami (headquarters) · West Palm Beach</div></div>
+            <div class="glance-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.2 7-11.6a7 7 0 1 0-14 0C5 14.8 12 21 12 21z"></path><circle cx="12" cy="9.5" r="2.6"></circle></svg><div><b>Metro Atlanta</b>Office in Smyrna, GA</div></div>
+            <div class="glance-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.2 4.2L19 7"></path></svg><div><b>No location sharing needed</b>Choose an office below or call the 24/7 team.</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec bg-white" style="--st: clamp(48px, 5cqi, 72px)" aria-labelledby="offices">
+      <div class="wrap">
+        <h2 class="sr" id="offices">Our offices</h2>
+        <div class="loc-cards">
+          <article class="loc-card dk on-dark">
+            <figure class="ph dk"><div class="ph-in" data-depth="0.05"></div><svg class="ph-glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"></rect><circle cx="9" cy="10" r="1.8"></circle><path d="m20.5 16.5-4.8-4.8L7 19"></path></svg><figcaption class="ph-tag"><b>Office photo</b>Miami headquarters, pending</figcaption></figure>
+            <p class="topic">South Florida · Corporate headquarters</p>
+            <h3 class="city">Miami, FL</h3>
+            <address class="small" style="color: #dcebef">555 NW 95th St, Miami, FL 33150</address>
+            <p class="small muted">Homes, condominiums and commercial properties, including coordination between units and common areas.</p>
+            <div class="cta-row"><a class="lnk" href="/locations/miami-fl/">View this location</a><a class="lnk" href="https://www.google.com/maps/search/?api=1&amp;query=555+NW+95th+St+Miami+FL+33150" target="_blank" rel="noopener">Get directions</a></div>
+          </article>
+          <article class="loc-card">
+            <figure class="ph"><div class="ph-in" data-depth="0.05"></div><svg class="ph-glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"></rect><circle cx="9" cy="10" r="1.8"></circle><path d="m20.5 16.5-4.8-4.8L7 19"></path></svg><figcaption class="ph-tag"><b>Office photo</b>West Palm Beach office, pending</figcaption></figure>
+            <p class="topic">South Florida · Palm Beach County</p>
+            <h3 class="city">West Palm Beach, FL</h3>
+            <address class="small muted">1705 Donna Road, Unit #10, West Palm Beach, FL 33409</address>
+            <p class="small muted">Properties in Palm Beach County, from households to businesses and managed buildings.</p>
+            <div class="cta-row"><a class="lnk" href="/locations/west-palm-beach-fl/">View this location</a><a class="lnk" href="https://www.google.com/maps/search/?api=1&amp;query=1705+Donna+Road+Unit+10+West+Palm+Beach+FL+33409" target="_blank" rel="noopener">Get directions</a></div>
+          </article>
+          <article class="loc-card">
+            <figure class="ph"><div class="ph-in" data-depth="0.05"></div><svg class="ph-glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"></rect><circle cx="9" cy="10" r="1.8"></circle><path d="m20.5 16.5-4.8-4.8L7 19"></path></svg><figcaption class="ph-tag"><b>Office photo</b>Smyrna, GA office, pending</figcaption></figure>
+            <p class="topic">Metro Atlanta · Smyrna office</p>
+            <h3 class="city">Atlanta / Smyrna, GA</h3>
+            <address class="small muted">5028 S Atlanta Rd SE, Smyrna, GA 30080</address>
+            <p class="small muted">Homes and businesses across Metro Atlanta, from a physical office in Smyrna.</p>
+            <div class="cta-row"><a class="lnk" href="/locations/atlanta-ga/">View this location</a><a class="lnk" href="https://www.google.com/maps/search/?api=1&amp;query=5028+S+Atlanta+Rd+SE+Smyrna+GA+30080" target="_blank" rel="noopener">Get directions</a></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec bg-canvas" aria-labelledby="links">
+      <div class="wrap">
+        <div class="sec-head"><div class="stack"><p class="eyebrow">Local pages</p><h2 class="h2" id="links">Restoration information by area</h2></div></div>
+        <div class="duo">
+          <div class="duo-card">
+            <p class="topic">South Florida</p>
+            <div class="stack g8">
+              <a class="lnk" href="/locations/miami-fl/">Water damage restoration in Miami, FL</a>
+              <a class="lnk" href="/locations/west-palm-beach-fl/">Water damage restoration in West Palm Beach, FL</a>
+            </div>
+          </div>
+          <div class="duo-card">
+            <p class="topic">Metro Atlanta</p>
+            <div class="stack g8">
+              <a class="lnk" href="/locations/atlanta-ga/">Water damage restoration in Smyrna &amp; Metro Atlanta</a>
+              <a class="lnk" href="/contact/">Contact information for all offices</a>
+            </div>
+          </div>
+        </div>
+        <div class="callout" style="margin-top: 20px">
+          <div class="stack g8"><p class="h3">One 24/7 phone line for every office.</p><p class="muted">Office details are listed on each location page. Phone support is available 24 hours a day.</p></div>
+          <a class="btn btn-call btn-lg" href="tel:+18443799283"><span>Call now</span><span class="num">(844) 379-9283</span></a>
+        </div>
+      </div>
+    </section>
+</BaseLayout>
