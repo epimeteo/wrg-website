@@ -2,7 +2,8 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import Icon from '../../components/Icon.astro';
-import PhotoSlot from '../../components/PhotoSlot.astro';
+import Photo from '../../components/Photo.astro';
+import { blogFeatured } from '../../data/photos';
 import ReviewFlag from '../../components/ReviewFlag.astro';
 import { articles, articleHref } from '../../data/articles';
 import { services, serviceHref } from '../../data/services';
@@ -33,7 +34,7 @@ const related = services.filter((s) => ['water', 'fire', 'mold'].includes(s.key)
   <section class="sec bg-white" style="--st: clamp(40px, 4cqi, 56px)" aria-labelledby="ft">
     <div class="wrap">
       <article class="ifeat on-dark">
-        <PhotoSlot label="Photo slot" caption="Approved WRG photography pending" dark depth={0.05} />
+        <Photo src={blogFeatured.src} alt={blogFeatured.alt} max={blogFeatured.max} position={blogFeatured.pos} sizes="(min-width: 1024px) 600px, 100vw" depth={0.05} />
         <div class="ifeat-body">
           <p class="topic">Featured · {featured.categoryLabel}</p>
           <h2 class="h2" id="ft">{featured.title}</h2>

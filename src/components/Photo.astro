@@ -4,24 +4,28 @@
 // untouched; Astro generates AVIF/WebP/JPEG variants at the listed widths.
 // `position` sets the focal point (object-position) for every breakpoint.
 // Keep the largest width at or below the source width: it is also the
-// size of the fallback <img src>.
+// size of the fallback <img src>. Pass `widths`, or `max` to derive them.
 import { Picture } from 'astro:assets';
 import type { ImageMetadata } from 'astro';
 
 interface Props {
   src: ImageMetadata;
   alt: string;
-  widths: number[];
   sizes: string;
+  widths?: number[];
+  max?: number;
   position?: string;
   class?: string;
+  style?: string;
   depth?: number;
   mini?: boolean;
   priority?: boolean;
 }
-const { src, alt, widths, sizes, position = '50% 50%', class: cls, depth, mini = false, priority = false } = Astro.props;
+const { src, alt, sizes, max, position = '50% 50%', class: cls, style, depth, mini = false, priority = false } = Astro.props;
+const steps = [400, 720, 960, 1360, 1920, 2400];
+const widths = Astro.props.widths ?? (max ? [...steps.filter((w) => w < max - 80), max] : [480, 720, 960, 1360]);
 ---
-<figure class:list={['ph', 'photo', cls, { mini }]}>
+<figure class:list={['ph', 'photo', cls, { mini }]} style={style}>
   <Picture
     src={src}
     alt={alt}

@@ -1,5 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Photo from '../components/Photo.astro';
+import { aboutHero, projectMain as pm } from '../data/photos';
 import { reviewMode } from '../data/site';
 ---
 <BaseLayout title="About" description="The Water Restoration Group provides property restoration and reconstruction from offices in Miami, West Palm Beach and Smyrna." active="about">
@@ -14,7 +16,7 @@ import { reviewMode } from '../data/site';
             <p class="lead">Property restoration is about more than the work on a building. It also involves the people making decisions, coordinating access and waiting to understand what happens next. WRG brings restoration and reconstruction services into that conversation.</p>
             <div class="cta-row"><a class="lnk" href="/projects/">See documented projects</a><a class="lnk" href="/reviews/">Read client reviews</a></div>
           </div>
-          <figure class="ph" style="aspect-ratio: 5 / 4; border-radius: 48px clamp(80px, 10cqi, 150px) 48px 48px"><div class="ph-in" data-depth="0.07"></div><svg class="ph-glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"></rect><circle cx="9" cy="10" r="1.8"></circle><path d="m20.5 16.5-4.8-4.8L7 19"></path></svg><figcaption class="ph-tag"><b>Photo slot · The-WRG-Difference.jpg</b>WRG people at work, authorized image pending</figcaption></figure>
+          <Photo src={aboutHero.src} alt={aboutHero.alt} max={aboutHero.max} position={aboutHero.pos} sizes="(min-width: 1024px) 480px, 100vw" style="aspect-ratio: 5 / 4; border-radius: 48px clamp(80px, 10cqi, 150px) 48px 48px" depth={0.07} priority />
         </div>
       </div>
     </section>
@@ -27,10 +29,10 @@ import { reviewMode } from '../data/site';
           <div class="aside stack g12"><p class="muted">Each project shows where the work took place and the services described in WRG’s records.</p><a class="lnk" href="/projects/">All projects &amp; case studies</a></div>
         </div>
         <div class="proof-strip">
-          <article class="pcard rv"><figure class="ph"><div class="ph-in"></div><svg class="ph-glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"></rect><circle cx="9" cy="10" r="1.8"></circle><path d="m20.5 16.5-4.8-4.8L7 19"></path></svg></figure><p class="geo">Edgewater, Miami, FL</p><h3>Icon Bay</h3><p class="xs muted">Water Damage Restoration · Reconstruction</p><a class="lnk stretch small" href="/projects/icon-bay/">Read the case study</a></article>
-          <article class="pcard rv d2"><figure class="ph"><div class="ph-in"></div><svg class="ph-glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"></rect><circle cx="9" cy="10" r="1.8"></circle><path d="m20.5 16.5-4.8-4.8L7 19"></path></svg></figure><p class="geo">Coral Gables, FL</p><h3>Gables Waterway Towers</h3><p class="xs muted">Fire &amp; Smoke · Water Damage</p><a class="lnk stretch small" href="/projects/gables-waterway-towers/">Read the case study</a></article>
-          <article class="pcard rv d3"><figure class="ph"><div class="ph-in"></div><svg class="ph-glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"></rect><circle cx="9" cy="10" r="1.8"></circle><path d="m20.5 16.5-4.8-4.8L7 19"></path></svg></figure><p class="geo">Brickell Key, Miami, FL</p><h3>St. Louis Condominium</h3><p class="xs muted">Mold Remediation</p><a class="lnk stretch small" href="/projects/st-louis-condominium/">Read the case study</a></article>
-          <article class="pcard rv d4"><figure class="ph"><div class="ph-in"></div><svg class="ph-glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"></rect><circle cx="9" cy="10" r="1.8"></circle><path d="m20.5 16.5-4.8-4.8L7 19"></path></svg></figure><p class="geo">Fort Lauderdale, FL</p><h3>South Point Condominium</h3><p class="xs muted">Mold Remediation · Reconstruction</p><a class="lnk stretch small" href="/projects/south-point-condominium/">Read the case study</a></article>
+          <article class="pcard rv"><Photo src={pm["icon-bay"].src} alt="" max={600} position={pm["icon-bay"].square} sizes="(min-width: 1024px) 280px, 50vw" /><p class="geo">Edgewater, Miami, FL</p><h3>Icon Bay</h3><p class="xs muted">Water Damage Restoration · Reconstruction</p><a class="lnk stretch small" href="/projects/icon-bay/">Read the case study</a></article>
+          <article class="pcard rv d2"><Photo src={pm["gables-waterway-towers"].src} alt="" max={600} position={pm["gables-waterway-towers"].square} sizes="(min-width: 1024px) 280px, 50vw" /><p class="geo">Coral Gables, FL</p><h3>Gables Waterway Towers</h3><p class="xs muted">Fire &amp; Smoke · Water Damage</p><a class="lnk stretch small" href="/projects/gables-waterway-towers/">Read the case study</a></article>
+          <article class="pcard rv d3"><Photo src={pm["st-louis-condominium"].src} alt="" max={600} position={pm["st-louis-condominium"].square} sizes="(min-width: 1024px) 280px, 50vw" /><p class="geo">Brickell Key, Miami, FL</p><h3>St. Louis Condominium</h3><p class="xs muted">Mold Remediation</p><a class="lnk stretch small" href="/projects/st-louis-condominium/">Read the case study</a></article>
+          <article class="pcard rv d4"><Photo src={pm["south-point-condominium"].src} alt="" max={600} position={pm["south-point-condominium"].square} sizes="(min-width: 1024px) 280px, 50vw" /><p class="geo">Fort Lauderdale, FL</p><h3>South Point Condominium</h3><p class="xs muted">Mold Remediation · Reconstruction</p><a class="lnk stretch small" href="/projects/south-point-condominium/">Read the case study</a></article>
         </div>
       </div>
     </section>

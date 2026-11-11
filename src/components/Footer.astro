@@ -3,6 +3,7 @@ import Icon from './Icon.astro';
 import { company, offices, routes } from '../data/site';
 import { services, serviceHref } from '../data/services';
 const year = new Date().getFullYear();
+import LogoMark from './LogoMark.astro';
 ---
 <div class="wrg-foot">
   <footer class="foot">
@@ -10,7 +11,7 @@ const year = new Date().getFullYear();
       <div class="foot-grid">
         <div class="foot-brand">
           <a class="logo" href="/" aria-label={`${company.name}, home`}>
-            <span class="logo-mark" aria-hidden="true">WRG</span>
+            <LogoMark />
             <span class="logo-txt" aria-hidden="true">{company.name}</span>
           </a>
           <p class="small" style="color: var(--od-muted)">{company.name} provides property restoration and reconstruction services, with offices in Miami, West Palm Beach and Smyrna.</p>

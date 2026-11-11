@@ -193,9 +193,9 @@
 .hdr[data-top="true"] .hdr-bar{background:rgba(246,248,249,0);border-color:transparent;-webkit-backdrop-filter:none;backdrop-filter:none}
 .hdr[data-compact="true"] .logo-mark{transform:scale(.9)}
 .logo{display:inline-flex;align-items:center;gap:12px;min-height:44px;color:inherit;border-radius:var(--r-sm)}
-.logo-mark{display:grid;place-items:center;width:42px;height:42px;border-radius:var(--r-sm);background:var(--blue);color:#fff;font:750 14px/1 var(--f-d);letter-spacing:.03em;transition:transform var(--t2) var(--ease),background-color var(--t2),color var(--t2)}
+.logo-mark{display:block;flex:none;width:auto;height:30px;color:var(--blue);transform-origin:left center;transition:transform var(--t2) var(--ease),color var(--t2)}
 .logo-txt{font:650 16px/1.08 var(--f-d);letter-spacing:-.01em;max-width:140px}
-.hdr[data-dark="true"] .logo-mark{background:#fff;color:var(--abyss)}
+.hdr[data-dark="true"] .logo-mark{color:#fff}
 .hdr-util{display:inline-flex;align-items:center;gap:10px;padding-left:20px;margin-left:4px;border-left:1px solid var(--line-2);font-size:15px;font-weight:600}
 .hdr-util::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--red)}
 .hdr-util a{text-decoration:underline;text-decoration-color:transparent;text-underline-offset:4px;transition:text-decoration-color var(--t1)}
@@ -214,7 +214,7 @@
 .hdr-prog{position:absolute;left:0;right:0;bottom:-1px;height:2px;background:var(--blue);transform-origin:left;transform:scaleX(var(--pg,0));pointer-events:none}
 @container (min-width:1024px){.hdr-prog{display:none}}
 @container (max-width:1023px){.hdr-util{display:none}}
-@container (max-width:639px){.hdr-bar{height:64px;gap:12px}.hdr-call{display:none}.logo-mark{width:38px;height:38px}.logo-txt{font-size:15px}}
+@container (max-width:639px){.hdr-bar{height:64px;gap:12px}.hdr-call{display:none}.logo-mark{height:26px}.logo-txt{font-size:15px}}
 
 /* §6 Menu overlay -------------------------------------------------------- */
 .menu{position:fixed;inset:0;z-index:100;visibility:hidden;pointer-events:none;transition:visibility 0s linear var(--tm)}
@@ -289,7 +289,7 @@
 .foot{margin-top:var(--sm);background:var(--deep);color:#fff;border-radius:var(--r-block) var(--r-block) 0 0}
 .foot-grid{display:grid;grid-template-columns:minmax(0,1.5fr) repeat(3,minmax(0,1fr));gap:48px 40px;padding-block:clamp(56px,6cqi,88px) 48px}
 .foot-brand{display:flex;flex-direction:column;gap:20px;align-items:flex-start;max-width:420px}
-.foot-brand .logo-mark{background:#fff;color:var(--deep)}
+.foot-brand .logo-mark{color:#fff}
 .foot-num{font:650 clamp(26px,2.4cqi,32px)/1 var(--f-d);letter-spacing:-.02em;font-variant-numeric:tabular-nums}
 .foot-num:hover{color:var(--tide-2)}
 .foot-h{font-size:15px;font-weight:700;color:#fff;margin-bottom:10px}
