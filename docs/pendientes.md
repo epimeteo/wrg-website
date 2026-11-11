@@ -6,7 +6,8 @@ Mientras `PUBLIC_REVIEW_MODE` no sea `false`, el sitio muestra estas advertencia
 
 - [ ] Logo oficial (SVG teal y blanco). El lockup “WRG” actual es provisional (`Header.astro`, `Footer.astro`, `public/favicon.svg`).
 - [x] Fotografía del home (hero, tarjeta comercial y los 4 proyectos), integrada con `Photo.astro` (`<Picture>` de `astro:assets`). Detalle, puntajes y verificaciones pendientes en [fotos-home.md](fotos-home.md).
-- [ ] Fotografía aprobada para el resto de marcos `PhotoSlot` (servicios, oficinas, páginas de proyecto, galerías). Mismo flujo: archivo en `src/assets/` y componente `Photo` con `alt` y punto focal.
+- [x] Fotografía de servicios, proyectos, About, Miami y blog, centralizada en `src/data/photos.ts`. Detalle en [fotos-sitio.md](fotos-sitio.md).
+- [ ] Fotos que faltan: bandas de Fire & Smoke y Mold Remediation, oficinas (3), perfiles de About (3) y espacios de galería sin imagen. Ver [fotos-sitio.md](fotos-sitio.md#pendientes-fotos-que-hace-falta-conseguir).
 - [ ] Las dos fotos provisionales del prototipo de diseño (equipo con equipos de secado y técnico con medidor de humedad) **no están en este repositorio público**: su origen y sus derechos de uso no están confirmados.
 
 ## Datos operativos

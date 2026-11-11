@@ -3,6 +3,8 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import Icon from '../../components/Icon.astro';
 import PhotoSlot from '../../components/PhotoSlot.astro';
+import Photo from '../../components/Photo.astro';
+import { projectMain, projectGallery } from '../../data/photos';
 import ReviewFlag from '../../components/ReviewFlag.astro';
 import ReviewNote from '../../components/ReviewNote.astro';
 import CtaBand from '../../components/CtaBand.astro';
@@ -14,6 +16,8 @@ export function getStaticPaths() {
 }
 const { c } = Astro.props as { c: Project };
 const others = projects.filter((p) => p.slug !== c.slug).slice(0, 2);
+const main = projectMain[c.slug];
+const shots = projectGallery[c.slug] ?? [];
 const gallery = ['Affected area during the work', 'Equipment or process detail', 'Repaired area', 'Building context', 'Team at work'];
 ---
 <BaseLayout title={`${c.name} — Case Study`} description={c.summary} active="projects" page="case">
@@ -30,7 +34,11 @@ const gallery = ['Affected area during the work', 'Equipment or process detail',
         </div>
       </div>
       <div class="case-photo band">
-        <PhotoSlot label={`Project photo · ${c.photo}`} caption={`${c.name}, ${c.geo}. Source: WRG project page`} depth={0.07} />
+        {main ? (
+          <Photo src={main.src} alt={main.alt} max={main.max} position={main.band} sizes="(min-width: 1280px) 1168px, 100vw" depth={0.07} priority />
+        ) : (
+          <PhotoSlot label={`Project photo · ${c.photo}`} caption={`${c.name}, ${c.geo}. Source: WRG project page`} depth={0.07} />
+        )}
       </div>
       <div class="facts" style="margin-top: 20px">
         <div class="fact"><b>Location</b>{c.geo}</div>
@@ -66,7 +74,12 @@ const gallery = ['Affected area during the work', 'Equipment or process detail',
         <div class="aside"><ReviewFlag>Authorized photos and alt text pending</ReviewFlag></div>
       </div>
       <div class="gallery">
-        {gallery.map((g, i) => <PhotoSlot label={`Gallery ${i + 1}`} caption={g} />)}
+        {gallery.map((g, i) => {
+          const shot = shots[i];
+          return shot
+            ? <Photo src={shot.src} alt={shot.alt} max={shot.max} position={shot.pos} sizes={i === 0 ? '(min-width: 1024px) 580px, 100vw' : '(min-width: 1024px) 290px, 50vw'} />
+            : <PhotoSlot label={`Gallery ${i + 1}`} caption={g} />;
+        })}
       </div>
       <ReviewNote title="Source and review:" style="margin-top: 24px">{c.source}. {c.review}</ReviewNote>
     </div>

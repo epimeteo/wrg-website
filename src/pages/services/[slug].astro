@@ -3,6 +3,8 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import Icon from '../../components/Icon.astro';
 import PhotoSlot from '../../components/PhotoSlot.astro';
+import Photo from '../../components/Photo.astro';
+import { serviceBand, projectMain, projectSlugFromHref } from '../../data/photos';
 import ReviewFlag from '../../components/ReviewFlag.astro';
 import ReviewNote from '../../components/ReviewNote.astro';
 import CtaBand from '../../components/CtaBand.astro';
@@ -37,7 +39,11 @@ const hasRelated = s.related.length > 0;
         </div>
       </div>
       <div class="band">
-        <PhotoSlot label={`Photo slot · ${s.photoFile}`} caption={s.photo} depth={0.07} />
+        {serviceBand[s.slug] ? (
+          <Photo src={serviceBand[s.slug]!.src} alt={serviceBand[s.slug]!.alt} max={serviceBand[s.slug]!.max} position={serviceBand[s.slug]!.pos} sizes="(min-width: 1280px) 1168px, 100vw" depth={0.07} />
+        ) : (
+          <PhotoSlot label={`Photo slot · ${s.photoFile}`} caption={s.photo} depth={0.07} />
+        )}
       </div>
     </div>
   </section>
@@ -134,7 +140,10 @@ const hasRelated = s.related.length > 0;
         <div class="related">
           {s.related.map((r) => (
             <article class="rel-card rv">
-              {r.photo && <PhotoSlot mini />}
+              {r.photo && (() => {
+                const pm = projectMain[projectSlugFromHref(r.href) ?? ''];
+                return pm ? <Photo src={pm.src} alt="" max={Math.min(pm.max ?? 800, 800)} position={pm.card} sizes="(min-width: 1024px) 380px, 100vw" /> : <PhotoSlot mini />;
+              })()}
               <p class="topic">{r.kind}</p>
               <h3 class="h3">{r.title}</h3>
               <p class="geo">{r.meta}</p>
