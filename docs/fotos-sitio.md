@@ -7,7 +7,7 @@ Continuación de [fotos-home.md](fotos-home.md), con el mismo banco de imágenes
 | Página · espacio | Formato | Foto (banco) | Archivo | Puntaje | Retoque | Estado |
 |---|---|---|---|---|---|---|
 | Servicio · Water Damage Restoration (banda) | 21:8 / 4:3 móvil | `Water-Damage-Restoration` 1920×1050: air mover y deshumidificador en una habitación afectada | `services/water-drying-equipment.jpg` | 36+20+16+13 = **85** | Solo foco | Integrada |
-| Servicio · Fire & Smoke (banda) | 21:8 | — | — | — | — | **Pendiente** |
+| Servicio · Fire & Smoke (banda) | 21:8 / 4:3 móvil | `1794427955811.jpg` (carpeta «Imagenes de trabajo en sitio», 1600×1200): dormitorio con hollín y el techo abierto para retirar material dañado, obra de WRG | `services/fire-soot-damaged-room.jpg` | 35+19+17+11 = **82** | Solo foco | Integrada |
 | Servicio · Mold Remediation (banda) | 21:8 | — | — | — | — | **Pendiente** |
 | Servicio · Environmental Cleanup (banda) | 21:8 | `Services` 1920×975: dos técnicos con trajes de protección aplicando un tratamiento | `services/environmental-ppe-crew.jpg` | 36+21+16+12 = **85** | Solo foco | Integrada (ilustrativa) |
 | Servicio · Reconstruction (banda) | 21:8 | `Water-Damage-Ways-To-Repair-A-Drywall` 2400×1600: reparación de un techo de drywall | `services/reconstruction-drywall-finishing.jpg` | 35+23+16+14 = **88** | Solo foco | Integrada (ilustrativa) |
@@ -30,13 +30,20 @@ Las imágenes de servicios marcadas como «ilustrativas» no se atribuyen a trab
 
 ## Pendientes: fotos que hace falta conseguir
 
-- **Fire & Smoke (banda):** interior después de un incendio con limpieza o retiro de hollín en curso, en horizontal, ≥ 2400 px de ancho. El banco solo tiene incendios activos (`Fire-Damage-Restoration`, `Fire-Smoke`, `What-To-Do-After-A-Fire`) o un interior quemado sin trabajo (`Disaster`, 1536 px, 78/100).
 - **Mold Remediation (banda):** contención montada para remediación, ≥ 2400 px de ancho. `Containment-1` muestra exactamente eso, pero mide 1080 px y en la banda de 1168 px queda ampliada (calidad 16/25). Si existe el original de esa foto, basta con reemplazar el archivo.
 - **Galerías:** reparación terminada y equipo trabajando, en los cuatro casos; área afectada y proceso en Icon Bay y Gables; contexto del edificio en St. Louis (`St.-Louis-Condominium-Exterior` solo existe a 655×300).
 - **Oficinas (índice de ubicaciones, 3 espacios):** fotos de las oficinas de Miami, West Palm Beach y Smyrna. No hay ninguna en el banco.
 - **Perfiles en About (3 espacios):** retratos aprobados. Existen `1-2.png` y `2-2.png` (retratos profesionales), pero sin nombre ni aprobación del perfil no se publican.
 
 No pude buscar fotos de terceros con licencia: la red de esta sesión no permite salir a bancos de imágenes.
+
+## Carpeta «Imagenes de trabajo en sitio» (11 nov 2026)
+
+22 fotos y 4 videos de WRG en obra: una inundación en una escuela (extracción de agua, medidores de humedad, deshumidificadores, retiro de escombros), un dormitorio con daño por fuego y un stand de WRG en un evento. La carpeta tenía todo subido dos veces. Se comprobó por tamaño en los 26 pares y por MD5 en una muestra de 4, y se envió a la papelera la segunda subida (20:27), conservando la primera (20:13).
+
+- Integrada: la banda de Fire & Smoke (ver tabla).
+- Descartada para la banda de fuego: la foto con una persona identificable en la puerta (`1794427955838.jpg`).
+- Las fotos de la escuela son verticales (1200×1600): no sirven para las bandas 21:8 de servicio y no corresponden a ninguno de los 4 casos publicados, así que no se usan en sus galerías. Quedan disponibles si se publica ese proyecto como caso nuevo.
 
 ## Descartes relevantes
 

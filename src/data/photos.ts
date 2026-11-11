@@ -10,6 +10,7 @@ import southPoint from '../assets/home/south-point-condominium.jpg';
 import waterDrying from '../assets/services/water-drying-equipment.jpg';
 import ppeCrew from '../assets/services/environmental-ppe-crew.jpg';
 import drywall from '../assets/services/reconstruction-drywall-finishing.jpg';
+import fireRoom from '../assets/services/fire-soot-damaged-room.jpg';
 import spAffected from '../assets/projects/south-point-affected-drywall.jpg';
 import spContainment from '../assets/projects/south-point-containment.jpg';
 import spExterior from '../assets/projects/south-point-exterior.jpg';
@@ -89,7 +90,7 @@ export const projectGallery: Record<string, (Img | null)[]> = {
 /** Hero band of each service page. Illustrative images, not attributed to WRG jobs. */
 export const serviceBand: Record<string, Img | null> = {
   'water-damage-restoration': { src: waterDrying, alt: 'An air mover and a dehumidifier drying an affected room.', pos: '55% 60%', max: 1920 },
-  'fire-damage-restoration': null,
+  'fire-damage-restoration': { src: fireRoom, alt: 'A soot-darkened bedroom after a fire, with part of the ceiling opened during the removal of damaged materials.', pos: '50% 45%', max: 1600 },
   'mold-remediation': null,
   'environmental-cleanup': { src: ppeCrew, alt: 'Two technicians in protective suits and gloves spraying a treatment inside a building.', pos: '60% 40%', max: 1920 },
   reconstruction: { src: drywall, alt: 'A hand applying joint compound to a ceiling repair with a putty knife.', pos: '55% 50%', max: 2400 },

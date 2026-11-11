@@ -47,13 +47,14 @@ const groups: Group[] = [
   },
 ];
 const pad = (n: number) => String(n + 1).padStart(2, '0');
+import LogoMark from './LogoMark.astro';
 ---
 <header class="hdr" data-wrg-header data-dark="false" data-top="true" data-compact="false">
   <a class="skip" href="#main">Skip to content</a>
   <div class="hdr-cq">
     <div class="hdr-bar">
       <a class="logo" href="/" aria-label={`${company.name}, home`}>
-        <span class="logo-mark" aria-hidden="true">WRG</span>
+        <LogoMark />
         <span class="logo-txt" aria-hidden="true">{company.name}</span>
       </a>
       <p class="hdr-util">{company.support} · <a href={company.phone.href}>{company.phone.display}</a></p>
