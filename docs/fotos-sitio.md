@@ -20,7 +20,7 @@ Continuación de [fotos-home.md](fotos-home.md), con el mismo banco de imágenes
 | Galería South Point · equipo/proceso | 4:3 | `South-Point-Condominium-Interior-4` 655×494: contención y equipo WRG | `projects/south-point-containment.jpg` | 37+18+17+12 = **84** | Ninguno | Integrada |
 | Galería South Point · contexto | 4:3 | `South-Point-Condominium-Exterior` 655×494: torre y playa desde un balcón | `projects/south-point-exterior.jpg` | 36+18+17+14 = **85** | Ninguno | Integrada |
 | Galería Gables · contexto | 4:3 | `Gables-Waterway-Towers-Entrance-Exterior` 1536×1152 | `projects/gables-entrance.jpg` | 38+21+18+14 = **91** | Ninguno | Integrada |
-| Galería Icon Bay · contexto | 4:3 | `Icon-Bay-Exterior` 1920×1320: torre desde el agua al atardecer | `projects/icon-bay-exterior.jpg` | 36+22+18+14 = **90** | Ninguno | Integrada (autoría por confirmar) |
+| Galería Icon Bay · contexto | 4:3 | `Icon-Bay-Exterior` 1920×1320: torre desde el agua al atardecer | `projects/icon-bay-exterior.jpg` | 36+22+18+14 = **90** | Ninguno | Integrada |
 | About · foto principal | 5:4 | `Inspection-and-Assessment-1` 1080×1050: técnico con camiseta WRG documentando un techo | `about/wrg-technician-inspection.jpg` | 37+20+17+13 = **87** | Solo foco | Integrada |
 | About · 4 tarjetas de proyecto | 1:1 | Foto principal de cada proyecto | `home/*.jpg` | ver home | Foco | Integradas |
 | Miami · contexto local | 5:4 | `Projects` 1920×975: torres y condominios del centro de Miami junto a la bahía | `locations/miami-downtown.jpg` | 34+21+17+13 = **85** | Solo foco | Integrada (ilustrativa) |
@@ -46,8 +46,8 @@ No pude buscar fotos de terceros con licencia: la red de esta sesión no permite
 - `Containment-1`, `Drying-and-Dehumidification-1`, `Removal-and-Cleaning-1`, `Water-Removal-and-Extraction-1`: auténticas de WRG, pero de 1080 px; demasiado pequeñas para las bandas de servicio. Quedan disponibles para espacios más chicos.
 - `IMG_0072` (capacitación de WRG): auténtica. Para el hero de About se prefirió una foto de trabajo en obra, que responde mejor a la descripción del espacio.
 
-## Por confirmar
+## Confirmado (11 nov 2026)
 
-- Las fotos de interiores de South Point y St. Louis vienen de las fichas de proyecto del sitio anterior. No se ven datos personales, pero conviene confirmar que la asociación de propietarios no se opone a su publicación.
-- `Icon-Bay-Exterior` parece una foto de marketing del edificio: confirmar la autoría y la licencia.
-- Las fotos ilustrativas de servicios (`Services`, `Water-Damage-Ways-…`) parecen de stock. WRG declaró tener derechos sobre el banco, pero conviene confirmar la licencia original si se publican fuera del sitio.
+- La asociación de propietarios no se opone a publicar los interiores de South Point y St. Louis.
+- La autoría de `Icon-Bay-Exterior` está confirmada para su uso en el sitio.
+- La licencia original de las fotos ilustrativas de servicios y de Miami cubre su uso en el sitio.

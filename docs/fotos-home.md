@@ -46,5 +46,5 @@ Todas pasan las condiciones previas: sin marcas de agua, sin datos personales le
 ## Por confirmar
 
 - `Home.jpg` lleva en sus metadatos el copyright de un fotógrafo («Javier Sanchez»). Confirmar que la licencia cubre el uso web.
-- Las fotos de Icon Bay parecen de un fotógrafo de arquitectura. Confirmar que WRG puede publicarlas, además de la clasificación del caso (ver `pendientes.md`).
+- ~~Autoría de las fotos de Icon Bay~~: confirmada el 11 nov 2026. Sigue pendiente la clasificación del caso (ver `pendientes.md`).
 - `The-WRG-Difference.jpg` está ampliada desde una foto de teléfono. Si existe el original, mejoraría la nitidez de la tarjeta comercial.
