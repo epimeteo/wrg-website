@@ -522,3 +522,6 @@
 .svc-card-call:focus-visible .ic{background:var(--red);color:#fff}
 .notice > span{min-width:0;overflow-wrap:anywhere}
 .ph-hero .ph-tag{top:12px;bottom:auto}
+/* Hero photo: no parallax overscan, so the technician keeps his headroom and
+   the tablet stays clear of the overlapping office card. */
+.ph-hero .ph-img{top:0;height:100%;transform:none}
