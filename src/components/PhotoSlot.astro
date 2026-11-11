@@ -1,0 +1,21 @@
+---
+// Placeholder frame until WRG approves its own photography.
+// Swap for <Image> from astro:assets once files are added to src/assets/.
+import Icon from './Icon.astro';
+interface Props {
+  label?: string;
+  caption?: string;
+  class?: string;
+  dark?: boolean;
+  depth?: number;
+  mini?: boolean;
+}
+const { label, caption, class: cls, dark = false, depth, mini = false } = Astro.props;
+---
+<figure class:list={['ph', cls, { dk: dark, mini }]}>
+  <div class="ph-in" data-depth={depth}></div>
+  <Icon name="image" class="ph-glyph" />
+  {(label || caption) && !mini && (
+    <figcaption class="ph-tag">{label && <b>{label}</b>}{caption}</figcaption>
+  )}
+</figure>

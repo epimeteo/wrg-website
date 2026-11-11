@@ -1,0 +1,35 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import ReviewNote from '../components/ReviewNote.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { offices, routes } from '../data/site';
+---
+<BaseLayout title="Careers" description="Careers at The Water Restoration Group, with offices in Miami, West Palm Beach and Smyrna." active="about" page="careers">
+  <section class="sec ihero bg-canvas" aria-labelledby="t">
+    <div class="wrap">
+      <Breadcrumbs items={[{ label: 'About', href: routes.about }, { label: 'Careers' }]} />
+      <div class="art-head">
+        <p class="eyebrow">Careers</p>
+        <h1 class="h1" id="t">Work with The Water Restoration Group.</h1>
+        <p class="lead" style="max-width: 60ch">WRG’s teams work from offices in Miami, West Palm Beach and Smyrna. Open positions and how to apply will be listed on this page.</p>
+        <ReviewNote>No open positions, application channel or hiring contact has been provided. Add them before launch; the page should not invent roles, benefits or a careers email.</ReviewNote>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec bg-white" aria-labelledby="of">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="stack"><p class="eyebrow">Offices</p><h2 class="h2" id="of">Where our teams work</h2></div>
+      </div>
+      <div class="olist">
+        {offices.map((o) => (
+          <div class="ocard"><b>{o.name}</b><span class="topic">{o.role}</span><address>{o.full}</address><a class="lnk stretch" href={o.href}>View this location</a></div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CtaBand label="Questions" title="Have a question about working with WRG?" lead="Call the main line and ask for the office near you." />
+</BaseLayout>

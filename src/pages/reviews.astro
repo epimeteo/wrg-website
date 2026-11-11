@@ -1,0 +1,46 @@
+---
+import { reviewMode } from '../data/site';
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout title="Reviews" description="Experiences shared by WRG clients, published with the platform and date once verified." active="about">
+
+    <section class="sec ihero bg-canvas" aria-labelledby="t">
+      <div class="wrap">
+        <nav aria-label="Breadcrumb"><ol class="crumbs"><li><a href="/">Home</a></li><li><a href="/about/">About</a></li><li><span aria-current="page">Reviews</span></li></ol></nav>
+        <div class="ihero-grid">
+          <div class="ihero-copy">
+            <p class="eyebrow">Reviews</p>
+            <h1 class="h1" id="t">Experiences shared by <span class="soft">WRG clients.</span></h1>
+            <p class="lead">Read feedback from clients about their experience working with WRG.</p>
+          </div>
+          {reviewMode && (<div class="notice"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 8v5M12 16.5v.01"></path></svg><span><b>Internal review:</b> These five testimonials appear word for word on thewaterrestorationgroup.com, and the same five also appear on wrg-atlanta.com. We still need the original platform, date, link and publication permission for each. They show no ratings, and no aggregate score is shown or marked up.</span></div>)}
+        </div>
+      </div>
+    </section>
+
+    <section class="sec bg-white" style="--st: clamp(48px, 5cqi, 72px)" aria-labelledby="list">
+      <div class="wrap">
+        <h2 class="sr" id="list">Client testimonials</h2>
+        <div class="rev-grid">
+          <figure class="rev rv"><blockquote>It is an absolute pleasure to work with WRG. The staff is efficient, courteous, and friendly across the board.</blockquote><footer><cite>Mary M.</cite><span>Published on thewaterrestorationgroup.com</span></footer></figure>
+          <figure class="rev rv d2"><blockquote>Professional, extremely responsive. Service includes one-stop restoration and repairs.</blockquote><footer><cite>Vic B.</cite><span>Published on thewaterrestorationgroup.com</span></footer></figure>
+          <figure class="rev rv d3"><blockquote>Excellent Service! Very professional team and great results.</blockquote><footer><cite>Denissa D.</cite><span>Published on thewaterrestorationgroup.com</span></footer></figure>
+          <figure class="rev rv"><blockquote>It was a pleasure finding a company with ethics and a good moral compass. Thank you guys and keep doing what you are doing!</blockquote><footer><cite>Vincent D.</cite><span>Published on thewaterrestorationgroup.com</span></footer></figure>
+          <figure class="rev rv d2"><blockquote>Great work all the time, who I use when it comes to any restoration or construction project.</blockquote><footer><cite>Rolando H.</cite><span>Published on thewaterrestorationgroup.com</span></footer></figure>
+        </div>
+        <div class="callout" style="margin-top: 24px">
+          <div class="stack g8"><p class="h3">See the work behind the feedback.</p><p class="muted">Documented projects, each shown with its real location.</p></div>
+          <a class="btn btn-blue" href="/projects/">Projects &amp; Case Studies</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec sheet dark cta-band" data-tone="dark" aria-labelledby="cta">
+      <div class="wrap">
+        <div class="cta-grid">
+          <div class="stack g16"><p class="eyebrow">Talk to WRG</p><h2 class="h2" id="cta">Call WRG to discuss your property and the support you need.</h2></div>
+          <div class="callcard"><span class="small muted">24/7 Emergency Phone Support</span><a class="num-l" href="tel:+18443799283">(844) 379-9283</a><a class="btn btn-call" href="tel:+18443799283">Call now</a></div>
+        </div>
+      </div>
+    </section>
+</BaseLayout>

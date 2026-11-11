@@ -1,0 +1,58 @@
+---
+import { reviewMode } from '../../data/site';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+<BaseLayout title="Projects & Case Studies" description="Documented restoration projects by WRG, each shown with the location where the work took place." active="projects">
+
+    <section class="sec ihero bg-canvas" aria-labelledby="t">
+      <div class="wrap">
+        <nav aria-label="Breadcrumb"><ol class="crumbs"><li><a href="/">Home</a></li><li><span aria-current="page">Projects</span></li></ol></nav>
+        <div class="ihero-grid">
+          <div class="ihero-copy">
+            <p class="eyebrow">Projects &amp; Case Studies</p>
+            <h1 class="h1" id="t">See how WRG approaches <span class="soft">property recovery.</span></h1>
+            <p class="lead">Explore selected projects, the damage involved and the restoration work described in WRG’s project records.</p>
+          </div>
+          <div class="glance" aria-label="How projects are presented">
+            <div class="glance-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.2 7-11.6a7 7 0 1 0-14 0C5 14.8 12 21 12 21z"></path><circle cx="12" cy="9.5" r="2.6"></circle></svg><div><b>Real location</b>Where the work took place, as documented.</div></div>
+            <div class="glance-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.2 4.2L19 7"></path></svg><div><b>Challenge · Approach · Work</b>The same reading order in every case.</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec bg-white" style="--st: clamp(48px, 5cqi, 72px)" aria-labelledby="list">
+      <div class="wrap">
+        <h2 class="sr" id="list">Projects</h2>
+        <div class="pgrid">
+          <article class="pbig rv">
+            <figure class="ph"><div class="ph-in" data-depth="0.05"></div><svg class="ph-glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"></rect><circle cx="9" cy="10" r="1.8"></circle><path d="m20.5 16.5-4.8-4.8L7 19"></path></svg><figcaption class="ph-tag"><b>Icon-Bay-Main</b>WRG project image</figcaption></figure>
+            <div class="pbig-body"><p class="geo">Edgewater, Miami, FL · Condominium</p><h3 class="h3">Icon Bay</h3><p class="muted small">A water supply line leak affected residences beyond the unit where it originated.</p><div class="tags"><span class="tag">Water Damage Restoration</span><span class="tag">Reconstruction</span></div><a class="lnk stretch" href="/projects/icon-bay/">Read the case study</a></div>
+          </article>
+          <article class="pbig rv d2">
+            <figure class="ph"><div class="ph-in" data-depth="0.05"></div><svg class="ph-glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"></rect><circle cx="9" cy="10" r="1.8"></circle><path d="m20.5 16.5-4.8-4.8L7 19"></path></svg><figcaption class="ph-tag"><b>Gables-Waterway-Towers-Main</b>WRG project image</figcaption></figure>
+            <div class="pbig-body"><p class="geo">Coral Gables, FL · Condominium</p><h3 class="h3">Gables Waterway Towers</h3><p class="muted small">Fire, smoke and residual water damage across an occupied condominium property.</p><div class="tags"><span class="tag">Fire &amp; Smoke Damage Restoration</span><span class="tag">Water Damage Restoration</span></div><a class="lnk stretch" href="/projects/gables-waterway-towers/">Read the case study</a></div>
+          </article>
+          <article class="pbig rv">
+            <figure class="ph"><div class="ph-in" data-depth="0.05"></div><svg class="ph-glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"></rect><circle cx="9" cy="10" r="1.8"></circle><path d="m20.5 16.5-4.8-4.8L7 19"></path></svg><figcaption class="ph-tag"><b>St.-Louis-Condominium</b>WRG project image</figcaption></figure>
+            <div class="pbig-body"><p class="geo">Brickell Key, Miami, FL · Condominium</p><h3 class="h3">St. Louis Condominium</h3><p class="muted small">Mold remediation organized across multiple building levels.</p><div class="tags"><span class="tag">Mold Remediation</span></div><a class="lnk stretch" href="/projects/st-louis-condominium/">Read the case study</a></div>
+          </article>
+          <article class="pbig rv d2">
+            <figure class="ph"><div class="ph-in" data-depth="0.05"></div><svg class="ph-glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"></rect><circle cx="9" cy="10" r="1.8"></circle><path d="m20.5 16.5-4.8-4.8L7 19"></path></svg><figcaption class="ph-tag"><b>South-Point-Condominium</b>WRG project image</figcaption></figure>
+            <div class="pbig-body"><p class="geo">Fort Lauderdale, FL · Condominium</p><h3 class="h3">South Point Condominium</h3><p class="muted small">Water intrusion and mold concerns, with management, the association and residents kept informed.</p><div class="tags"><span class="tag">Mold Remediation</span><span class="tag">Reconstruction</span></div><a class="lnk stretch" href="/projects/south-point-condominium/">Read the case study</a></div>
+          </article>
+          {reviewMode && (<div class="slot-empty">{reviewMode && <span class="review-flag" style="align-self: flex-start">Internal · case 5 of up to 6</span>}<p>Pending: an existing WRG project with real location, authorized photos and a documented scope.</p></div>)}
+          {reviewMode && (<div class="slot-empty">{reviewMode && <span class="review-flag" style="align-self: flex-start">Internal · case 6 of up to 6</span>}<p>Priority: evidence from West Palm Beach or Georgia, so those location pages can show local work.</p></div>)}
+        </div>
+      </div>
+    </section>
+
+    <section class="sec sheet dark cta-band" data-tone="dark" aria-labelledby="cta">
+      <div class="wrap">
+        <div class="cta-grid">
+          <div class="stack g16"><p class="eyebrow">Talk to WRG</p><h2 class="h2" id="cta">Every project starts with a conversation about the property.</h2></div>
+          <div class="callcard"><span class="small muted">24/7 Emergency Phone Support</span><a class="num-l" href="tel:+18443799283">(844) 379-9283</a><a class="btn btn-call" href="tel:+18443799283">Call now</a></div>
+        </div>
+      </div>
+    </section>
+</BaseLayout>

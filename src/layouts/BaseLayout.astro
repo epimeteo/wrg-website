@@ -1,0 +1,66 @@
+---
+import '@fontsource-variable/schibsted-grotesk';
+import '@fontsource-variable/source-sans-3';
+import '../styles/global.css';
+import '../styles/pages.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Icon from '../components/Icon.astro';
+import { company, reviewMode, type NavKey } from '../data/site';
+
+interface Props {
+  title: string;
+  description: string;
+  active?: NavKey;
+  page?: string;
+  /** Pages that must never be indexed (thank-you, 404). */
+  noindex?: boolean;
+}
+const { title, description, active = 'none', page, noindex = false } = Astro.props;
+const fullTitle = title === company.name ? title : `${title} | ${company.name}`;
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const robots = reviewMode || noindex ? 'noindex, nofollow' : 'index, follow';
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <meta name="robots" content={robots} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta name="theme-color" content="#082b38" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={company.name} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <slot name="head" />
+  </head>
+  <body>
+    <div class="wrg-page" data-page={page}>
+      <Header active={active} />
+      <main class="wrg-main" id="main">
+        <slot />
+      </main>
+      <Footer />
+      <div class="callbar">
+        <div class="callbar-in">
+          <a class="btn btn-call btn-lg" href={company.phone.href}>
+            <Icon name="phone" />
+            <span>Call now</span><span class="num">{company.phone.display}</span>
+          </a>
+        </div>
+      </div>
+    </div>
+    <script>
+      import '../scripts/site.ts';
+    </script>
+  </body>
+</html>
+
+<style is:global>
+  body { margin: 0; background: var(--canvas); }
+</style>

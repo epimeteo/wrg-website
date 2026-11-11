@@ -1,0 +1,56 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Icon from '../components/Icon.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { faqGroups } from '../data/faqs';
+import { company } from '../data/site';
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqGroups.flatMap((g) =>
+    g.items.map((i) => ({ '@type': 'Question', name: i.q, acceptedAnswer: { '@type': 'Answer', text: i.a } })),
+  ),
+};
+---
+<BaseLayout title="Frequently Asked Questions" description="Answers about calling WRG, the restoration process, insurance documentation and office coverage." active="faqs" page="faqs">
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  <section class="sec ihero bg-canvas" aria-labelledby="t">
+    <div class="wrap">
+      <Breadcrumbs items={[{ label: 'FAQ' }]} />
+      <div class="ihero-grid">
+        <div class="ihero-copy">
+          <p class="eyebrow">FAQ</p>
+          <h1 class="h1" id="t">Questions before and during restoration.</h1>
+          <p class="lead">Short answers about calling WRG, how the work moves and what each office covers. For anything specific to your property, the 24/7 phone team can help.</p>
+          <div class="cta-row">
+            <a class="btn btn-call btn-lg" href={company.phone.href}><Icon name="phone" /><span>Call now</span><span class="num">{company.phone.display}</span></a>
+          </div>
+        </div>
+        <nav class="glance" aria-label="FAQ topics">
+          {faqGroups.map((g) => (
+            <a class="glance-row" href={`#${g.id}`}><Icon name="arrow" /><div><b>{g.title}</b>{g.items.length} questions</div></a>
+          ))}
+        </nav>
+      </div>
+    </div>
+  </section>
+
+  {faqGroups.map((g, i) => (
+    <section class={`sec ${i % 2 ? 'bg-canvas' : 'bg-white'}`} id={g.id} aria-labelledby={`${g.id}-t`}>
+      <div class="wrap">
+        <div class="faq-grid">
+          <div class="split-head"><h2 class="h2" id={`${g.id}-t`}>{g.title}</h2></div>
+          <div class="faq">
+            {g.items.map((f) => (
+              <details><summary>{f.q}<span class="pm" aria-hidden="true"><Icon name="plus" /></span></summary><p class="ans">{f.a}</p></details>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  ))}
+
+  <CtaBand title="Didn’t find your question? Talk to WRG." />
+</BaseLayout>

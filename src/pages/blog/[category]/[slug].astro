@@ -1,0 +1,81 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import { articles, articleHref, type Article } from '../../../data/articles';
+import { company, reviewMode, routes } from '../../../data/site';
+
+export function getStaticPaths() {
+  return articles.map((a) => ({ params: { category: a.category, slug: a.slug }, props: { a } }));
+}
+const { a } = Astro.props as { a: Article };
+const others = articles.filter((o) => o.slug !== a.slug);
+---
+<BaseLayout title={a.title} description={a.description} active="blog" page="article">
+  <article aria-labelledby="t">
+    <header class="sec ihero bg-canvas" style="--sb: clamp(40px, 4cqi, 56px)">
+      <div class="wrap">
+        <Breadcrumbs items={[{ label: 'Insights', href: routes.blog }, { label: a.short }]} />
+        <div class="art-head">
+          <p class="eyebrow">{a.categoryLabel}</p>
+          <h1 class="h1" id="t">{a.title}</h1>
+          <p class="lead" style="max-width: 60ch">{a.summary}</p>
+          {reviewMode && (
+            <p class="byline">
+              <span><b style="color: var(--ink)">Author:</b> pending approval</span>
+              <span><b style="color: var(--ink)">Expert review:</b> pending</span>
+              <span><b style="color: var(--ink)">Published:</b> date pending</span>
+            </p>
+          )}
+        </div>
+      </div>
+    </header>
+
+    <section class="sec bg-white" style="--st: clamp(48px, 5cqi, 72px)">
+      <div class="wrap">
+        <div class="art-grid">
+          <div class="art-body">
+            <div class="answer"><b>Short answer</b><span>{a.answer}</span></div>
+            {a.sections.map((s) => (
+              <>
+                <h2 id={s.id}>{s.h}</h2>
+                <p>{s.p}</p>
+              </>
+            ))}
+            <div class="callout" style="margin-top: 48px">
+              <div class="stack g8"><p class="topic">Related service</p><p class="h3">{a.cta}</p></div>
+              <div class="cta-row"><a class="btn btn-blue" href={a.serviceHref}>{a.service}</a><a class="lnk" href={company.phone.href}>Call {company.phone.display}</a></div>
+            </div>
+            <div class="sources">
+              <b style="color: var(--ink)">Note</b>
+              <span>This article describes general considerations, not instructions for a specific property.</span>
+              {reviewMode && (
+                <span>Draft pending professional and editorial review. Topic source: <a href={a.source} target="_blank" rel="noopener">{a.source}</a></span>
+              )}
+            </div>
+          </div>
+          <aside class="art-aside" aria-label="In this article">
+            <nav class="toc" aria-label="Contents">
+              <p class="aside-h" style="color: var(--muted); margin-bottom: 6px">In this article</p>
+              {a.sections.map((s) => <a href={`#${s.id}`}>{s.h}</a>)}
+            </nav>
+            <div class="toc" style="gap: 10px; background: var(--mist); border-color: transparent">
+              <p class="aside-h" style="color: var(--muted)">{company.support}</p>
+              <a class="tel" href={company.phone.href} style="border: 0; font-size: 22px">{company.phone.display}</a>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </article>
+
+  <section class="sec bg-canvas" aria-labelledby="more">
+    <div class="wrap">
+      <div class="sec-head"><div class="stack"><p class="eyebrow">Keep reading</p><h2 class="h2" id="more">More insights</h2></div></div>
+      <div class="related">
+        {others.map((o) => (
+          <article class="rel-card txt"><p class="topic">{o.categoryLabel}</p><h3 class="h3">{o.title}</h3><a class="lnk stretch" href={articleHref(o)}>Read the insight</a></article>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

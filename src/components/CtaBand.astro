@@ -1,0 +1,27 @@
+---
+// Closing call band used at the end of interior pages.
+import { company } from '../data/site';
+interface Props {
+  label?: string;
+  title: string;
+  lead?: string;
+}
+const { label = 'Talk to WRG', title, lead = 'Call WRG to discuss your property and the support you need.' } = Astro.props;
+---
+<section class="sec sheet dark cta-band" data-tone="dark" aria-labelledby="cta">
+  <div class="wrap">
+    <div class="cta-grid">
+      <div class="stack g16">
+        <p class="eyebrow">{label}</p>
+        <h2 class="h2" id="cta">{title}</h2>
+        {lead && <p class="lead">{lead}</p>}
+      </div>
+      <div class="callcard">
+        <span class="small muted">{company.support}</span>
+        <a class="num-l" href={company.phone.href}>{company.phone.display}</a>
+        <span class="small muted">{company.phone.vanity}</span>
+        <a class="btn btn-call" href={company.phone.href}>Call now</a>
+      </div>
+    </div>
+  </div>
+</section>

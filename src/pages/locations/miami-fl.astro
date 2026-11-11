@@ -1,0 +1,124 @@
+---
+import { reviewMode } from '../../data/site';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+<BaseLayout title="Water Damage Restoration in Miami, FL" description="Restoration for Miami homes, condominiums and commercial properties from WRG’s corporate headquarters at 555 NW 95th St, Miami, FL." active="locations">
+
+    <!-- 1 · Local hero + office near the top -->
+    <section class="sec ihero bg-canvas" aria-labelledby="t">
+      <div class="wrap">
+        <nav aria-label="Breadcrumb"><ol class="crumbs"><li><a href="/">Home</a></li><li><a href="/locations/">Locations</a></li><li><span aria-current="page">Miami, FL</span></li></ol></nav>
+        <div class="ihero-grid" style="align-items: center">
+          <div class="ihero-copy">
+            <p class="eyebrow">Miami · Corporate headquarters</p>
+            <h1 class="h1" id="t">Water Damage Restoration <span class="soft">in Miami, FL</span></h1>
+            <p class="lead">A water leak in a condominium can affect more than one residence. From our Miami headquarters, WRG helps homeowners, building associations and commercial property teams address water, fire and mold damage. The restoration conversation includes the affected spaces, property access and the next steps toward repairs.</p>
+          </div>
+          <div class="addr-card on-dark">
+            <p class="eyebrow">Miami headquarters</p>
+            <address>555 NW 95th St<br>Miami, FL 33150</address>
+            <p class="small muted">24/7 Emergency Phone Support · 1 (844) DRY-WATER</p>
+            <div class="cta-row">
+              <a class="btn btn-call" href="tel:+18443799283"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.6 3.5h2.6l1.6 4.2-2.1 1.3a11.5 11.5 0 0 0 6.3 6.3l1.3-2.1 4.2 1.6v2.6a2 2 0 0 1-2.2 2A16.6 16.6 0 0 1 4.6 5.7a2 2 0 0 1 2-2.2z"></path></svg><span>Call WRG</span><span class="num">(844) 379-9283</span></a>
+              <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&amp;query=555+NW+95th+St+Miami+FL+33150" target="_blank" rel="noopener">Get directions</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2 · Market context: shared buildings -->
+    <section class="sec bg-white" aria-labelledby="ctx">
+      <div class="wrap">
+        <div class="ctx">
+          <figure class="ph"><div class="ph-in" data-depth="0.07"></div><svg class="ph-glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"></rect><circle cx="9" cy="10" r="1.8"></circle><path d="m20.5 16.5-4.8-4.8L7 19"></path></svg><figcaption class="ph-tag"><b>Photo slot · Miami</b>Condominium or shared building in Miami, location verified, approved image pending</figcaption></figure>
+          <div class="stack g20">
+            <p class="eyebrow">Local context</p>
+            <h2 class="h2" id="ctx">Restoration for Miami homes, condominiums and commercial properties.</h2>
+            <p class="lead">In a shared building, communication matters alongside the work itself. Property managers and residents may need to coordinate access to individual units and common areas. WRG’s published Miami-area projects offer examples of restoration in these settings.</p>
+          </div>
+        </div>
+        <div class="stake" style="margin-top: clamp(40px, 5cqi, 64px)">
+          <div class="stake-item rv"><b>Residents</b><p class="muted small">Access to individual units and clarity about what happens next in their home.</p></div>
+          <div class="stake-item rv d2"><b>Property managers</b><p class="muted small">Common areas, building procedures and coordination between affected units.</p></div>
+          <div class="stake-item rv d3"><b>Building associations</b><p class="muted small">Decisions, communication with owners and the scope agreed for the property.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3 · Services + coverage -->
+    <section class="sec bg-mist sheet-top" aria-labelledby="sv">
+      <div class="wrap">
+        <div class="sec-head">
+          <div class="stack"><p class="eyebrow">Services</p><h2 class="h2" id="sv">Restoration services from our Miami headquarters</h2></div>
+          <div class="aside stack g12"><p class="muted">Call to confirm service for your property’s address and the type of damage involved.</p>{reviewMode && <span class="review-flag">Availability by office and detailed coverage pending confirmation</span>}</div>
+        </div>
+        <div class="svc-chips">
+          <a class="svc-chip" href="/services/water-damage-restoration/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.5s6.5 6.6 6.5 11.1a6.5 6.5 0 0 1-13 0C5.5 10.1 12 3.5 12 3.5z"></path></svg>Water damage restoration in Miami</a>
+          <a class="svc-chip" href="/services/fire-damage-restoration/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3c.6 3.2 4.8 5.3 4.8 10a4.8 4.8 0 0 1-9.6 0c0-2.3 1.2-3.8 2.4-4.8.2 1.7 1 2.8 2.1 3.2C11 9 11.3 5.6 12 3z"></path></svg>Fire &amp; smoke restoration</a>
+          <a class="svc-chip" href="/services/mold-remediation/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8.5" cy="9" r="3.2"></circle><circle cx="16.5" cy="7.5" r="2"></circle><circle cx="14.5" cy="16" r="3.8"></circle></svg>Mold remediation</a>
+          <a class="svc-chip" href="/services/environmental-cleanup/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 19.5c-.4-8.3 5.3-14 14.5-14.5.4 9.2-5.6 15-13.6 14.6"></path></svg>Environmental cleanup</a>
+          <a class="svc-chip" href="/services/reconstruction/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 11 12 4l8.5 7"></path><path d="M5.5 9.5V20h13V9.5"></path></svg>Reconstruction</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4 · Local evidence (line joins three Miami-area projects) -->
+    <section class="sec sheet dark loc-sec" data-cur="" data-tone="dark" aria-labelledby="pj">
+      <span class="cur" aria-hidden="true"></span>
+      <span class="cur-node" aria-hidden="true"></span>
+      <div class="wrap">
+        <div class="sec-head">
+          <div class="stack"><p class="eyebrow">Miami-area projects</p><h2 class="h2" id="pj">Restoration in shared buildings, documented.</h2></div>
+          <p class="lead aside">Projects from WRG’s records, each shown with the location where the work took place.</p>
+        </div>
+        <div class="offices">
+          <span class="route" aria-hidden="true"></span>
+          <article class="office">
+            <span class="o-node" aria-hidden="true"></span>
+            <p class="role">Edgewater, Miami, FL</p>
+            <h3 class="city">Icon Bay</h3>
+            <p class="focus">A water supply line leak affected residences beyond the unit where it started. Assessment, drying and drywall repairs.</p>
+            <div class="office-links"><a class="lnk" href="/projects/icon-bay/">Read the case study</a></div>
+          </article>
+          <article class="office">
+            <span class="o-node" aria-hidden="true"></span>
+            <p class="role">Brickell Key, Miami, FL</p>
+            <h3 class="city">St. Louis Condominium</h3>
+            <p class="focus">Mold remediation organized across multiple floors, with containment and removal of affected materials.</p>
+            <div class="office-links"><a class="lnk" href="/projects/st-louis-condominium/">Read the case study</a></div>
+          </article>
+          <article class="office">
+            <span class="o-node" aria-hidden="true"></span>
+            <p class="role">Coral Gables, FL</p>
+            <h3 class="city">Gables Waterway Towers</h3>
+            <p class="focus">Fire, smoke and residual water damage across an occupied condominium property.</p>
+            <div class="office-links"><a class="lnk" href="/projects/gables-waterway-towers/">Read the case study</a></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5 · FAQ -->
+    <section class="sec bg-white" aria-labelledby="fq">
+      <div class="wrap">
+        <div class="faq-grid">
+          <div class="split-head"><p class="eyebrow">Miami FAQ</p><h2 class="h2" id="fq">Questions from Miami properties</h2></div>
+          <div class="faq">
+            <details open=""><summary>Can WRG help with damage affecting multiple condominium units?<span class="pm" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg></span></summary><p class="ans">Call our team to discuss the affected units, common areas and building access. The scope of work depends on the property assessment and coordination with the appropriate contacts.</p></details>
+            <details><summary>Is the Miami office WRG’s headquarters?<span class="pm" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg></span></summary><p class="ans">Yes. WRG’s corporate headquarters is at 555 NW 95th St, Miami, FL 33150. Phone support is available 24/7 at (844) 379-9283.</p></details>
+          </div>
+        </div>
+        {reviewMode && (<p class="notice" style="margin-top: 40px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 8v5M12 16.5v.01"></path></svg><span><b>Internal review:</b> Local reviews and the Miami team module stay hidden until reviews with a verified Miami connection and approved staff profiles are available.</span></p>)}
+      </div>
+    </section>
+
+    <section class="sec sheet dark cta-band" data-tone="dark" aria-labelledby="cta">
+      <div class="wrap">
+        <div class="cta-grid">
+          <div class="stack g16"><p class="eyebrow">Talk to WRG</p><h2 class="h2" id="cta">Damage in a Miami home or building? Start with a call.</h2></div>
+          <div class="callcard"><span class="small muted">24/7 Emergency Phone Support</span><a class="num-l" href="tel:+18443799283">(844) 379-9283</a><a class="btn btn-call" href="tel:+18443799283">Call now</a></div>
+        </div>
+      </div>
+    </section>
+</BaseLayout>

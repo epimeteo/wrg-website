@@ -1,0 +1,305 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Icon from '../components/Icon.astro';
+import { services, serviceHref } from '../data/services';
+import { articles, articleHref } from '../data/articles';
+import { company } from '../data/site';
+import Photo from '../components/Photo.astro';
+import heroPhoto from '../assets/home/wrg-technician-moisture-documentation.jpg';
+import commercialPhoto from '../assets/home/wrg-truck-high-rise.jpg';
+import iconBayPhoto from '../assets/home/icon-bay.jpg';
+import gablesPhoto from '../assets/home/gables-waterway-towers.jpg';
+import stLouisPhoto from '../assets/home/st-louis-condominium.jpg';
+import southPointPhoto from '../assets/home/south-point-condominium.jpg';
+const [featured, ...more] = articles;
+---
+<BaseLayout title="Water, Fire & Mold Restoration in South Florida and Metro Atlanta" description="Water, fire and mold restoration and reconstruction for homes and businesses, with offices in Miami, West Palm Beach and Smyrna. Call 24/7: (844) 379-9283." page="home" active="home">
+
+    <!-- 1 · Respond: emergency-first hero. The recovery line starts here. -->
+    <section class="sec hero bg-canvas" data-cur="" aria-labelledby="hero-title">
+      <span class="cur start" aria-hidden="true"></span>
+      <span class="cur-node" aria-hidden="true"></span>
+      <div class="wrap">
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <h1 class="h1" id="hero-title">Water, Fire &amp; Mold Restoration in South Florida and Metro Atlanta</h1>
+            <p class="lead">When property damage interrupts your day, a clear next step matters. The Water Restoration Group helps homeowners, property managers and businesses through restoration and reconstruction, with offices in Miami, West Palm Beach and Smyrna and a team available by phone 24 hours a day.</p>
+            <div class="cta-row">
+              <a class="btn btn-call btn-lg" href="tel:+18443799283">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.6 3.5h2.6l1.6 4.2-2.1 1.3a11.5 11.5 0 0 0 6.3 6.3l1.3-2.1 4.2 1.6v2.6a2 2 0 0 1-2.2 2A16.6 16.6 0 0 1 4.6 5.7a2 2 0 0 1 2-2.2z"></path></svg>
+                <span>Call now</span><span class="num">(844) 379-9283</span>
+              </a>
+              <a class="btn btn-ghost btn-lg" href="/services/">
+                <span>Explore our services</span>
+                <svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+              </a>
+            </div>
+            <p class="hero-note"><span class="live-dot" aria-hidden="true"></span><strong>24/7 Emergency Phone Support</strong><span class="sep" aria-hidden="true">·</span><span>Or dial <b>1 (844) DRY-WATER</b></span></p>
+          </div>
+
+          <div class="hero-media">
+            <Photo src={heroPhoto} class="ph-hero" alt="A WRG technician in a company polo works on a tablet and phone beside an air mover in a residential hallway." widths={[480, 720, 960, 1360]} sizes="(min-width: 1100px) 460px, (min-width: 640px) 680px, 100vw" position="100% 50%" priority />
+            <nav class="hero-card" aria-label="Our offices">
+              <p class="aside-h">Three offices</p>
+              <a href="/locations/miami-fl/"><b>Miami, FL</b><span>Headquarters</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+              <a href="/locations/west-palm-beach-fl/"><b>West Palm Beach, FL</b><span>Palm Beach County</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+              <a href="/locations/atlanta-ga/"><b>Smyrna, GA</b><span>Metro Atlanta</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+            </nav>
+          </div>
+        </div>
+
+        <ul class="trust" aria-label="At a glance">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"></circle><path d="M12 7.5V12l3 2"></path></svg>24/7 phone support</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="3.5" width="14" height="17" rx="2.5"></rect><path d="M9 8h1.5M13.5 8H15M9 12h1.5M13.5 12H15M10 20.5V17h4v3.5"></path></svg>Residential and commercial properties</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.2 7-11.6a7 7 0 1 0-14 0C5 14.8 12 21 12 21z"></path><circle cx="12" cy="9.5" r="2.6"></circle></svg>Miami · West Palm Beach · Atlanta/Smyrna</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 2 · Understand: services as cards that grow on hover/focus -->
+    <section class="sec bg-white" data-cur="" aria-labelledby="svc-title">
+      <span class="cur" aria-hidden="true"></span>
+      <span class="cur-node" aria-hidden="true"></span>
+      <div class="wrap">
+        <div class="sec-head">
+          <div class="stack">
+            <p class="eyebrow">Understand the damage</p>
+            <h2 class="h2" id="svc-title">Restoration support for what comes next.</h2>
+          </div>
+          <div class="aside stack g12">
+            <p class="lead">Explore the services that address the damage, explain the work ahead and help move your property toward recovery.</p>
+            <a class="lnk" href="/services/">View all services<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+          </div>
+        </div>
+        <ol class="svc-grid">
+          {services.map((s) => (
+            <li><a class="svc-card" href={serviceHref(s.slug)}>
+              <span class="svc-top"><span class="ic"><Icon name={s.icon} /></span><span class="no" aria-hidden="true">{s.no}</span></span>
+              <h3 class="svc-name">{s.name}</h3>
+              <span class="svc-desc">{s.short}</span>
+              <span class="svc-foot"><span>Explore this service</span><Icon name="arrow" /></span>
+            </a></li>
+          ))}
+          <li><a class="svc-card svc-card-call" href={company.phone.href}>
+            <span class="svc-top"><span class="ic"><Icon name="phone" /></span></span>
+            <h3 class="svc-name">Not sure where to start?</h3>
+            <span class="svc-desc">Describe what you have observed. The 24/7 phone team can help identify the right service.</span>
+            <span class="svc-foot"><span>Call {company.phone.display}</span><Icon name="arrow" /></span>
+          </a></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- 3 · Local: three offices (the line branches across the office nodes) -->
+    <section class="sec sheet dark loc-sec" data-cur="" data-tone="dark" aria-labelledby="loc-title">
+      <span class="cur" aria-hidden="true"></span>
+      <span class="cur-node" aria-hidden="true"></span>
+      <div class="wrap">
+        <div class="sec-head">
+          <div class="stack">
+            <p class="eyebrow">Find your office</p>
+            <h2 class="h2" id="loc-title">Three offices. A more local conversation.</h2>
+          </div>
+          <div class="aside stack g16">
+            <p class="lead">Find office information and restoration guidance for your area.</p>
+            <div class="regions"><span class="region"><i></i>South Florida</span><span class="region ga"><i></i>Metro Atlanta</span></div>
+          </div>
+        </div>
+        <div class="offices">
+          <span class="route" aria-hidden="true"></span>
+          <article class="office">
+            <span class="o-node" aria-hidden="true"></span>
+            <p class="role">Corporate headquarters</p>
+            <h3 class="city">Miami, FL</h3>
+            <address>555 NW 95th St<br>Miami, FL 33150</address>
+            <p class="focus">Condominiums, shared spaces and coordination between units and common areas.</p>
+            <div class="office-links"><a class="lnk" href="/locations/miami-fl/">View this location<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></div>
+          </article>
+          <article class="office">
+            <span class="o-node" aria-hidden="true"></span>
+            <p class="role">Palm Beach County</p>
+            <h3 class="city">West Palm Beach, FL</h3>
+            <address>1705 Donna Road, Unit #10<br>West Palm Beach, FL 33409</address>
+            <p class="focus">Property access, coordination with the people affected and recovery after leaks or storms.</p>
+            <div class="office-links"><a class="lnk" href="/locations/west-palm-beach-fl/">View this location<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></div>
+          </article>
+          <article class="office">
+            <span class="o-node" aria-hidden="true"></span>
+            <p class="role">Atlanta-area office</p>
+            <h3 class="city">Smyrna, GA</h3>
+            <address>5028 S Atlanta Rd SE<br>Smyrna, GA 30080</address>
+            <p class="focus">Homes, occupied rentals and operating businesses across Metro Atlanta.</p>
+            <div class="office-links"><a class="lnk" href="/locations/atlanta-ga/">View this location<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></div>
+          </article>
+        </div>
+        <p class="one-line">
+          <span>One 24/7 phone line for every office: <a class="tel" href="tel:+18443799283">(844) 379-9283</a></span>
+          <a class="lnk" href="/locations/">All locations<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+        </p>
+      </div>
+    </section>
+
+    <!-- 4 · Your property: audiences -->
+    <section class="sec bg-canvas" data-cur="" aria-labelledby="aud-title">
+      <span class="cur" aria-hidden="true"></span>
+      <span class="cur-node" aria-hidden="true"></span>
+      <div class="wrap">
+        <div class="sec-head">
+          <div class="stack">
+            <p class="eyebrow">Your property</p>
+            <h2 class="h2" id="aud-title">Different properties. Different priorities.</h2>
+          </div>
+          <p class="lead aside">From a family home to a managed building, the recovery conversation should reflect the people and spaces affected.</p>
+        </div>
+        <div class="aud-grid">
+          <article class="aud-main rv">
+            <Photo src={commercialPhoto} alt="A WRG box truck parked at the base of a high-rise residential building." widths={[480, 720, 960, 1360]} sizes="(min-width: 1100px) 680px, 100vw" position="50% 74%" depth={0.06} />
+            <div class="aud-body">
+              <p class="topic">Commercial &amp; Property Management</p>
+              <h3 class="h3">Restoration support for properties with people depending on them.</h3>
+              <p class="muted">Access, occupancy and communication all matter when damage affects a business or a managed building.</p>
+              <a class="lnk stretch" href="/contact/">Talk to WRG about your property<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+            </div>
+          </article>
+          <div class="aud-side">
+            <article class="aud-card rv d2">
+              <p class="topic">Residential</p>
+              <h3 class="h3">A clearer next step after damage to your home.</h3>
+              <p class="muted">Understand the restoration work, the areas involved and the steps toward repairs.</p>
+              <a class="lnk stretch" href="/services/">Explore restoration services<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+            </article>
+            <article class="aud-card alt rv d3">
+              <p class="topic">Insurance &amp; Restoration Process</p>
+              <h3 class="h3">Understand the restoration work and the documentation involved.</h3>
+              <p class="muted">WRG explains the restoration information tied to its work. Policy and claim decisions stay with your insurer.</p>
+              <a class="lnk stretch" href="/faqs/">Read common questions<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5 · Proof: documented projects -->
+    <section class="sec bg-mist proof" data-cur="" aria-labelledby="proof-title">
+      <span class="cur" aria-hidden="true"></span>
+      <span class="cur-node" aria-hidden="true"></span>
+      <div class="wrap">
+        <div class="sec-head">
+          <div class="stack">
+            <p class="eyebrow">Proof of work</p>
+            <h2 class="h2" id="proof-title">See the work behind the response.</h2>
+          </div>
+          <p class="lead aside">Selected projects from WRG’s project records, each shown with the location where the work took place.</p>
+        </div>
+        <article class="proj-feature">
+          <Photo src={iconBayPhoto} alt="The Icon Bay condominium tower in Edgewater, Miami, seen from its entrance drive." widths={[480, 720, 960, 1320]} sizes="(min-width: 1100px) 660px, 100vw" position="50% 90%" depth={0.08} />
+          <div class="proj-meta">
+            <p class="geo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.2 7-11.6a7 7 0 1 0-14 0C5 14.8 12 21 12 21z"></path><circle cx="12" cy="9.5" r="2.6"></circle></svg>Edgewater, Miami, FL</p>
+            <h3 class="h2" style="font-size: clamp(28px, 2.8cqi, 40px)">Icon Bay</h3>
+            <p class="muted">A water supply line leak affected residences at Icon Bay. WRG’s published account describes assessing affected units, positioning drying equipment and repairing damaged drywall.</p>
+            <dl class="dl">
+              <div><dt>Challenge</dt><dd>Water damage extending beyond the unit where the leak originated.</dd></div>
+              <div><dt>WRG’s approach</dt><dd>Assessment of affected residences, drying work and subsequent drywall repairs.</dd></div>
+            </dl>
+            <div class="tags"><span class="tag">Water Damage Restoration</span><span class="tag">Reconstruction</span></div>
+            <a class="lnk" href="/projects/icon-bay/">Read the case study<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+          </div>
+        </article>
+        <ul class="proj-list">
+          <li class="rv">
+            <article class="proj-mini">
+              <Photo src={gablesPhoto} alt="" widths={[96, 192]} sizes="96px" position="45% 50%" mini />
+              <div class="stack g8">
+                <p class="geo">Coral Gables, FL</p>
+                <h3>Gables Waterway Towers</h3>
+                <a class="lnk stretch small" href="/projects/gables-waterway-towers/">Read the case study</a>
+              </div>
+            </article>
+          </li>
+          <li class="rv d2">
+            <article class="proj-mini">
+              <Photo src={stLouisPhoto} alt="" widths={[96, 192]} sizes="96px" position="23% 50%" mini />
+              <div class="stack g8">
+                <p class="geo">Brickell Key, Miami, FL</p>
+                <h3>St. Louis Condominium</h3>
+                <a class="lnk stretch small" href="/projects/st-louis-condominium/">Read the case study</a>
+              </div>
+            </article>
+          </li>
+          <li class="rv d3">
+            <article class="proj-mini">
+              <Photo src={southPointPhoto} alt="" widths={[96, 192]} sizes="96px" position="75% 50%" mini />
+              <div class="stack g8">
+                <p class="geo">Fort Lauderdale, FL</p>
+                <h3>South Point Condominium</h3>
+                <a class="lnk stretch small" href="/projects/south-point-condominium/">Read the case study</a>
+              </div>
+            </article>
+          </li>
+        </ul>
+        <div class="proof-foot">
+          <a class="lnk" href="/projects/">View all projects<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+          <a class="lnk" href="/reviews/">Read client reviews<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6 · Prepare: knowledge -->
+    <section class="sec bg-white" data-cur="" aria-labelledby="ins-title">
+      <span class="cur" aria-hidden="true"></span>
+      <span class="cur-node" aria-hidden="true"></span>
+      <div class="wrap">
+        <div class="sec-head">
+          <div class="stack">
+            <p class="eyebrow">Prepare</p>
+            <h2 class="h2" id="ins-title">Clear answers for property recovery.</h2>
+          </div>
+          <div class="aside stack g12">
+            <p class="lead">Practical information about restoration, project planning and the questions property owners and managers often bring to WRG.</p>
+            <a class="lnk" href="/blog/">All insights<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+          </div>
+        </div>
+        <div class="ins-grid">
+          <article class="ins-feat on-dark rv">
+            <p class="topic">{featured.categoryLabel}</p>
+            <h3 class="h2" style="font-size: clamp(26px, 2.6cqi, 38px)">{featured.title}</h3>
+            <p class="lead">{featured.summary}</p>
+            <a class="lnk stretch" href={articleHref(featured)}>Read the insight<Icon name="arrow" /></a>
+          </article>
+          <div class="ins-side">
+            {more.map((a, i) => (
+              <article class={`ins-card rv d${i + 2}`}>
+                <p class="topic">{a.categoryLabel}</p>
+                <h3 class="h3">{a.title}</h3>
+                <p class="muted small">{a.summary}</p>
+                <a class="lnk stretch" href={articleHref(a)}>Read the insight</a>
+              </article>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7 · Talk to WRG: closing call (the line ends beside Call now) -->
+    <section class="sec sheet dark close-sec" data-cur="" data-tone="dark" aria-labelledby="close-title">
+      <span class="cur end" aria-hidden="true"></span>
+      <span class="cur-node" aria-hidden="true"></span>
+      <span class="cur-node final" aria-hidden="true"></span>
+      <div class="wrap">
+        <div class="close-in">
+          <p class="eyebrow">Talk to WRG</p>
+          <h2 class="h2" id="close-title">Property damage is stressful. Your next step can be simple.</h2>
+          <p class="lead">Call WRG to discuss your property and the support you need.</p>
+          <a class="bignum" href="tel:+18443799283">(844) 379-9283</a>
+          <p class="small muted">1 (844) DRY-WATER · 24/7 Emergency Phone Support</p>
+          <div class="cta-row">
+            <a class="btn btn-call btn-lg" href="tel:+18443799283">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.6 3.5h2.6l1.6 4.2-2.1 1.3a11.5 11.5 0 0 0 6.3 6.3l1.3-2.1 4.2 1.6v2.6a2 2 0 0 1-2.2 2A16.6 16.6 0 0 1 4.6 5.7a2 2 0 0 1 2-2.2z"></path></svg>
+              <span>Call now</span>
+            </a>
+            <a class="btn btn-ghost btn-lg" href="/locations/">Find your office</a>
+          </div>
+        </div>
+      </div>
+    </section>
+</BaseLayout>

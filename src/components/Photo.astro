@@ -1,0 +1,41 @@
+---
+// Approved photo inside the same .ph frame that PhotoSlot uses, so the frame,
+// radius and parallax stay identical. The source file in src/assets/ is kept
+// untouched; Astro generates AVIF/WebP/JPEG variants at the listed widths.
+// `position` sets the focal point (object-position) for every breakpoint.
+// Keep the largest width at or below the source width: it is also the
+// size of the fallback <img src>.
+import { Picture } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+interface Props {
+  src: ImageMetadata;
+  alt: string;
+  widths: number[];
+  sizes: string;
+  position?: string;
+  class?: string;
+  depth?: number;
+  mini?: boolean;
+  priority?: boolean;
+}
+const { src, alt, widths, sizes, position = '50% 50%', class: cls, depth, mini = false, priority = false } = Astro.props;
+---
+<figure class:list={['ph', 'photo', cls, { mini }]}>
+  <Picture
+    src={src}
+    alt={alt}
+    widths={widths}
+    width={Math.max(...widths)}
+    sizes={sizes}
+    formats={['avif', 'webp']}
+    fallbackFormat="jpg"
+    quality={78}
+    class="ph-img"
+    style={`object-position:${position}`}
+    data-depth={depth}
+    loading={priority ? 'eager' : 'lazy'}
+    fetchpriority={priority ? 'high' : 'auto'}
+    decoding="async"
+  />
+</figure>

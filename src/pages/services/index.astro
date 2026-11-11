@@ -1,0 +1,85 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Icon from '../../components/Icon.astro';
+import { services, serviceHref } from '../../data/services';
+import { company } from '../../data/site';
+const [first, ...rest] = services;
+---
+<BaseLayout title="Restoration Services" description="Water, fire and smoke, mold and environmental restoration, plus reconstruction after mitigation. Each service explained clearly by WRG." page="services" active="services">
+
+    <section class="sec ihero bg-canvas" aria-labelledby="t">
+      <div class="wrap">
+        <nav aria-label="Breadcrumb"><ol class="crumbs"><li><a href="/">Home</a></li><li><span aria-current="page">Services</span></li></ol></nav>
+        <div class="ihero-grid">
+          <div class="ihero-copy">
+            <p class="eyebrow">Services</p>
+            <h1 class="h1" id="t">Restoration services, <span class="soft">explained clearly.</span></h1>
+            <p class="lead">Explore support for water, fire, mold and other property damage, along with reconstruction after mitigation. Each service page explains the type of work involved and how to start a conversation with WRG.</p>
+            <div class="cta-row">
+              <a class="btn btn-call btn-lg" href="tel:+18443799283"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.6 3.5h2.6l1.6 4.2-2.1 1.3a11.5 11.5 0 0 0 6.3 6.3l1.3-2.1 4.2 1.6v2.6a2 2 0 0 1-2.2 2A16.6 16.6 0 0 1 4.6 5.7a2 2 0 0 1 2-2.2z"></path></svg><span>Call now</span><span class="num">(844) 379-9283</span></a>
+            </div>
+          </div>
+          <div class="glance" aria-label="How each service page is organized">
+            <div class="glance-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"></circle><path d="m20 20-4.2-4.2"></path></svg><div><b>Understand the damage</b>When the service may be needed</div></div>
+            <div class="glance-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.2 4.2L19 7"></path></svg><div><b>Understand the service</b>What the work may include and how it moves</div></div>
+            <div class="glance-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.6 3.5h2.6l1.6 4.2-2.1 1.3a11.5 11.5 0 0 0 6.3 6.3l1.3-2.1 4.2 1.6v2.6a2 2 0 0 1-2.2 2A16.6 16.6 0 0 1 4.6 5.7a2 2 0 0 1 2-2.2z"></path></svg><div><b>Know the next step</b>A direct call to the 24/7 phone team</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec bg-white" aria-labelledby="all">
+      <div class="wrap">
+        <h2 class="sr" id="all">All services</h2>
+        <div class="tiles">
+          <article class="tile feat">
+            <div class="tile-top"><span class="ic"><Icon name={first.icon} /></span><span class="no">{first.no}</span></div>
+            <h2>{first.name}</h2>
+            <p class="when">{first.intro}</p>
+            <div class="tile-foot"><a class="lnk stretch" href={serviceHref(first.slug)}>Explore this service<Icon name="arrow" /></a></div>
+          </article>
+          {rest.map((s) => (
+            <article class="tile">
+              <div class="tile-top"><span class="ic"><Icon name={s.icon} /></span><span class="no">{s.no}</span></div>
+              <h2>{s.name}</h2>
+              <p class="when">{s.short}</p>
+              <div class="tile-foot"><a class="lnk stretch" href={serviceHref(s.slug)}>Explore this service</a></div>
+            </article>
+          ))}
+          <article class="tile">
+            <div class="tile-top"><span class="ic"><Icon name="phone" /></span><span class="no">—</span></div>
+            <h2>Not sure where to start?</h2>
+            <p class="when">You don’t need to choose a service first. Tell our phone team what you have observed and they can help identify the starting point.</p>
+            <div class="tile-foot"><a class="lnk stretch" href={company.phone.href}>Call {company.phone.display}</a></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec bg-canvas" aria-labelledby="where">
+      <div class="wrap">
+        <div class="sec-head">
+          <div class="stack"><p class="eyebrow">Where we work</p><h2 class="h2" id="where">Three offices, one 24/7 phone line.</h2></div>
+          <p class="lead aside">Service availability by office is being confirmed for each service page.</p>
+        </div>
+        <div class="olist">
+          <div class="ocard"><b>Miami, FL</b><address>555 NW 95th St, Miami, FL 33150</address><a class="lnk stretch" href="/locations/miami-fl/">View this location</a></div>
+          <div class="ocard"><b>West Palm Beach, FL</b><address>1705 Donna Road, Unit #10, West Palm Beach, FL 33409</address><a class="lnk stretch" href="/locations/west-palm-beach-fl/">View this location</a></div>
+          <div class="ocard"><b>Atlanta / Smyrna, GA</b><address>5028 S Atlanta Rd SE, Smyrna, GA 30080</address><a class="lnk stretch" href="/locations/atlanta-ga/">View this location</a></div>
+        </div>
+        <div class="duo" style="margin-top: 20px">
+          <div class="duo-card"><p class="topic">For homeowners</p><p class="muted">Understand the restoration work and the steps toward repairs.</p><a class="lnk stretch" href="/faqs/">Read common questions</a></div>
+          <div class="duo-card"><p class="topic">For property teams</p><p class="muted">Access, occupancy and communication in managed buildings and businesses.</p><a class="lnk stretch" href="/projects/">See documented projects</a></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec sheet dark cta-band" data-tone="dark" aria-labelledby="cta">
+      <div class="wrap">
+        <div class="cta-grid">
+          <div class="stack g16"><p class="eyebrow">Talk to WRG</p><h2 class="h2" id="cta">Property damage is stressful. Your next step can be simple.</h2></div>
+          <div class="callcard"><span class="small muted">24/7 Emergency Phone Support</span><a class="num-l" href="tel:+18443799283">(844) 379-9283</a><a class="btn btn-call" href="tel:+18443799283">Call now</a></div>
+        </div>
+      </div>
+    </section>
+</BaseLayout>
