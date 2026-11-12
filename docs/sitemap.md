@@ -24,6 +24,7 @@ Fuente: **WRG_Sitemap_Review-3** (thewaterrestorationgroup.com). Todas las rutas
 | `/blog/humidity/how-long-does-water-damage-restoration-take/` | How Long Does Water Damage Restoration Take? | `blog/[category]/[slug].astro` + `data/articles.ts` |
 | `/blog/mold-damage/mold-prevention-in-humid-climates/` | Mold Prevention in Humid Climates | ídem |
 | `/blog/fire-damage/fire-damage-restoration-process/` | The Fire Damage Restoration Process | ídem |
+| `/blog/environmental-cleanup/what-is-environmental-cleanup/` | What Is Environmental Cleanup, and When Does a Property Need It? (artículo nuevo, no figura en el sitemap revisado) | ídem |
 | `/faqs/` | FAQ | `src/pages/faqs.astro` + `data/faqs.ts` |
 | `/contact/` | Contact | `src/pages/contact.astro` |
 | `/privacy-policy/` | Privacy Policy | `src/pages/privacy-policy.astro` |

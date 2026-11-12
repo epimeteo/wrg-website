@@ -157,7 +157,7 @@ export const services: Service[] = [
     photo: 'Specialized cleanup crew with protective equipment, approved image pending',
     whenIntro: 'Describe the incident, the affected spaces and any access restrictions. The team can clarify the information needed before an assessment.',
     when: ['An incident that calls for specialized cleanup', 'Affected areas that need more than routine cleaning', 'Materials that may require specific handling or disposal'],
-    scope: ['Review of the incident and affected areas', 'Specialized cleanup planning', 'Cleaning and sanitation appropriate to the scope', 'Material handling and disposal where required'],
+    scope: ['Review of the incident and affected areas', 'Specialized cleanup planning', 'Cleaning and disinfection with EPA-registered, CDC-compliant products', 'Technicians in full personal protective equipment', 'Handling and disposal of affected materials as biohazard waste where required'],
     flow: 'Understand the incident → Assess → Define cleanup → Review completion',
     steps: st([
       ['Understand the incident', 'Start with what happened and which spaces are affected.'],
@@ -171,8 +171,10 @@ export const services: Service[] = [
       { q: 'What should I explain during the first call?', a: 'Describe the incident, the affected spaces and any access restrictions. The team can clarify the information needed before an assessment.' },
       ready,
     ],
-    related: [],
-    reviewNote: 'Earlier claims about agency approvals, pathogen elimination or sanitary guarantees were not carried over. No related case or insight is available yet, so the related module is hidden.',
+    related: [
+      { kind: 'Insight', title: 'What Is Environmental Cleanup, and When Does a Property Need It?', meta: 'Environmental cleanup', href: '/blog/environmental-cleanup/what-is-environmental-cleanup/', cta: 'Read the insight', photo: false },
+    ],
+    reviewNote: 'Product and protective-equipment statements follow the previous site (claims validated by the client on Nov 12, 2026). No related case study is available yet.',
     ctaTitle: 'Talk to WRG about a specialized cleanup.',
   },
   {

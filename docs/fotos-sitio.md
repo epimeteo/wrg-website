@@ -8,7 +8,7 @@ Continuación de [fotos-home.md](fotos-home.md), con el mismo banco de imágenes
 |---|---|---|---|---|---|---|
 | Servicio · Water Damage Restoration (banda) | 21:8 / 4:3 móvil | `Water-Damage-Restoration` 1920×1050: air mover y deshumidificador en una habitación afectada | `services/water-drying-equipment.jpg` | 36+20+16+13 = **85** | Solo foco | Integrada |
 | Servicio · Fire & Smoke (banda) | 21:8 / 4:3 móvil | `1794427955811.jpg` (carpeta «Imagenes de trabajo en sitio», 1600×1200): dormitorio con hollín y el techo abierto para retirar material dañado, obra de WRG | `services/fire-soot-damaged-room.jpg` | 35+19+17+11 = **82** | Solo foco | Integrada |
-| Servicio · Mold Remediation (banda) | 21:8 | — | — | — | — | **Pendiente** |
+| Servicio · Mold Remediation (banda) | 21:8 / 4:3 móvil | `Containment-1` 1080×1080: contención con postes y ventanas de inspección, obra de WRG | `services/mold-containment.jpg` | 38+17+16+13 = **84** | Ampliación 2× y foco | Integrada |
 | Servicio · Environmental Cleanup (banda) | 21:8 | `Services` 1920×975: dos técnicos con trajes de protección aplicando un tratamiento | `services/environmental-ppe-crew.jpg` | 36+21+16+12 = **85** | Solo foco | Integrada (ilustrativa) |
 | Servicio · Reconstruction (banda) | 21:8 | `Water-Damage-Ways-To-Repair-A-Drywall` 2400×1600: reparación de un techo de drywall | `services/reconstruction-drywall-finishing.jpg` | 35+23+16+14 = **88** | Solo foco | Integrada (ilustrativa) |
 | Servicios · tarjetas de casos relacionados | 16:9 | Foto principal de cada proyecto (ver home) | `home/*.jpg` | ver home | Foco por formato | Integradas |
@@ -28,14 +28,39 @@ Continuación de [fotos-home.md](fotos-home.md), con el mismo banco de imágenes
 
 Las imágenes de servicios marcadas como «ilustrativas» no se atribuyen a trabajos de WRG: el texto alternativo describe la escena sin decir que es una obra de la empresa.
 
+## Fotos provisionales en las galerías (12 nov 2026)
+
+A pedido del cliente, los espacios vacíos de las galerías se llenaron con fotos del banco que muestran **situaciones parecidas, no la obra del caso**. No se pueden generar fotografías nuevas: todas salen del backup del sitio anterior. En el sitio llevan la etiqueta visible «Representative image» (campo `provisional` en `src/data/photos.ts`, función `pv()`), el texto alternativo describe la escena sin atribuirla al edificio, y la galería avisa que esas imágenes no son de la propiedad. Están en `src/assets/projects/provisional/`.
+
+| Caso · espacio | Foto provisional (banco) | Origen |
+|---|---|---|
+| Icon Bay · área afectada | `Water-Removal-and-Extraction-1` 1080×1080: agua en un pasillo | WRG |
+| Icon Bay · proceso | `Removal-and-Cleaning-1` 1080×1080: deshumidificadores y air movers en un pasillo | WRG |
+| Icon Bay · reparación | `Reconstruction-1` 1920×1280: instalación de drywall | Stock |
+| Icon Bay · equipo | `Contac-Us-Water-Damage-2` 1080×1400: van de WRG y equipo descargando frente a una torre | WRG |
+| Gables · área afectada | Dormitorio con hollín (la misma foto de la banda de Fire & Smoke) | WRG, otra obra |
+| Gables · proceso | `Drying-and-Dehumidification-1` 1080×1080: secado en una habitación abierta hasta la estructura | WRG |
+| Gables · reparación | Reparación de techo de drywall (la misma de la banda de Reconstruction) | Stock |
+| Gables · equipo | `Contact-1` 1920×1280: aspirado con equipo industrial | Stock |
+| St. Louis · equipo | `Cleaning-and-Sanitization` 1080×1080: técnico con traje aplicando tratamiento en un pasillo | Stock |
+| South Point · reparación | `Reconstruction-1`: instalación de drywall | Stock |
+| South Point · equipo | `Protect-Your-Property-with-Professional-1` 1080×1400: técnico con respirador dentro de una contención | Stock |
+
+**Antes del lanzamiento** hay que reemplazarlas por fotos de cada obra: basta cambiar la entrada en `projectGallery` por una normal (sin `pv()`).
+
+Fotos reales añadidas en la misma tanda:
+
+- **St. Louis · edificio:** `St.-Louis-Condominium-Exterior`. El original del backup mide 655×494 (no 655×300, que era un recorte). Ampliada a 1310×988 con Lanczos y enfoque suave → `projects/st-louis-exterior.jpg`.
+- **St. Louis · reparación terminada:** `St.-Louis-Condominium-Interior-3` 655×494, pared y techo ya reparados → `projects/st-louis-repaired-ceiling.jpg`.
+- **Mold Remediation · banda:** `Containment-1`. Se revisaron los 4 ZIP del backup: el archivo de 1080×1080 es el original, no existe una versión mayor. Ampliada a 2160×2160 con Lanczos y enfoque suave → `services/mold-containment.jpg`. Se ve bien a tamaño normal; en pantallas de alta densidad queda algo suave. Si WRG consigue la foto de cámara, basta con reemplazar el archivo.
+- **About · perfiles:** `Untitled-design-59.png` y `Untitled-design-60.png` (400×400, los mismos retratos de `1-2.png` y `2-2.png` en formato cuadrado), ampliados a 800 px → `about/profile-1.jpg` y `profile-2.jpg`. Publicados sin nombre ni cargo.
+
 ## Pendientes: fotos que hace falta conseguir
 
-- **Mold Remediation (banda):** contención montada para remediación, ≥ 2400 px de ancho. `Containment-1` muestra exactamente eso, pero mide 1080 px y en la banda de 1168 px queda ampliada (calidad 16/25). Si existe el original de esa foto, basta con reemplazar el archivo.
-- **Galerías:** reparación terminada y equipo trabajando, en los cuatro casos; área afectada y proceso en Icon Bay y Gables; contexto del edificio en St. Louis (`St.-Louis-Condominium-Exterior` solo existe a 655×300).
-- **Oficinas (índice de ubicaciones, 3 espacios):** fotos de las oficinas de Miami, West Palm Beach y Smyrna. No hay ninguna en el banco.
-- **Perfiles en About (3 espacios):** retratos aprobados. Existen `1-2.png` y `2-2.png` (retratos profesionales), pero sin nombre ni aprobación del perfil no se publican.
-
-No pude buscar fotos de terceros con licencia: la red de esta sesión no permite salir a bancos de imágenes.
+- **Galerías:** las fotos de cada obra que sustituyan a las 11 provisionales de la tabla anterior.
+- **Oficinas (índice de ubicaciones, 3 espacios):** fotos de Miami, West Palm Beach y Smyrna. No hay ninguna en el banco; el cliente las compartirá.
+- **About:** tercer perfil, y nombre y cargo de los tres.
+- **Mold Remediation (banda):** opcional, el original de cámara de `Containment-1` (≥ 2400 px).
 
 ## Carpeta «Imagenes de trabajo en sitio» (11 nov 2026)
 
@@ -50,7 +75,7 @@ No pude buscar fotos de terceros con licencia: la red de esta sesión no permite
 - `Fire-Damage-Restoration`, `Fire-Smoke`, `What-To-Do-After-A-Fire`, `Know-The-Affects-…`: muestran fuego activo, bomberos o llamas, no la limpieza posterior.
 - `Mold-Remediation`, `Mold-Remediation-Atlanta-Bg`, `Removing-black-mold`: muestran moho, no la remediación (correspondencia < 32).
 - `Reconstruction`, `Reconstruction-After-Water-Damage`: obra exterior o soldadura, no reparación interior.
-- `Containment-1`, `Drying-and-Dehumidification-1`, `Removal-and-Cleaning-1`, `Water-Removal-and-Extraction-1`: auténticas de WRG, pero de 1080 px; demasiado pequeñas para las bandas de servicio. Quedan disponibles para espacios más chicos.
+- `Drying-and-Dehumidification-1`, `Removal-and-Cleaning-1`, `Water-Removal-and-Extraction-1`: auténticas de WRG, de 1080 px. Hoy se usan como provisionales en las galerías.
 - `IMG_0072` (capacitación de WRG): auténtica. Para el hero de About se prefirió una foto de trabajo en obra, que responde mejor a la descripción del espacio.
 
 ## Confirmado (11 nov 2026)

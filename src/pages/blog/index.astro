@@ -9,9 +9,9 @@ import { articles, articleHref } from '../../data/articles';
 import { services, serviceHref } from '../../data/services';
 import { company } from '../../data/site';
 const [featured, ...more] = articles;
-const related = services.filter((s) => ['water', 'fire', 'mold'].includes(s.key));
+const related = services.filter((s) => ['water', 'fire', 'mold', 'environmental'].includes(s.key));
 ---
-<BaseLayout title="Insights" description="Practical information about water damage, mold and fire restoration, and the questions property owners and managers often bring to WRG." active="blog" page="insights">
+<BaseLayout title="Insights" description="Practical information about water damage, mold, fire restoration and specialized cleanup, and the questions property owners and managers often bring to WRG." active="blog" page="insights">
   <section class="sec ihero bg-canvas" aria-labelledby="t">
     <div class="wrap">
       <Breadcrumbs items={[{ label: 'Insights' }]} />
@@ -63,7 +63,7 @@ const related = services.filter((s) => ['water', 'fire', 'mold'].includes(s.key)
           <p class="topic">Authors &amp; reviewers</p>
           <h2 class="h3" id="au">Written from WRG’s knowledge, reviewed by real experts.</h2>
           <p class="muted small">Author and reviewer names appear only when they have been confirmed. Until then, articles show no byline and no review date.</p>
-          <ReviewFlag>Professional and editorial review pending for all three drafts</ReviewFlag>
+          <ReviewFlag>Editorial drafts: WRG’s professional review, author and date pending</ReviewFlag>
         </div>
         <div class="duo-card">
           <p class="topic">Related services</p>

@@ -8,7 +8,7 @@ export function getStaticPaths() {
   return articles.map((a) => ({ params: { category: a.category, slug: a.slug }, props: { a } }));
 }
 const { a } = Astro.props as { a: Article };
-const others = articles.filter((o) => o.slug !== a.slug);
+const others = articles.filter((o) => o.slug !== a.slug).slice(0, 3);
 ---
 <BaseLayout title={a.title} description={a.description} active="blog" page="article">
   <article aria-labelledby="t">
@@ -35,21 +35,31 @@ const others = articles.filter((o) => o.slug !== a.slug);
         <div class="art-grid">
           <div class="art-body">
             <div class="answer"><b>Short answer</b><span>{a.answer}</span></div>
+            <div class="keypoints">
+              <p class="topic">Key points</p>
+              <ul>{a.points.map((x) => <li>{x}</li>)}</ul>
+            </div>
             {a.sections.map((s) => (
               <>
                 <h2 id={s.id}>{s.h}</h2>
-                <p>{s.p}</p>
+                {s.p.map((x) => <p>{x}</p>)}
+                {s.list && <ul>{s.list.map((x) => <li>{x}</li>)}</ul>}
               </>
             ))}
+            {a.project && (
+              <p class="art-case">See it in practice: <a class="lnk" href={a.project.href}>{a.project.name} case study</a></p>
+            )}
             <div class="callout" style="margin-top: 48px">
               <div class="stack g8"><p class="topic">Related service</p><p class="h3">{a.cta}</p></div>
               <div class="cta-row"><a class="btn btn-blue" href={a.serviceHref}>{a.service}</a><a class="lnk" href={company.phone.href}>Call {company.phone.display}</a></div>
             </div>
             <div class="sources">
               <b style="color: var(--ink)">Note</b>
-              <span>This article describes general considerations, not instructions for a specific property.</span>
+              <span>This article offers general information, not instructions for a specific property or professional advice.</span>
+              <b style="color: var(--ink); margin-top: 8px">References</b>
+              <ul class="refs">{a.refs.map((r) => <li>{r.href ? <a href={r.href} target="_blank" rel="noopener">{r.label}</a> : r.label}</li>)}</ul>
               {reviewMode && (
-                <span>Draft pending professional and editorial review. Topic source: <a href={a.source} target="_blank" rel="noopener">{a.source}</a></span>
+                <span>Editorial draft pending WRG’s professional review.{a.source && <> Topic covered on the previous site: <a href={a.source} target="_blank" rel="noopener">{a.source}</a></>}</span>
               )}
             </div>
           </div>

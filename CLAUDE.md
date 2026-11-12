@@ -23,11 +23,12 @@ Before committing: `npm run build && npm run check:links`.
 ## Content rules (non-negotiable)
 
 - Never invent data: no reviews, people, names, credentials, licenses, statistics, response times, years in business, project counts, guarantees or insurance outcomes. If something is missing, show a `ReviewNote`/`ReviewFlag` (visible only in review mode) and add it to `docs/pendientes.md`.
+- Claims validated by the client (Nov 12, 2026), usable with the previous site's wording: "45 minutes or less rapid response time", "top-rated", "almost 20 years" (South Florida), "4,000+ projects completed", EPA-registered / CDC-compliant products, and the insurance outcomes published in the Icon Bay and Gables case studies. Do not extend them to Georgia or reword them into new guarantees. See `docs/pendientes.md`.
 - Phone: **(844) 379-9283**, `tel:+18443799283`, vanity **1 (844) DRY-WATER**. Always from `src/data/site.ts` (`company.phone`).
 - Offices (from `src/data/site.ts`): Miami HQ 555 NW 95th St, Miami, FL 33150 · West Palm Beach 1705 Donna Road, Unit #10, West Palm Beach, FL 33409 · Atlanta/Smyrna 5028 S Atlanta Rd SE, Smyrna, GA 30080. Location pages must stay genuinely different; never reuse Florida evidence as Georgia evidence.
 - Excluded: Guided response (damage selectors, questionnaires, wizards), Events, Preferred Client Program, Asbestos Abatement, forms (contact is by phone) — unless the client approves them.
 - Routes follow `docs/sitemap.md` (WRG_Sitemap_Review-3). Trailing slash always.
-- Photos: only approved WRG images. Until then use `PhotoSlot`. Do not commit images with unconfirmed rights (the repo is public).
+- Photos: only approved WRG images. Until then use `PhotoSlot`. Stand-ins from similar situations are allowed only when the client asks for them: mark them `provisional` in `src/data/photos.ts` (they render with a visible "Representative image" tag) and list them in `docs/fotos-sitio.md`. Do not commit images with unconfirmed rights (the repo is public).
 
 ## Where things live
 
