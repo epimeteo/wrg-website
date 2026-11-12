@@ -267,7 +267,7 @@
 .aside-links a{display:flex;align-items:center;min-height:44px;font-weight:600;color:var(--od-soft);border-bottom:1px solid rgba(255,255,255,.08)}
 .aside-links a:hover{color:#fff}
 .menu-callbar{display:none}
-@container (max-width:900px){.menu-panel{grid-template-columns:1fr;overflow:auto}.menu-nav,.menu-aside{overflow:visible}.menu-aside{border-left:0;border-top:1px solid rgba(255,255,255,.1)}}
+@container (max-width:900px){.menu-panel{grid-template-columns:1fr;grid-auto-rows:max-content;overflow:auto}.menu-nav,.menu-aside{overflow:visible;min-height:auto}.menu-aside{border-left:0;border-top:1px solid rgba(255,255,255,.1)}}
 @container (max-width:639px){
   .menu-panel{top:0;right:0;bottom:0;width:100%;border-radius:0;transform:translateY(16px)}
   .menu-nav{padding:10px 20px 24px;gap:16px}

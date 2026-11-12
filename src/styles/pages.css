@@ -377,3 +377,27 @@
 @container (max-width:1023px){.tiles{gap:20px}}
 @container (max-width:639px){.tiles{gap:16px}.tile{min-height:0;padding:24px}}
 @media (prefers-reduced-motion: reduce){.tile,.tile:hover,.tile:has(:focus-visible){transform:none!important}}
+
+/* Article body: lists, key points, references -------------------------------- */
+.art-body ul{margin:16px 0 0;padding-left:1.15em;list-style:disc}
+.art-body li{padding-left:4px}
+.art-body li + li{margin-top:8px}
+.art-body li::marker{color:var(--blue)}
+.keypoints{margin-top:28px;padding:22px 26px 24px;border-radius:var(--r-card);background:var(--white);border:1px solid var(--line)}
+.keypoints ul{margin-top:10px;font-size:17px;line-height:1.55}
+.art-case{margin-top:40px;padding-top:24px;border-top:1px solid var(--line)}
+.sources .refs{margin:0;padding-left:1.1em;list-style:disc}
+.sources .refs li + li{margin-top:4px}
+/* Legal text ------------------------------------------------------------------ */
+.legal-sec p,.legal-sec li{color:var(--ink-2);line-height:1.65}
+.legal-sec ul{padding-left:1.15em;list-style:disc;display:flex;flex-direction:column;gap:6px}
+/* About · experts --------------------------------------------------------------- */
+.people{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.person .ph{aspect-ratio:4/5;border-radius:22px}
+.person{display:flex;flex-direction:column;gap:12px}
+.person .ph .ph-img{top:0;height:100%;transform:none}
+.facts-row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-top:clamp(32px,4cqi,48px)}
+.facts-row div{padding:20px 22px;border-radius:20px;background:var(--mist)}
+.facts-row b{display:block;font:620 clamp(24px,2.4cqi,32px)/1.1 var(--f-d);color:var(--ink)}
+.facts-row span{display:block;margin-top:6px;font-size:15px;color:var(--ink-2)}
+@media (max-width:900px){.people{grid-template-columns:repeat(2,minmax(0,1fr))}.facts-row{grid-template-columns:repeat(2,minmax(0,1fr))}}

@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Photo from '../components/Photo.astro';
-import { aboutHero, projectMain as pm } from '../data/photos';
+import { aboutHero, experts, projectMain as pm } from '../data/photos';
 import { reviewMode } from '../data/site';
 ---
 <BaseLayout title="About" description="The Water Restoration Group provides property restoration and reconstruction from offices in Miami, West Palm Beach and Smyrna." active="about">
@@ -13,10 +13,16 @@ import { reviewMode } from '../data/site';
           <div class="ihero-copy">
             <p class="eyebrow">About WRG</p>
             <h1 class="h1" id="t">Restoring properties. <span class="soft">Supporting people.</span></h1>
-            <p class="lead">Property restoration is about more than the work on a building. It also involves the people making decisions, coordinating access and waiting to understand what happens next. WRG brings restoration and reconstruction services into that conversation.</p>
+            <p class="lead">Property restoration is about more than the work on a building. It also involves the people making decisions, coordinating access and waiting to understand what happens next. A family-owned and operated business, WRG has served the South Florida community for almost 20 years.</p>
             <div class="cta-row"><a class="lnk" href="/projects/">See documented projects</a><a class="lnk" href="/reviews/">Read client reviews</a></div>
           </div>
           <Photo src={aboutHero.src} alt={aboutHero.alt} max={aboutHero.max} position={aboutHero.pos} sizes="(min-width: 1024px) 480px, 100vw" style="aspect-ratio: 5 / 4; border-radius: 48px clamp(80px, 10cqi, 150px) 48px 48px" depth={0.07} priority />
+        </div>
+        <div class="facts-row">
+          <div><b>Almost 20 years</b><span>Serving the South Florida community</span></div>
+          <div><b>4,000+</b><span>Projects completed</span></div>
+          <div><b>45 minutes or less</b><span>Rapid response time</span></div>
+          <div><b>24/7</b><span>Emergency phone support</span></div>
         </div>
       </div>
     </section>
@@ -76,22 +82,20 @@ import { reviewMode } from '../data/site';
     </section>
 
     <!-- People / Our Experts -->
-    {reviewMode && (
     <section class="sec bg-white" id="experts" aria-labelledby="xp">
       <div class="wrap">
         <div class="sec-head">
           <div class="stack"><p class="eyebrow">Our Experts</p><h2 class="h2" id="xp">The people behind the work</h2></div>
-          <p class="muted aside">Up to three verified expert profiles, each with real identity, approved photography and confirmed credentials.</p>
+          <div class="aside">{reviewMode && <span class="review-flag">Portraits approved. Names, roles and credentials pending</span>}</div>
         </div>
-        <div class="people-empty">
-          <div class="person-slot"><figure class="ph"><div class="ph-in"></div></figure><span>Profile 1 · pending approval</span></div>
-          <div class="person-slot"><figure class="ph"><div class="ph-in"></div></figure><span>Profile 2 · pending approval</span></div>
-          <div class="person-slot"><figure class="ph"><div class="ph-in"></div></figure><span>Profile 3 · pending approval</span></div>
+        <div class="people">
+          {experts.map((x) => (
+            <div class="person"><Photo src={x.src} alt={x.alt} max={x.max} position={x.pos} sizes="(min-width: 1024px) 380px, 50vw" /></div>
+          ))}
+          {reviewMode && <div class="person-slot"><figure class="ph"><div class="ph-in"></div></figure><span>Profile 3 · photo, name and role pending</span></div>}
         </div>
-        {reviewMode && (<p class="notice" style="margin-top: 24px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 8v5M12 16.5v.01"></path></svg><span><b>Internal review:</b> No names, roles or credentials have been approved. This section is shown only in review mode until profiles are confirmed.</span></p>)}
       </div>
     </section>
-    )}
 
     <!-- Reviews preview -->
     <section class="sec bg-mist sheet-top" aria-labelledby="rv">
