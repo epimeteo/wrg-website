@@ -1,9 +1,75 @@
 ---
 import LegalPage from '../components/LegalPage.astro';
+const sections = [
+  {
+    h: 'Information we collect',
+    p: ['This website does not have contact forms, user accounts or comment sections, and it does not ask you to submit personal information online. We collect information in two ways:'],
+    list: [
+      'Information you give us when you contact us. If you call one of our phone numbers or visit an office, we may ask for your name, phone number, email address, the property address, a description of the damage, and insurance or property management details needed to provide a service.',
+      'Technical information collected automatically. Like most websites, our hosting provider’s servers record standard log data when a page is requested, such as IP address, browser type, device type, the pages requested, and the date and time of the request.',
+    ],
+  },
+  {
+    h: 'Cookies and tracking',
+    p: [
+      'This website does not set advertising cookies and does not use third-party advertising trackers. Fonts and images are served from our own site.',
+      'If we add analytics or similar tools in the future, we will update this policy to describe them and, where required, ask for your consent.',
+    ],
+  },
+  {
+    h: 'How we use information',
+    p: ['We use the information described above to:'],
+    list: [
+      'Respond to calls and requests, schedule assessments and provide restoration and reconstruction services',
+      'Communicate with you, your property manager, your association or your insurance carrier about a project, as you direct',
+      'Prepare estimates, documentation and invoices',
+      'Operate, secure and improve this website',
+      'Comply with legal, licensing and record-keeping obligations',
+    ],
+  },
+  {
+    h: 'How we share information',
+    p: ['We do not sell personal information. We share it only when needed to do our work or when the law requires it:'],
+    list: [
+      'With service providers that help us operate, such as hosting, phone, scheduling and accounting providers, under obligations to protect the information',
+      'With insurance carriers, adjusters, property managers or associations involved in your project, when you ask us to or when it is necessary to perform the service',
+      'With subcontractors working on your project, limited to what they need',
+      'With authorities, when required by law or to protect the rights, property or safety of our clients, our team or others',
+      'With a successor entity in the event of a merger, acquisition or sale of assets',
+    ],
+  },
+  {
+    h: 'Retention and security',
+    p: [
+      'We keep project and contact records for as long as needed to provide our services and to meet legal, tax, insurance and licensing requirements. Server logs are kept for a limited period.',
+      'We use reasonable administrative, technical and physical safeguards to protect information. No method of transmission or storage is completely secure, so we cannot guarantee absolute security.',
+    ],
+  },
+  {
+    h: 'Your choices',
+    p: [
+      'You can ask us what personal information we hold about you, ask us to correct it, or ask us to delete it, subject to the records we are required to keep. Depending on where you live, you may have additional rights under state privacy laws. To make a request, call us at the number below.',
+    ],
+  },
+  {
+    h: 'Children',
+    p: ['This website is intended for adults. We do not knowingly collect personal information from children under 13. If you believe a child has provided us with personal information, contact us and we will delete it.'],
+  },
+  {
+    h: 'Links to other websites',
+    p: ['This website links to third-party sites, such as map services for directions to our offices. Those sites have their own privacy practices, and we are not responsible for them.'],
+  },
+  {
+    h: 'Changes to this policy',
+    p: ['We may update this policy from time to time. The date at the top of the page shows when it was last revised. Changes apply from the moment they are published here.'],
+  },
+];
 ---
 <LegalPage
   title="Privacy Policy"
-  description="Privacy Policy of The Water Restoration Group."
-  note="No privacy, cookie or retention terms are drafted here. WRG must provide or approve the text before launch."
-  sections={['Information we collect', 'How we use information', 'Sharing and retention', 'Your choices']}
+  description="How The Water Restoration Group collects, uses and protects information from visitors to this website and from people who contact the company."
+  note="Generic text written to match how this site works today (phone-only contact, no forms, no cookies). WRG must review it with counsel and approve or replace it before launch."
+  updated="November 12, 2026"
+  intro="This Privacy Policy explains how The Water Restoration Group (“WRG,” “we,” “us”) handles information when you visit this website or contact us by phone or in person. By using this website, you agree to the practices described here."
+  sections={sections}
 />

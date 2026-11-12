@@ -18,6 +18,7 @@ const { c } = Astro.props as { c: Project };
 const others = projects.filter((p) => p.slug !== c.slug).slice(0, 2);
 const main = projectMain[c.slug];
 const shots = projectGallery[c.slug] ?? [];
+const hasProvisional = shots.some((x) => x?.provisional);
 const gallery = ['Affected area during the work', 'Equipment or process detail', 'Repaired area', 'Building context', 'Team at work'];
 ---
 <BaseLayout title={`${c.name} — Case Study`} description={c.summary} active="projects" page="case">
@@ -71,13 +72,16 @@ const gallery = ['Affected area during the work', 'Equipment or process detail',
     <div class="wrap">
       <div class="sec-head">
         <div class="stack"><p class="eyebrow">Gallery</p><h2 class="h2" id="gl">Project images</h2></div>
-        <div class="aside"><ReviewFlag>Authorized photos and alt text pending</ReviewFlag></div>
+        <div class="aside stack g12">
+          {hasProvisional && <p class="muted small">Images tagged “Representative image” show similar situations, not this property.</p>}
+          {hasProvisional && <ReviewFlag>Provisional photos: replace with the project’s own images</ReviewFlag>}
+        </div>
       </div>
       <div class="gallery">
         {gallery.map((g, i) => {
           const shot = shots[i];
           return shot
-            ? <Photo src={shot.src} alt={shot.alt} max={shot.max} position={shot.pos} sizes={i === 0 ? '(min-width: 1024px) 580px, 100vw' : '(min-width: 1024px) 290px, 50vw'} />
+            ? <Photo src={shot.src} alt={shot.alt} max={shot.max} position={shot.pos} sizes={i === 0 ? '(min-width: 1024px) 580px, 100vw' : '(min-width: 1024px) 290px, 50vw'} tag={shot.provisional ? 'Representative image' : undefined} />
             : <PhotoSlot label={`Gallery ${i + 1}`} caption={g} />;
         })}
       </div>

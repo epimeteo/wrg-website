@@ -1,17 +1,21 @@
 ---
-// Legal page shell. The text must come from WRG; until then the sections
-// render as reading-layout placeholders and the page is marked as pending.
+// Legal page shell. The current texts are generic drafts written for this
+// site (phone-only contact, no forms, no cookies set by the site). WRG must
+// review them with its counsel and approve or replace them before launch.
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Breadcrumbs from './Breadcrumbs.astro';
 import ReviewNote from './ReviewNote.astro';
 import { company } from '../data/site';
+export type LegalSection = { h: string; p: string[]; list?: string[] };
 interface Props {
   title: string;
   description: string;
   note: string;
-  sections: string[];
+  updated: string;
+  intro: string;
+  sections: LegalSection[];
 }
-const { title, description, note, sections } = Astro.props;
+const { title, description, note, updated, intro, sections } = Astro.props;
 ---
 <BaseLayout title={title} description={description} page="legal">
   <section class="sec ihero bg-canvas" aria-labelledby="t">
@@ -20,23 +24,25 @@ const { title, description, note, sections } = Astro.props;
       <div class="art-head">
         <p class="eyebrow">Legal</p>
         <h1 class="h1" id="t">{title}</h1>
-        <ReviewNote title="Content pending client review.">{note}</ReviewNote>
+        <ReviewNote title="Generic draft pending WRG approval.">{note}</ReviewNote>
       </div>
     </div>
   </section>
   <section class="sec bg-white" style="--st: clamp(40px, 4cqi, 56px)">
     <div class="wrap">
       <div class="legal">
-        <p class="small muted" style="margin-bottom: 20px">Last updated: pending</p>
-        {sections.map((h) => (
+        <p class="small muted" style="margin-bottom: 20px">Last updated: {updated}</p>
+        <p style="margin-bottom: 28px; line-height: 1.65">{intro}</p>
+        {sections.map((s) => (
           <div class="legal-sec">
-            <h2>{h}</h2>
-            <span class="sk" style="width: 100%"></span><span class="sk" style="width: 92%"></span><span class="sk" style="width: 74%"></span>
+            <h2>{s.h}</h2>
+            {s.p.map((x) => <p>{x}</p>)}
+            {s.list && <ul>{s.list.map((x) => <li>{x}</li>)}</ul>}
           </div>
         ))}
         <div class="legal-sec">
-          <h2>Questions</h2>
-          <p class="muted">For questions about this page, call WRG at <a class="tel" href={company.phone.href}>{company.phone.display}</a>.</p>
+          <h2>Contact</h2>
+          <p>For questions about this page, call {company.name} at <a class="tel" href={company.phone.href}>{company.phone.display}</a> or write to 555 NW 95th St, Miami, FL 33150.</p>
         </div>
       </div>
     </div>

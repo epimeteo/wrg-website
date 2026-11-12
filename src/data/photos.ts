@@ -21,6 +21,20 @@ import iconBayExterior from '../assets/projects/icon-bay-exterior.jpg';
 import inspection from '../assets/about/wrg-technician-inspection.jpg';
 import miamiDowntown from '../assets/locations/miami-downtown.jpg';
 import hallwayDrying from '../assets/blog/condo-hallway-drying.jpg';
+import moldContainment from '../assets/services/mold-containment.jpg';
+import slExterior from '../assets/projects/st-louis-exterior.jpg';
+import slRepaired from '../assets/projects/st-louis-repaired-ceiling.jpg';
+import profile1 from '../assets/about/profile-1.jpg';
+import profile2 from '../assets/about/profile-2.jpg';
+// Provisional gallery images: similar situations, not the project site.
+import pvWaterHallway from '../assets/projects/provisional/water-in-hallway.jpg';
+import pvHallwayDrying from '../assets/projects/provisional/hallway-drying-equipment.jpg';
+import pvDrywall from '../assets/projects/provisional/drywall-installation.jpg';
+import pvDryingRoom from '../assets/projects/provisional/drying-opened-room.jpg';
+import pvCrewVan from '../assets/projects/provisional/wrg-crew-van-high-rise.jpg';
+import pvHallwayTech from '../assets/projects/provisional/technician-hallway-treatment.jpg';
+import pvContainmentTech from '../assets/projects/provisional/technician-inside-containment.jpg';
+import pvVacuum from '../assets/projects/provisional/cleanup-vacuum.jpg';
 
 export type Img = {
   src: ImageMetadata;
@@ -29,7 +43,12 @@ export type Img = {
   pos?: string;
   /** largest generated width; keep it at or below the source width */
   max?: number;
+  /** Stand-in from a similar situation, not the project site. Shown with a
+      "Representative image" tag until WRG shares the project's own photo. */
+  provisional?: boolean;
 };
+
+const pv = (src: ImageMetadata, alt: string, pos: string, max: number): Img => ({ src, alt, pos, max, provisional: true });
 
 /** Main image of each case study: home, projects index, case hero, About, related cards. */
 export const projectMain: Record<string, Img & { band: string; card: string; square: string }> = {
@@ -67,23 +86,37 @@ export const projectMain: Record<string, Img & { band: string; card: string; squ
   },
 };
 
-/** Case-study gallery, in the order of the gallery captions. */
+/** Case-study gallery, in the order of the gallery captions:
+    affected area · equipment or process · repaired area · building context · team at work.
+    Entries built with pv() are provisional stand-ins (see docs/fotos-sitio.md). */
 export const projectGallery: Record<string, (Img | null)[]> = {
-  'icon-bay': [null, null, null, { src: iconBayExterior, alt: 'Icon Bay seen from the water at dusk, with its lit pool deck and palm-lined waterfront.', pos: '50% 60%', max: 1920 }, null],
-  'gables-waterway-towers': [null, null, null, { src: gablesEntrance, alt: 'The covered entrance of Gables Waterway Towers behind a bed of red and white flowers.', pos: '50% 55%', max: 1536 }, null],
+  'icon-bay': [
+    pv(pvWaterHallway, 'Standing water along the floor of a residential building hallway.', '50% 60%', 1080),
+    pv(pvHallwayDrying, 'Dehumidifiers and air movers lined along a carpeted condominium hallway.', '50% 55%', 1080),
+    pv(pvDrywall, 'A gloved hand fastening a new drywall panel with a screw gun.', '40% 50%', 1600),
+    { src: iconBayExterior, alt: 'Icon Bay seen from the water at dusk, with its lit pool deck and palm-lined waterfront.', pos: '50% 60%', max: 1920 },
+    pv(pvCrewVan, 'A WRG van parked at a high-rise entrance while the crew unloads equipment.', '50% 62%', 1080),
+  ],
+  'gables-waterway-towers': [
+    pv(fireRoom, 'A soot-darkened bedroom after a fire, with part of the ceiling opened.', '50% 45%', 1600),
+    pv(pvDryingRoom, 'An air mover and a dehumidifier drying a room opened down to its wood framing.', '50% 60%', 1080),
+    pv(drywall, 'A hand applying joint compound to a ceiling repair with a putty knife.', '55% 50%', 1600),
+    { src: gablesEntrance, alt: 'The covered entrance of Gables Waterway Towers behind a bed of red and white flowers.', pos: '50% 55%', max: 1536 },
+    pv(pvVacuum, 'A worker in boots vacuuming a floor with an industrial wet-dry vacuum.', '50% 60%', 1600),
+  ],
   'st-louis-condominium': [
     { src: slAffected, alt: 'Dark mold growth along the top of a baseboard and wall in a St. Louis Condominium unit.', pos: '50% 50%', max: 655 },
     { src: slHallway, alt: 'A St. Louis Condominium hallway with baseboards and flooring removed during remediation.', pos: '50% 50%', max: 655 },
-    null,
-    null,
-    null,
+    { src: slRepaired, alt: 'A clean, repainted wall and ceiling corner in a St. Louis Condominium unit.', pos: '50% 50%', max: 655 },
+    { src: slExterior, alt: 'The St. Louis Condominium tower on Brickell Key seen from below against a blue sky.', pos: '50% 45%', max: 1310 },
+    pv(pvHallwayTech, 'A technician in a protective suit applying a treatment along a building hallway.', '50% 40%', 1080),
   ],
   'south-point-condominium': [
     { src: spAffected, alt: 'Pieces of removed drywall with mold growth on a protected floor at South Point Condominium.', pos: '50% 50%', max: 655 },
     { src: spContainment, alt: 'Plastic containment and an air scrubber set up inside a South Point Condominium unit.', pos: '50% 50%', max: 655 },
-    null,
+    pv(pvDrywall, 'A gloved hand fastening a new drywall panel with a screw gun.', '40% 50%', 1600),
     { src: spExterior, alt: 'View from a South Point Condominium balcony toward the building and the beach in Fort Lauderdale.', pos: '50% 50%', max: 655 },
-    null,
+    pv(pvContainmentTech, 'A technician in a protective suit and respirator working on a ceiling inside a plastic containment.', '50% 30%', 1080),
   ],
 };
 
@@ -91,7 +124,8 @@ export const projectGallery: Record<string, (Img | null)[]> = {
 export const serviceBand: Record<string, Img | null> = {
   'water-damage-restoration': { src: waterDrying, alt: 'An air mover and a dehumidifier drying an affected room.', pos: '55% 60%', max: 1920 },
   'fire-damage-restoration': { src: fireRoom, alt: 'A soot-darkened bedroom after a fire, with part of the ceiling opened during the removal of damaged materials.', pos: '50% 45%', max: 1600 },
-  'mold-remediation': null,
+  // WRG photo, 1080 px source enlarged 2x with Lanczos + light sharpening.
+  'mold-remediation': { src: moldContainment, alt: 'A plastic containment barrier held by spring poles, with taped viewing panels, set up inside a building.', pos: '50% 60%', max: 2160 },
   'environmental-cleanup': { src: ppeCrew, alt: 'Two technicians in protective suits and gloves spraying a treatment inside a building.', pos: '60% 40%', max: 1920 },
   reconstruction: { src: drywall, alt: 'A hand applying joint compound to a ceiling repair with a putty knife.', pos: '55% 50%', max: 2400 },
 };
@@ -102,6 +136,13 @@ export const aboutHero: Img = {
   pos: '50% 35%',
   max: 1080,
 };
+
+/** About · Our Experts. Portraits approved for publication; names, roles and
+    credentials are still pending, so none are shown. */
+export const experts: Img[] = [
+  { src: profile1, alt: 'Portrait of a member of the WRG team in a blue blazer and white shirt.', pos: '50% 30%', max: 800 },
+  { src: profile2, alt: 'Portrait of a member of the WRG team in a black blazer and blue top.', pos: '50% 30%', max: 800 },
+];
 
 export const miamiContext: Img = {
   src: miamiDowntown,

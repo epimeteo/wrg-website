@@ -1,9 +1,63 @@
 ---
 import LegalPage from '../components/LegalPage.astro';
+const sections = [
+  {
+    h: 'Use of this website',
+    p: ['You may use this website for lawful purposes and to learn about WRG and its services. You agree not to:'],
+    list: [
+      'Use the website in any way that violates applicable law or the rights of others',
+      'Attempt to gain unauthorized access to the website, its servers or related systems',
+      'Interfere with the operation of the website, including by introducing malicious code or using automated tools that place an unreasonable load on it',
+      'Copy, republish or sell content from the website without our written permission',
+    ],
+  },
+  {
+    h: 'Information on this website',
+    p: [
+      'The content of this website, including articles, service descriptions and case studies, is provided for general information only. It is not professional, legal, insurance, health or safety advice, and it is not a substitute for an assessment of your property.',
+      'Service descriptions explain what work may include. They are not an offer or a guarantee of availability, scope, price, timing or results. Every project is defined by its own assessment and written agreement.',
+      'We work to keep the information accurate and current, but we do not warrant that it is complete or free of errors.',
+    ],
+  },
+  {
+    h: 'Emergencies',
+    p: ['This website is not monitored for emergencies. If there is a risk to life or safety, call 911. For urgent property damage, call our 24/7 phone line.'],
+  },
+  {
+    h: 'Services and agreements',
+    p: ['Any service WRG provides is governed by the written estimate, work authorization or contract signed for that project. If those documents and this website differ, the signed documents control.'],
+  },
+  {
+    h: 'Intellectual property',
+    p: ['The website and its content, including text, photographs, graphics, logos and the WRG name and marks, are owned by WRG or its licensors and are protected by intellectual property laws. You may view and print pages for personal, non-commercial use. Any other use requires our written permission.'],
+  },
+  {
+    h: 'Third-party links',
+    p: ['The website may link to sites operated by others, such as map services or public agencies. We provide those links for convenience, do not control those sites and are not responsible for their content or practices.'],
+  },
+  {
+    h: 'Disclaimer of warranties',
+    p: ['The website is provided “as is” and “as available.” To the fullest extent permitted by law, WRG disclaims all warranties, express or implied, regarding the website and its content, including implied warranties of merchantability, fitness for a particular purpose and non-infringement.'],
+  },
+  {
+    h: 'Limitation of liability',
+    p: ['To the fullest extent permitted by law, WRG and its owners, employees and agents are not liable for any indirect, incidental, special, consequential or punitive damages arising from your use of, or inability to use, this website or its content. Nothing in these terms limits liability that cannot be limited under applicable law, or WRG’s obligations under a signed service agreement.'],
+  },
+  {
+    h: 'Governing law',
+    p: ['These terms are governed by the laws of the State of Florida, without regard to its conflict of law rules. Any dispute relating to the website will be brought in the state or federal courts located in Miami-Dade County, Florida.'],
+  },
+  {
+    h: 'Changes to these terms',
+    p: ['We may update these terms from time to time. The date at the top of the page shows when they were last revised. Your continued use of the website after a change means you accept the updated terms.'],
+  },
+];
 ---
 <LegalPage
   title="Terms & Conditions"
-  description="Terms and Conditions of The Water Restoration Group website."
-  note="Terms of use must be provided or approved by WRG before launch."
-  sections={['Use of this website', 'Information on this website', 'Third-party links', 'Changes to these terms']}
+  description="Terms and conditions for using the website of The Water Restoration Group."
+  note="Generic terms of use for an informational website. Governing law and venue (Florida, Miami-Dade County) are assumptions based on the headquarters address. WRG must review the text with counsel and approve or replace it before launch."
+  updated="November 12, 2026"
+  intro="These Terms & Conditions govern your use of the website of The Water Restoration Group (“WRG,” “we,” “us”). By using this website, you agree to these terms. If you do not agree, please do not use the website."
+  sections={sections}
 />
