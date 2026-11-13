@@ -32,8 +32,9 @@ Before committing: `npm run build && npm run check:links`.
 
 ## Where things live
 
-- Data: `src/data/` — `site.ts` (company, offices, routes, `reviewMode`), `services.ts`, `projects.ts`, `articles.ts`, `faqs.ts`, `sitemap.ts`. Add a service/project/article by adding an object; pages, menu, footer and sitemap pick it up.
-- Templates: `src/pages/services/[slug].astro`, `projects/[slug].astro`, `blog/[category]/[slug].astro`.
+- Data: `src/data/` — `site.ts` (company, offices, routes, `reviewMode`), `services.ts`, `projects.ts`, `articles.ts` (editorial insights), `insights.ts` (all insights: editorial + migrated, topics, related), `faqs.ts`, `sitemap.ts`.
+- Migrated blog: `src/content/blog/{category}/{slug}.md` (content collection, schema in `src/content.config.ts`). Keep each file's path: it is the old site's URL. See `docs/blog-migracion.md`. Add a service/project/article by adding an object; pages, menu, footer and sitemap pick it up.
+- Templates: `src/pages/services/[slug].astro`, `projects/[slug].astro`, `blog/[category]/[slug].astro` (renders both kinds of insight), `blog/[category]/index.astro` (topic listings).
 - Hand-written pages: home, about, reviews, careers, locations (each office page is its own file), contact, faqs, legal, thank-you, 404.
 - Layout and shared UI: `src/layouts/BaseLayout.astro`, `src/components/`.
 - Behavior: `src/scripts/site.ts` (menu: focus trap, Escape, inert, focus return; scroll engine: `data-cur`, `data-depth`, `.rv`, header tone).
