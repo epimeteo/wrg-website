@@ -2,9 +2,9 @@
 import { routes, offices } from './site';
 import { services, serviceHref } from './services';
 import { projects, projectHref } from './projects';
-import { articles, articleHref } from './articles';
+import { getInsights } from './insights';
 
-export const publicRoutes: string[] = [
+export const getPublicRoutes = async (): Promise<string[]> => [
   routes.home,
   routes.about,
   routes.reviews,
@@ -16,7 +16,7 @@ export const publicRoutes: string[] = [
   routes.projects,
   ...projects.map((p) => projectHref(p.slug)),
   routes.blog,
-  ...articles.map((a) => articleHref(a)),
+  ...(await getInsights()).map((i) => i.href),
   routes.faqs,
   routes.contact,
   routes.privacy,
