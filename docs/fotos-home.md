@@ -48,3 +48,16 @@ Todas pasan las condiciones previas: sin marcas de agua, sin datos personales le
 - `Home.jpg` lleva en sus metadatos el copyright de un fotógrafo («Javier Sanchez»). El cliente confirmó el 12 nov 2026 que la licencia cubre el uso en la web.
 - ~~Autoría de las fotos de Icon Bay~~: confirmada el 11 nov 2026. Sigue pendiente la clasificación del caso (ver `pendientes.md`).
 - `The-WRG-Difference.jpg` está ampliada desde una foto de teléfono. Si existe el original, mejoraría la nitidez de la tarjeta comercial.
+
+## Revisión con el banco depurado (21 nov 2026)
+
+Se comparó el home con el banco depurado (`filtered-images`). Las seis fotos son las mismas y no hay versiones de mayor resolución: `Home.jpg` 1654×1098, `The-WRG-Difference.jpg` 1920×1920 (sigue siendo una ampliación desde teléfono), `Icon-Bay-Main-scaled` 1707×2560, `Gables-Waterway-Towers-Main` 2048×1536, `St.-Louis-Condominium` 1500×1000 y `South-Point-Condominium` 2400×840. No hay cambios en el home.
+
+| Espacio | Foto (banco) | Archivo | Puntaje | Estado |
+|---|---|---|---|---|
+| Hero | `Home.jpg` 1654×1098 | `home/wrg-technician-moisture-documentation.jpg` | **88** | Sin cambio |
+| Commercial & Property Management | `The-WRG-Difference.jpg` 1920×1920 | `home/wrg-truck-high-rise.jpg` | **82** | Sin cambio |
+| Icon Bay | `Icon-Bay-Main-scaled.jpg` 1707×2560 | `home/icon-bay.jpg` | **86** | Sin cambio |
+| Gables Waterway Towers | `Gables-Waterway-Towers-Main.jpg` 2048×1536 | `home/gables-waterway-towers.jpg` | **88** | Sin cambio |
+| St. Louis Condominium | `St.-Louis-Condominium.jpg` 1500×1000 | `home/st-louis-condominium.jpg` | **85** | Sin cambio |
+| South Point Condominium | `South-Point-Condominium.jpg` 2400×840 | `home/south-point-condominium.jpg` | **83** | Sin cambio |

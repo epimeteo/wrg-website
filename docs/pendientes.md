@@ -7,12 +7,13 @@ Mientras `PUBLIC_REVIEW_MODE` no sea `false`, el sitio muestra estas advertencia
 - [x] Logo oficial: monograma WRG del sitio anterior en `LogoMark.astro` (header azul, footer blanco), favicon (`public/favicon.svg`, `favicon-32.png`, `apple-touch-icon.png`) e imagen para redes `public/og-image.jpg`. Se regeneran con `node scripts/make-brand-assets.mjs`.
 - [x] Fotografía del home (hero, tarjeta comercial y los 4 proyectos), integrada con `Photo.astro` (`<Picture>` de `astro:assets`). Detalle, puntajes y verificaciones pendientes en [fotos-home.md](fotos-home.md).
 - [x] Fotografía de servicios, proyectos, About, Miami y blog, centralizada en `src/data/photos.ts`. Detalle en [fotos-sitio.md](fotos-sitio.md).
-- [x] Banda de Mold Remediation: `Containment-1` (1080 px, el original más grande que existe en el backup) ampliada a 2160 px.
+- [x] Banda de Mold Remediation: `Containment-1` (1080 px, el original más grande que existe en el backup y en el banco depurado) ampliada a 2160 px. Sigue abierto conseguir el original de cámara.
 - [x] Licencia de `Home.jpg` (hero): el cliente confirmó que cubre el uso en la web (12 nov 2026).
 - [x] Perfiles de About: publicados los dos retratos aprobados (`Untitled-design-59/60`, las mismas fotos de `1-2.png` y `2-2.png` en formato cuadrado), sin nombre ni cargo.
-- [ ] **Fotos provisionales en las galerías de los 4 casos** (11 espacios, con la etiqueta visible «Representative image»): hay que sustituirlas por fotos de cada obra antes del lanzamiento. Lista en [fotos-sitio.md](fotos-sitio.md#fotos-provisionales-en-las-galerías-12-nov-2026).
-- [ ] Fotos de las oficinas (3) para el índice de ubicaciones: a la espera de que el cliente las comparta.
-- [ ] Tercer perfil de About: foto, nombre y cargo.
+- [x] Banco depurado del cliente (`filtered-images`, 21 nov 2026): revisado completo. Reemplazó 2 provisionales (St. Louis y South Point · equipo en obra) por fotos reales de cada obra, subió la resolución de 18 imágenes del blog y de la entrada de Gables. Detalle en [fotos-sitio.md](fotos-sitio.md#banco-depurado-filtered-images-21-nov-2026).
+- [ ] **Fotos provisionales en las galerías de los 4 casos** (quedan 9, con la etiqueta visible «Representative image»: 4 de Icon Bay, 4 de Gables y South Point · reparación). El banco depurado no trae fotos de esas obras para esos espacios. Lista en [fotos-sitio.md](fotos-sitio.md#fotos-provisionales-en-las-galerías-12-nov-2026-actualizado-el-21-nov-2026).
+- [ ] Fotos de las oficinas (3) para el índice de ubicaciones: a la espera de que el cliente las comparta (el banco depurado no trae ninguna).
+- [ ] Tercer perfil de About: foto, nombre y cargo. El banco depurado solo trae retratos de 430×286 sin indicación de aprobación; los nombres de archivo no coinciden entre sí, así que no confirman nombres ni cargos.
 - [ ] Fotos de la escuela inundada: el cliente compartirá ese caso más adelante.
 - [ ] Las dos fotos provisionales del prototipo de diseño (equipo con equipos de secado y técnico con medidor de humedad) **no están en este repositorio público**: su origen y sus derechos de uso no están confirmados.
 
