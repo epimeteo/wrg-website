@@ -24,6 +24,8 @@ import hallwayDrying from '../assets/blog/condo-hallway-drying.jpg';
 import moldContainment from '../assets/services/mold-containment.jpg';
 import slExterior from '../assets/projects/st-louis-exterior.jpg';
 import slRepaired from '../assets/projects/st-louis-repaired-ceiling.jpg';
+import slContainment from '../assets/projects/st-louis-containment-entrance.jpg';
+import spAirScrubber from '../assets/projects/south-point-air-scrubber.jpg';
 import profile1 from '../assets/about/profile-1.jpg';
 import profile2 from '../assets/about/profile-2.jpg';
 // Provisional gallery images: similar situations, not the project site.
@@ -32,8 +34,6 @@ import pvHallwayDrying from '../assets/projects/provisional/hallway-drying-equip
 import pvDrywall from '../assets/projects/provisional/drywall-installation.jpg';
 import pvDryingRoom from '../assets/projects/provisional/drying-opened-room.jpg';
 import pvCrewVan from '../assets/projects/provisional/wrg-crew-van-high-rise.jpg';
-import pvHallwayTech from '../assets/projects/provisional/technician-hallway-treatment.jpg';
-import pvContainmentTech from '../assets/projects/provisional/technician-inside-containment.jpg';
 import pvVacuum from '../assets/projects/provisional/cleanup-vacuum.jpg';
 
 export type Img = {
@@ -101,22 +101,22 @@ export const projectGallery: Record<string, (Img | null)[]> = {
     pv(fireRoom, 'A soot-darkened bedroom after a fire, with part of the ceiling opened.', '50% 45%', 1600),
     pv(pvDryingRoom, 'An air mover and a dehumidifier drying a room opened down to its wood framing.', '50% 60%', 1080),
     pv(drywall, 'A hand applying joint compound to a ceiling repair with a putty knife.', '55% 50%', 1600),
-    { src: gablesEntrance, alt: 'The covered entrance of Gables Waterway Towers behind a bed of red and white flowers.', pos: '50% 55%', max: 1536 },
+    { src: gablesEntrance, alt: 'The covered entrance of Gables Waterway Towers behind a bed of red and white flowers.', pos: '50% 55%', max: 1600 },
     pv(pvVacuum, 'A worker in boots vacuuming a floor with an industrial wet-dry vacuum.', '50% 60%', 1600),
   ],
   'st-louis-condominium': [
-    { src: slAffected, alt: 'Dark mold growth along the top of a baseboard and wall in a St. Louis Condominium unit.', pos: '50% 50%', max: 655 },
+    { src: slAffected, alt: 'Dark mold growth along a curved ceiling soffit below an exit sign at St. Louis Condominium.', pos: '50% 50%', max: 655 },
     { src: slHallway, alt: 'A St. Louis Condominium hallway with baseboards and flooring removed during remediation.', pos: '50% 50%', max: 655 },
     { src: slRepaired, alt: 'A clean, repainted wall and ceiling corner in a St. Louis Condominium unit.', pos: '50% 50%', max: 655 },
     { src: slExterior, alt: 'The St. Louis Condominium tower on Brickell Key seen from below against a blue sky.', pos: '50% 45%', max: 1310 },
-    pv(pvHallwayTech, 'A technician in a protective suit applying a treatment along a building hallway.', '50% 40%', 1080),
+    { src: slContainment, alt: 'A plastic containment sealing off a St. Louis Condominium hallway, with spring poles, caution tape and a microbial hazard sign.', pos: '50% 45%', max: 655 },
   ],
   'south-point-condominium': [
     { src: spAffected, alt: 'Pieces of removed drywall with mold growth on a protected floor at South Point Condominium.', pos: '50% 50%', max: 655 },
     { src: spContainment, alt: 'Plastic containment and an air scrubber set up inside a South Point Condominium unit.', pos: '50% 50%', max: 655 },
     pv(pvDrywall, 'A gloved hand fastening a new drywall panel with a screw gun.', '40% 50%', 1600),
     { src: spExterior, alt: 'View from a South Point Condominium balcony toward the building and the beach in Fort Lauderdale.', pos: '50% 50%', max: 655 },
-    pv(pvContainmentTech, 'A technician in a protective suit and respirator working on a ceiling inside a plastic containment.', '50% 30%', 1080),
+    { src: spAirScrubber, alt: 'A WRG air scrubber running inside a plastic containment at South Point Condominium, with the window sealed and taped.', pos: '60% 60%', max: 655 },
   ],
 };
 
