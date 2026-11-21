@@ -2,6 +2,9 @@
 import { reviewMode } from '../../data/site';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Photo from '../../components/Photo.astro';
+import ReviewCard from '../../components/ReviewCard.astro';
+import { googleReviews } from '../../data/reviews';
+const miamiReview = googleReviews.find((r) => r.office === 'miami');
 import { miamiContext } from '../../data/photos';
 ---
 <BaseLayout title="Water Damage Restoration in Miami, FL" description="Restoration for Miami homes, condominiums and commercial properties from WRG’s corporate headquarters at 555 NW 95th St, Miami, FL." active="locations">
@@ -101,6 +104,17 @@ import { miamiContext } from '../../data/photos';
       </div>
     </section>
 
+    {miamiReview && (
+    <section class="sec bg-mist sheet-top" aria-labelledby="rv">
+      <div class="wrap">
+        <div class="ctx">
+          <div class="stack g16"><p class="eyebrow">Reviews</p><h2 class="h2" id="rv">From a Miami building manager.</h2><a class="lnk" href="/reviews/">Read more client reviews</a></div>
+          <ReviewCard review={miamiReview} style="margin: 0; background: var(--white); border-color: var(--line)" />
+        </div>
+      </div>
+    </section>
+    )}
+
     <!-- 5 · FAQ -->
     <section class="sec bg-white" aria-labelledby="fq">
       <div class="wrap">
@@ -111,7 +125,7 @@ import { miamiContext } from '../../data/photos';
             <details><summary>Is the Miami office WRG’s headquarters?<span class="pm" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg></span></summary><p class="ans">Yes. WRG’s corporate headquarters is at 555 NW 95th St, Miami, FL 33150. Phone support is available 24/7 at (844) 379-9283.</p></details>
           </div>
         </div>
-        {reviewMode && (<p class="notice" style="margin-top: 40px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 8v5M12 16.5v.01"></path></svg><span><b>Internal review:</b> Local reviews and the Miami team module stay hidden until reviews with a verified Miami connection and approved staff profiles are available.</span></p>)}
+        {reviewMode && (<p class="notice" style="margin-top: 40px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 8v5M12 16.5v.01"></path></svg><span><b>Internal review:</b> The review above is the only one in the review history Sheet that names Miami. The Miami team module stays hidden until approved staff profiles are available.</span></p>)}
       </div>
     </section>
 

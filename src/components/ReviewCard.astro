@@ -1,0 +1,11 @@
+---
+// One Google review as a quote card (.rev). Stars are visual; the label reads them.
+import { reviewMonth, type Review } from '../data/reviews';
+interface Props { review: Review; class?: string; style?: string }
+const { review: r, class: cls, style } = Astro.props;
+---
+<figure class:list={['rev', cls]} style={style}>
+  <p class="stars" role="img" aria-label={`${r.rating} out of 5 stars`}>{'★'.repeat(r.rating)}<span class="off" aria-hidden="true">{'★'.repeat(5 - r.rating)}</span></p>
+  <blockquote>{r.text}</blockquote>
+  <footer><cite>{r.name}</cite><span>Google review · {reviewMonth(r.month)}</span></footer>
+</figure>
