@@ -1,4 +1,6 @@
 ---
+import ReviewCard from '../components/ReviewCard.astro';
+import { reviewById } from '../data/reviews';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Photo from '../components/Photo.astro';
 import { aboutHero, experts, projectMain as pm } from '../data/photos';
@@ -102,10 +104,7 @@ import { reviewMode } from '../data/site';
       <div class="wrap">
         <div class="ctx">
           <div class="stack g16"><p class="eyebrow">Reviews</p><h2 class="h2" id="rv">Experiences shared by WRG clients.</h2><a class="lnk" href="/reviews/">Read client reviews</a></div>
-          <figure class="rev" style="margin: 0">
-            <blockquote>It is an absolute pleasure to work with WRG. The staff is efficient, courteous, and friendly across the board.</blockquote>
-            <footer><cite>Mary M.</cite><span>Testimonial published on thewaterrestorationgroup.com</span>{reviewMode && <span class="review-flag" style="margin-top: 8px; align-self: flex-start">Platform, date and permission pending verification</span>}</footer>
-          </figure>
+          <ReviewCard review={reviewById('R-0009')} style="margin: 0; background: var(--white); border-color: var(--line)" />
         </div>
       </div>
     </section>

@@ -182,6 +182,9 @@
 .rev blockquote::before{content:"\201C";display:block;font:700 56px/0.6 var(--f-d);color:var(--tide);margin-bottom:10px}
 .rev footer{display:flex;flex-direction:column;gap:2px;padding-top:14px;border-top:1px solid var(--line);font-size:14px;color:var(--muted)}
 .rev cite{font-style:normal;font-weight:800;font-size:16px;color:var(--ink)}
+.rev .stars{margin:0;font-size:18px;letter-spacing:2px;line-height:1;color:var(--blue)}
+.rev .stars .off{color:var(--line)}
+.rev .stars+blockquote::before{display:none}
 
 /* Insights ----------------------------------------------------------------------- */
 .topics{display:flex;flex-wrap:wrap;gap:10px}
