@@ -561,3 +561,5 @@
 /* Hero photo: no parallax overscan, so the technician keeps his headroom and
    the tablet stays clear of the overlapping office card. */
 .ph-hero .ph-img{top:0;height:100%;transform:none}
+/* Desktop: only the featured insight keeps its image; thumbnails show below 1024 px. */
+@media (min-width:1024px){.ins-card .ins-thumb{display:none}}
