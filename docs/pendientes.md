@@ -27,7 +27,7 @@ Mientras `PUBLIC_REVIEW_MODE` no sea `false`, el sitio muestra estas advertencia
 
 - [ ] Icon Bay: la ficha original dice “Fire + Smoke” y la narrativa describe un evento de agua (la lista de destacados del sitio anterior lo etiqueta “Water + Storm”). Confirmar la clasificación. Hoy se publica como Water Damage + Reconstruction.
 - [ ] Fechas y alcance detallado de los 4 casos (Icon Bay y Gables ya incluyen las cifras publicadas por WRG). Casos 5 y 6 (prioridad West Palm Beach y Georgia).
-- [x] Reseñas (21 nov 2026): 10 reseñas de Google de Florida, copiadas de la hoja «WRG · Historial de reseñas», en `/reviews/`, About y Miami. Se quitaron los dos testimonios sin fuente. Detalle en [resenas.md](resenas.md).
+- [x] Reseñas (21 nov 2026): 12 reseñas de Google de Florida, copiadas de la hoja «WRG · Historial de reseñas», en `/reviews/`, About y Miami. Se quitaron los dos testimonios sin fuente. Detalle en [resenas.md](resenas.md).
 - [x] Enlace al perfil de Google Business de Florida: botón «Read all reviews on Google» en `/reviews/`.
 - [ ] West Palm Beach y Georgia siguen sin reseñas propias.
 - [ ] Perfiles de expertos (hasta 3): nombre, cargo y credenciales. La sección de About ya es pública con los dos retratos aprobados, sin nombres.

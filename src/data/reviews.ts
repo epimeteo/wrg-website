@@ -83,6 +83,20 @@ export const googleReviews: Review[] = [
     text: 'Professional, extremely responsive. Service includes one-stop restoration and repairs.',
   },
   {
+    id: 'R-0003',
+    name: 'Sepehr N.',
+    rating: 5,
+    month: '2016-02',
+    text: 'I am a real estate broker who runs into a lot of interesting situations out there with properties and client. Whenever there is a "disaster", I always suggest the Water Restoration Group, simply because I know they will show up, do what they need to do, and help my clients get back to normal...These guys make me look good! Thank you!',
+  },
+  {
+    id: 'R-0004',
+    name: 'Adriana C.',
+    rating: 5,
+    month: '2016-02',
+    text: 'I had the great pleasure of witnessing this great team that was called out to my building not long ago. One of the top units experienced a huge leak and water was everywhere; my apartment the hallways, and inside several other apartments. The management office immediately called The Water Restoration Group and within a decent waiting period they arrived. Their entire response time was amazing during the duration of the "clean up" and where most people were seemingly stressed. The crew was very professional and diligent with their work. Everyone affected by the leak was very pleased with the results. I highly recommend The Water Restoration Group',
+  },
+  {
     id: 'R-0005',
     name: 'Anays C.',
     rating: 5,

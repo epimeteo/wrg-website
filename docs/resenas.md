@@ -6,7 +6,7 @@ No se usa la API de Google Places ni un widget de terceros: el texto se copia a 
 
 ## Dónde aparecen
 
-- `/reviews/`: las 10 reseñas seleccionadas, de la más reciente a la más antigua, con la etiqueta de que son una selección de Google.
+- `/reviews/`: las 12 reseñas seleccionadas, de la más reciente a la más antigua, con la etiqueta de que son una selección de Google.
 - About: la de Mary M. (R-0009).
 - Miami: la de David B. (R-0006), la única que menciona Miami (columna «Ubicación» = Miami).
 - West Palm Beach y Smyrna: ninguna. La hoja no asocia reseñas a esas oficinas.
@@ -26,11 +26,12 @@ Se publican las reseñas con su texto completo, en inglés y sobre los servicios
 | R-0009 | Mary M. | 5 | mar 2017 | Reviews, About |
 | R-0010 | Melissa F. | 5 | mar 2017 | Reviews |
 | R-0011 | Vic B. | 5 | mar 2017 | Reviews |
+| R-0004 | Adriana C. | 5 | feb 2016 | Reviews |
+| R-0003 | Sepehr N. | 5 | feb 2016 | Reviews |
 | R-0005 | Anays C. | 5 | feb 2016 | Reviews |
 
 No se publican:
 
-- **Texto truncado** en la hoja («Ver la opinión completa»): R-0003, R-0004. Se pueden añadir si se copia el texto completo.
 - **Muy cortas:** R-0002 («Great customer service»), R-0012.
 - **En español:** R-0013 (el sitio está en inglés).
 - **Solo estrellas, sin texto:** R-0014, R-0022.
@@ -48,3 +49,5 @@ Los dos testimonios anteriores que no están en la hoja (Denissa D. y Rolando H.
 ## Perfil de Google
 
 El enlace al perfil de Google Business de Florida (compartido por el cliente) está en `googleProfileUrl` (`src/data/reviews.ts`) y alimenta el botón «Read all reviews on Google» de `/reviews/`.
+
+R-0003 y R-0004 se añadieron el 21 nov 2026, cuando el cliente completó su texto en la hoja.
