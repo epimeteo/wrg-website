@@ -422,3 +422,11 @@
 .sources .tagline a{text-decoration:none}
 .topics a .count{margin-left:8px;font-size:13px;font-weight:600;color:var(--muted);font-variant-numeric:tabular-nums}
 @media (max-width:640px){.art-photo .ph{aspect-ratio:4/3}}
+
+/* Services index: photos in the service tiles ----------------------------------- */
+.tile .tile-img{width:100%;aspect-ratio:16/9;border-radius:var(--r-sm)}
+.tile .tile-img .ph-img{top:0;height:100%;transform:none}
+.tile .tile-img::after{display:none}
+.tile.feat .tile-bg{position:absolute;inset:0;z-index:-1;margin:0;border-radius:0}
+.tile.feat .tile-bg .ph-img{top:0;height:100%;transform:none}
+.tile.feat .tile-bg::after{background:linear-gradient(180deg,rgba(6,31,40,.88) 0%,rgba(6,31,40,.7) 50%,rgba(6,31,40,.92) 100%)}

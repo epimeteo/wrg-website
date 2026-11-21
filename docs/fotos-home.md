@@ -8,10 +8,10 @@ Selección hecha el 11 nov 2026 a partir del banco de imágenes del sitio anteri
 |---|---|---|---|
 | Hero «Respond» | `Photo.ph-hero` en `.hero-media` | 1:1 con la tarjeta de oficinas superpuesta abajo a la derecha / 16:11, tarjeta superpuesta / 4:3, tarjeta debajo | Auténtica WRG (equipo y equipos de trabajo) |
 | Commercial & Property Management | `Photo` en `.aud-main` | 16:8 fijo en los tres anchos | Auténtica WRG (flota en edificio gestionado) |
-| Proyecto destacado: Icon Bay | `Photo` en `.proj-feature` | 7:5 en los tres anchos (a una columna bajo 1024 px) | Proyecto ejecutado (ficha WRG) |
-| Gables Waterway Towers | `Photo.mini` | Cuadrado 96 px / 96 px / 76 px | Proyecto ejecutado |
-| St. Louis Condominium | `Photo.mini` | Cuadrado 96 / 96 / 76 px | Proyecto ejecutado |
-| South Point Condominium | `Photo.mini` | Cuadrado 96 / 96 / 76 px | Proyecto ejecutado |
+| Proyecto destacado: Edgewater Bayfront High-Rise | `Photo` en `.proj-feature` | 7:5 en los tres anchos (a una columna bajo 1024 px) | Proyecto ejecutado (ficha WRG) |
+| Coral Gables Mid-Century Condominium | `Photo.mini` | Cuadrado 96 px / 96 px / 76 px | Proyecto ejecutado |
+| Brickell Key Island Tower | `Photo.mini` | Cuadrado 96 / 96 / 76 px | Proyecto ejecutado |
+| Fort Lauderdale Beachfront Towers | `Photo.mini` | Cuadrado 96 / 96 / 76 px | Proyecto ejecutado |
 
 ## Selección y puntaje
 
@@ -21,43 +21,43 @@ Criterios: correspondencia (40), calidad técnica (25), composición responsiva 
 |---|---|---|---|---|---|
 | Hero | `Home.jpg` (1654×1098). Técnico con polo WRG, tablet y teléfono junto a un air mover | `src/assets/home/wrg-technician-moisture-documentation.jpg` | 37 + 21 + 17 + 13 = **88** | Ninguno en el archivo. Punto focal `100% 50%` y sin parallax en el hero (CSS) para que la tarjeta de oficinas no tape la tablet ni se recorte la cabeza | Integrada |
 | Commercial & Property Management | `The-WRG-Difference.jpg` (1920×1920). Camión WRG al pie de una torre residencial | `src/assets/home/wrg-truck-high-rise.jpg` | 35 + 18 + 16 + 13 = **82** | Ninguno. Punto focal `50% 74%` (logo del camión y balcones) | Integrada |
-| Icon Bay | `Icon-Bay-Main-scaled.jpg.webp` (1707×2560). Torre y acceso | `src/assets/home/icon-bay.jpg` | 34 + 22 + 17 + 13 = **86** | Recorte de la parte inferior del original (queda 1707×1950) para retirar el número de la calle y el rótulo. Punto focal `50% 90%` | Integrada |
-| Gables Waterway Towers | `Gables-Waterway-Towers-Main.jpg` (2048×1536) | `src/assets/home/gables-waterway-towers.jpg` | 34 + 23 + 18 + 13 = **88** | Ninguno. Punto focal `45% 50%` | Integrada |
-| St. Louis Condominium | `St.-Louis-Condominium.jpg` (1500×1000) | `src/assets/home/st-louis-condominium.jpg` | 33 + 22 + 17 + 13 = **85** | Ninguno. Punto focal `23% 50%` | Integrada |
-| South Point Condominium | `South-Point-Condominium.jpg` (2400×840) | `src/assets/home/south-point-condominium.jpg` | 33 + 21 + 16 + 13 = **83** | Ninguno. Punto focal `75% 50%` | Integrada |
+| Edgewater Bayfront High-Rise | `Edgewater Bayfront High-Rise` (1707×2560). Torre y acceso | `src/assets/home/icon-bay.jpg` | 34 + 22 + 17 + 13 = **86** | Recorte de la parte inferior del original (queda 1707×1950) para retirar el número de la calle y el rótulo. Punto focal `50% 90%` | Integrada |
+| Coral Gables Mid-Century Condominium | `Coral Gables Mid-Century Condominium` (2048×1536) | `src/assets/home/gables-waterway-towers.jpg` | 34 + 23 + 18 + 13 = **88** | Ninguno. Punto focal `45% 50%` | Integrada |
+| Brickell Key Island Tower | `Brickell Key Island Tower` (1500×1000) | `src/assets/home/st-louis-condominium.jpg` | 33 + 22 + 17 + 13 = **85** | Ninguno. Punto focal `23% 50%` | Integrada |
+| Fort Lauderdale Beachfront Towers | `Fort Lauderdale Beachfront Towers` (2400×840) | `src/assets/home/south-point-condominium.jpg` | 33 + 21 + 16 + 13 = **83** | Ninguno. Punto focal `75% 50%` | Integrada |
 
 Todas pasan las condiciones previas: sin marcas de agua, sin datos personales legibles y sin placas visibles. Se revisaron los metadatos (sin GPS). En el camión, el teléfono visible es el de WRG.
 
 ## Descartes relevantes
 
 - `Contac-Us-WRG-1.jpg` (camión «Disaster Response Team»): auténtica, pero trae un degradado oscuro ya aplicado del diseño anterior y no muestra un edificio gestionado. Correspondencia 30/40 para la tarjeta comercial.
-- `Icon-Bay-Exterior.jpg`: fotografía de marketing de la torre al atardecer. No es la imagen de la ficha del proyecto y su autoría no está clara.
+- `Edgewater Bayfront High-Rise`: fotografía de marketing de la torre al atardecer. No es la imagen de la ficha del proyecto y su autoría no está clara.
 - `Urgent-Water-Damage-Response.jpg`, `Inspection-and-Assessment.jpg`, `Removal-and-Cleaning.jpg`, `Reconstruction.jpg`: apariencia de stock y procedencia sin verificar. El hero requiere una foto auténtica de WRG.
 - `Meet-Our-CEO.jpg`: evento con terceros identificables. No corresponde a ningún espacio del home.
 - `IMG_10072.jpg` y las dos fotos de WhatsApp (capacitaciones de WRG): auténticas y útiles para About o educación continua, pero no hay un espacio del home para ellas.
-- Interiores de St. Louis y South Point (≤ 62 KB): resolución insuficiente.
+- Interiores de Brickell Key y Fort Lauderdale (≤ 62 KB): resolución insuficiente.
 
 ## Integración
 
 - `src/components/Photo.astro` envuelve `<Picture>` de `astro:assets` dentro del mismo marco `.ph` que `PhotoSlot`. Genera AVIF, WebP y JPEG en los anchos del espacio, con `sizes` por breakpoint, `object-position` como punto focal y `loading="eager"` + `fetchpriority="high"` solo en el hero.
-- Texto alternativo en inglés en el hero, la tarjeta comercial e Icon Bay. Las miniaturas usan `alt=""` porque el nombre y la ubicación del proyecto están junto a la imagen.
-- Los archivos fuente se conservan en `src/assets/home/` sin recomprimir (salvo el recorte de Icon Bay).
+- Texto alternativo en inglés en el hero, la tarjeta comercial e Edgewater Bayfront High-Rise Las miniaturas usan `alt=""` porque el nombre y la ubicación del proyecto están junto a la imagen.
+- Los archivos fuente se conservan en `src/assets/home/` sin recomprimir (salvo el recorte de Edgewater Bayfront High-Rise).
 
 ## Por confirmar
 
 - `Home.jpg` lleva en sus metadatos el copyright de un fotógrafo («Javier Sanchez»). El cliente confirmó el 12 nov 2026 que la licencia cubre el uso en la web.
-- ~~Autoría de las fotos de Icon Bay~~: confirmada el 11 nov 2026. Sigue pendiente la clasificación del caso (ver `pendientes.md`).
+- ~~Autoría de las fotos de Edgewater Bayfront High-Rise~~: confirmada el 11 nov 2026. Sigue pendiente la clasificación del caso (ver `pendientes.md`).
 - `The-WRG-Difference.jpg` está ampliada desde una foto de teléfono. Si existe el original, mejoraría la nitidez de la tarjeta comercial.
 
 ## Revisión con el banco depurado (21 nov 2026)
 
-Se comparó el home con el banco depurado (`filtered-images`). Las seis fotos son las mismas y no hay versiones de mayor resolución: `Home.jpg` 1654×1098, `The-WRG-Difference.jpg` 1920×1920 (sigue siendo una ampliación desde teléfono), `Icon-Bay-Main-scaled` 1707×2560, `Gables-Waterway-Towers-Main` 2048×1536, `St.-Louis-Condominium` 1500×1000 y `South-Point-Condominium` 2400×840. No hay cambios en el home.
+Se comparó el home con el banco depurado (`filtered-images`). Las seis fotos son las mismas y no hay versiones de mayor resolución: `Home.jpg` 1654×1098, `The-WRG-Difference.jpg` 1920×1920 (sigue siendo una ampliación desde teléfono), `Edgewater Bayfront High-Rise` 1707×2560, `Coral Gables Mid-Century Condominium` 2048×1536, `Brickell Key Island Tower` 1500×1000 y `Fort Lauderdale Beachfront Towers` 2400×840. No hay cambios en el home.
 
 | Espacio | Foto (banco) | Archivo | Puntaje | Estado |
 |---|---|---|---|---|
 | Hero | `Home.jpg` 1654×1098 | `home/wrg-technician-moisture-documentation.jpg` | **88** | Sin cambio |
 | Commercial & Property Management | `The-WRG-Difference.jpg` 1920×1920 | `home/wrg-truck-high-rise.jpg` | **82** | Sin cambio |
-| Icon Bay | `Icon-Bay-Main-scaled.jpg` 1707×2560 | `home/icon-bay.jpg` | **86** | Sin cambio |
-| Gables Waterway Towers | `Gables-Waterway-Towers-Main.jpg` 2048×1536 | `home/gables-waterway-towers.jpg` | **88** | Sin cambio |
-| St. Louis Condominium | `St.-Louis-Condominium.jpg` 1500×1000 | `home/st-louis-condominium.jpg` | **85** | Sin cambio |
-| South Point Condominium | `South-Point-Condominium.jpg` 2400×840 | `home/south-point-condominium.jpg` | **83** | Sin cambio |
+| Edgewater Bayfront High-Rise | `Edgewater Bayfront High-Rise` 1707×2560 | `home/icon-bay.jpg` | **86** | Sin cambio |
+| Coral Gables Mid-Century Condominium | `Coral Gables Mid-Century Condominium` 2048×1536 | `home/gables-waterway-towers.jpg` | **88** | Sin cambio |
+| Brickell Key Island Tower | `Brickell Key Island Tower` 1500×1000 | `home/st-louis-condominium.jpg` | **85** | Sin cambio |
+| Fort Lauderdale Beachfront Towers | `Fort Lauderdale Beachfront Towers` 2400×840 | `home/south-point-condominium.jpg` | **83** | Sin cambio |

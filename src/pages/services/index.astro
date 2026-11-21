@@ -3,7 +3,10 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Icon from '../../components/Icon.astro';
 import { services, serviceHref } from '../../data/services';
 import { company } from '../../data/site';
+import Photo from '../../components/Photo.astro';
+import { serviceBand } from '../../data/photos';
 const [first, ...rest] = services;
+const firstImg = serviceBand[first.slug];
 ---
 <BaseLayout title="Restoration Services" description="Water, fire and smoke, mold and environmental restoration, plus reconstruction after mitigation. Each service explained clearly by WRG." page="services" active="services">
 
@@ -33,6 +36,7 @@ const [first, ...rest] = services;
         <h2 class="sr" id="all">All services</h2>
         <div class="tiles">
           <article class="tile feat">
+            {firstImg && <Photo src={firstImg.src} alt="" class="tile-bg" max={firstImg.max} position={firstImg.pos} sizes="(min-width: 1024px) 760px, 100vw" />}
             <div class="tile-top"><span class="ic"><Icon name={first.icon} /></span><span class="no">{first.no}</span></div>
             <h2>{first.name}</h2>
             <p class="when">{first.intro}</p>
@@ -43,6 +47,7 @@ const [first, ...rest] = services;
               <div class="tile-top"><span class="ic"><Icon name={s.icon} /></span><span class="no">{s.no}</span></div>
               <h2>{s.name}</h2>
               <p class="when">{s.short}</p>
+              {serviceBand[s.slug] && <Photo src={serviceBand[s.slug]!.src} alt={serviceBand[s.slug]!.alt} class="tile-img" max={Math.min(serviceBand[s.slug]!.max ?? 960, 960)} position={serviceBand[s.slug]!.pos} sizes="(min-width: 1024px) 380px, (min-width: 640px) 50vw, 100vw" />}
               <div class="tile-foot"><a class="lnk stretch" href={serviceHref(s.slug)}>Explore this service</a></div>
             </article>
           ))}
