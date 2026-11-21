@@ -514,12 +514,48 @@
 
 /* §12 Additions for the production build ------------------------------------ */
 .menu[data-open="true"] .nav-item.i6{transition-delay:270ms}
-.svc-card-call{background:var(--abyss);color:#fff;border-color:transparent}
-.svc-card-call .svc-desc{color:var(--od-muted)}
-.svc-card-call .ic{background:rgba(255,255,255,.08);color:var(--tide)}
-.svc-card-call .svc-foot{color:#fff;border-top-color:rgba(255,255,255,.16)}
-@media (hover:hover){.svc-card-call:hover{border-color:transparent}.svc-card-call:hover .ic{background:var(--red);color:#fff}}
+/* Home services: service cards on brand blue, the call card on white. */
+.svc-card:not(.svc-card-call){background:var(--blue-d);color:#fff;border-color:transparent}
+.svc-card:not(.svc-card-call) .no{color:var(--od-muted)}
+.svc-card:not(.svc-card-call) .svc-desc{color:var(--od-soft)}
+.svc-card:not(.svc-card-call) .ic{background:rgba(255,255,255,.12);color:#fff}
+.svc-card:not(.svc-card-call) .svc-foot{color:#fff;border-top-color:rgba(255,255,255,.2)}
+@media (hover:hover){
+  .svc-card:not(.svc-card-call):hover{border-color:transparent}
+  .svc-card:not(.svc-card-call):hover .ic{background:#fff;color:var(--blue-d)}
+  .svc-card-call:hover .ic{background:var(--red);color:#fff}
+}
+.svc-card:not(.svc-card-call):focus-visible .ic,.svc-card:not(.svc-card-call).is-hover .ic{background:#fff;color:var(--blue-d)}
+.svc-card-call{background:var(--white);color:var(--ink);border-color:var(--line)}
+.svc-card-call .svc-desc{color:var(--muted)}
+.svc-card-call .ic{background:var(--mist);color:var(--blue-d)}
+.svc-card-call .svc-foot{color:var(--blue-d);border-top-color:var(--line)}
 .svc-card-call:focus-visible .ic{background:var(--red);color:#fff}
+
+/* Home offices: light band with solid white cards for contrast. */
+.loc-sec .office{background:var(--white);border:1px solid var(--line);box-shadow:var(--sh-card);transition:transform var(--t2) var(--ease),box-shadow var(--t2),border-color var(--t2)}
+.loc-sec .office .role{color:var(--blue-d)}
+.loc-sec .office address{color:var(--ink-2)}
+.loc-sec .office .focus{color:var(--muted);border-top-color:var(--line)}
+.loc-sec .one-line{color:var(--ink-2)}
+.loc-sec .one-line a{color:var(--blue-d)}
+.loc-sec .one-line a.tel{color:var(--ink)}
+@media (hover:hover){.loc-sec .office:hover{transform:translateY(-4px);box-shadow:var(--sh-hover);border-color:var(--line-2);background:var(--white)}}
+.loc-sec .office:has(:focus-visible){box-shadow:var(--sh-hover);border-color:var(--line-2)}
+
+/* Home audiences: the side cards lift on hover like the main card. */
+.aud-card{transition:transform var(--t2) var(--ease),box-shadow var(--t2),border-color var(--t2),background-color var(--t2)}
+@media (hover:hover){.aud-card:hover{transform:translateY(-4px);box-shadow:var(--sh-hover);border-color:var(--line-2)}}
+.aud-card:has(:focus-visible){transform:translateY(-4px);box-shadow:var(--sh-hover);border-color:var(--line-2)}
+
+/* Home insights: featured image behind the feature card, thumbnails in the side cards. */
+.ins-feat .ins-bg{position:absolute;inset:0;z-index:-1;margin:0;border-radius:0;background:var(--abyss)}
+.ins-feat .ins-bg .ph-img{top:0;height:100%;transform:none}
+.ins-feat .ins-bg::after{background:linear-gradient(180deg,rgba(6,31,40,.88) 0%,rgba(6,31,40,.6) 50%,rgba(6,31,40,.9) 100%)}
+.ins-card .ins-thumb{width:100%;aspect-ratio:3/1;border-radius:var(--r-sm)}
+.ins-card .ins-thumb .ph-img{top:0;height:100%;transform:none}
+.ins-card .ins-thumb::after{display:none}
+@media (prefers-reduced-motion: reduce){.aud-card,.loc-sec .office{transform:none!important}}
 .notice > span{min-width:0;overflow-wrap:anywhere}
 .ph-hero .ph-tag{top:12px;bottom:auto}
 /* Hero photo: no parallax overscan, so the technician keeps his headroom and

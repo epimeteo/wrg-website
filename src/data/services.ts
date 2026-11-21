@@ -67,7 +67,7 @@ export const services: Service[] = [
       ready,
     ],
     related: [
-      { kind: 'Case study', title: 'Icon Bay', meta: 'Edgewater, Miami, FL', href: '/projects/icon-bay/', cta: 'Read the case study', photo: true },
+      { kind: 'Case study', title: 'Edgewater Bayfront High-Rise', meta: 'Edgewater, Miami, FL', href: '/projects/edgewater-bayfront-high-rise/', cta: 'Read the case study', photo: true },
       { kind: 'Insight', title: 'How Long Does Water Damage Restoration Take?', meta: 'Water damage', href: '/blog/humidity/how-long-does-water-damage-restoration-take/', cta: 'Read the insight', photo: false },
     ],
     ctaTitle: 'Discuss water damage restoration with WRG.',
@@ -102,7 +102,7 @@ export const services: Service[] = [
       ready,
     ],
     related: [
-      { kind: 'Case study', title: 'Gables Waterway Towers', meta: 'Coral Gables, FL', href: '/projects/gables-waterway-towers/', cta: 'Read the case study', photo: true },
+      { kind: 'Case study', title: 'Coral Gables Mid-Century Condominium', meta: 'Coral Gables, FL', href: '/projects/coral-gables-mid-century-condominium/', cta: 'Read the case study', photo: true },
       { kind: 'Insight', title: 'The Fire Damage Restoration Process', meta: 'Fire damage', href: '/blog/fire-damage/fire-damage-restoration-process/', cta: 'Read the insight', photo: false },
     ],
     ctaTitle: 'Talk to WRG about fire and smoke restoration.',
@@ -137,7 +137,7 @@ export const services: Service[] = [
       ready,
     ],
     related: [
-      { kind: 'Case study', title: 'St. Louis Condominium', meta: 'Brickell Key, Miami, FL', href: '/projects/st-louis-condominium/', cta: 'Read the case study', photo: true },
+      { kind: 'Case study', title: 'Brickell Key Island Tower', meta: 'Brickell Key, Miami, FL', href: '/projects/brickell-key-island-tower/', cta: 'Read the case study', photo: true },
       { kind: 'Insight', title: 'Mold Prevention in Humid Climates', meta: 'Mold damage', href: '/blog/mold-damage/mold-prevention-in-humid-climates/', cta: 'Read the insight', photo: false },
     ],
     ctaTitle: 'Talk to WRG about a mold concern.',
@@ -207,8 +207,8 @@ export const services: Service[] = [
       ready,
     ],
     related: [
-      { kind: 'Case study', title: 'Icon Bay', meta: 'Edgewater, Miami, FL', href: '/projects/icon-bay/', cta: 'Read the case study', photo: true },
-      { kind: 'Case study', title: 'South Point Condominium', meta: 'Fort Lauderdale, FL', href: '/projects/south-point-condominium/', cta: 'Read the case study', photo: true },
+      { kind: 'Case study', title: 'Edgewater Bayfront High-Rise', meta: 'Edgewater, Miami, FL', href: '/projects/edgewater-bayfront-high-rise/', cta: 'Read the case study', photo: true },
+      { kind: 'Case study', title: 'Fort Lauderdale Beachfront Towers', meta: 'Fort Lauderdale, FL', href: '/projects/fort-lauderdale-beachfront-towers/', cta: 'Read the case study', photo: true },
     ],
     ctaTitle: 'Talk to WRG about repairs after damage.',
   },

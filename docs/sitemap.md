@@ -19,7 +19,7 @@ Fuente: **WRG_Sitemap_Review-3** (thewaterrestorationgroup.com). Todas las rutas
 | `/locations/west-palm-beach-fl/` | West Palm Beach, FL | `locations/west-palm-beach-fl.astro` |
 | `/locations/atlanta-ga/` | Atlanta / Smyrna, GA | `locations/atlanta-ga.astro` |
 | `/projects/` | Projects | `src/pages/projects/index.astro` |
-| `/projects/icon-bay/` · `/gables-waterway-towers/` · `/st-louis-condominium/` · `/south-point-condominium/` | Casos | `projects/[slug].astro` + `data/projects.ts` |
+| `/projects/edgewater-bayfront-high-rise/` · `/coral-gables-mid-century-condominium/` · `/brickell-key-island-tower/` · `/fort-lauderdale-beachfront-towers/` | Casos (sin nombres de edificios, por política de la empresa y del estado de Florida; ver pendientes) | `projects/[slug].astro` + `data/projects.ts` |
 | `/blog/` | Insights | `src/pages/blog/index.astro` |
 | `/blog/humidity/how-long-does-water-damage-restoration-take/` | How Long Does Water Damage Restoration Take? | `blog/[category]/[slug].astro` + `data/articles.ts` |
 | `/blog/mold-damage/mold-prevention-in-humid-climates/` | Mold Prevention in Humid Climates | ídem |
