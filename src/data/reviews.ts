@@ -91,8 +91,8 @@ export const googleReviews: Review[] = [
   },
 ];
 
-/** Link to WRG's Google Business Profile reviews. Pending from the client. */
-export const googleProfileUrl: string | null = null;
+/** WRG's Google Business Profile (Florida), shared by the client. */
+export const googleProfileUrl: string | null = 'https://share.google/bBsCTtUF5rEblz3au';
 
 export const reviewMonth = (m: string) =>
   new Date(`${m}-01T12:00:00`).toLocaleDateString('en-US', { month: 'long', year: 'numeric' });

@@ -45,6 +45,6 @@ Los dos testimonios anteriores que no están en la hoja (Denissa D. y Rolando H.
 2. Añadir un objeto a `googleReviews` en `src/data/reviews.ts` (ID de la hoja, nombre e inicial, estrellas, texto literal, mes `AAAA-MM` y `office: 'miami'` solo si la reseña nombra Miami).
 3. `npm run build && npm run check:links`.
 
-## Pendiente
+## Perfil de Google
 
-- Enlace al perfil de Google Business de Florida: se pone en `googleProfileUrl` (`src/data/reviews.ts`) y aparece el botón «Read all reviews on Google».
+El enlace al perfil de Google Business de Florida (compartido por el cliente) está en `googleProfileUrl` (`src/data/reviews.ts`) y alimenta el botón «Read all reviews on Google» de `/reviews/`.
