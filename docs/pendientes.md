@@ -27,7 +27,7 @@ Mientras `PUBLIC_REVIEW_MODE` no sea `false`, el sitio muestra estas advertencia
 
 - [x] Por política de la empresa y del estado de Florida, el sitio no menciona nombres de edificios. Los 4 casos pasaron a llamarse por tipo de propiedad y ubicación: Edgewater Bayfront High-Rise, Coral Gables Mid-Century Condominium, Brickell Key Island Tower y Fort Lauderdale Beachfront Towers. Cambiaron también las URLs (`/projects/edgewater-bayfront-high-rise/`, etc.), los textos alternativos y los nombres de archivo de las fotos.
 - [x] Las dos fotos del caso de Coral Gables se recortaron para que no se lea el letrero con el nombre y la dirección del edificio.
-- [ ] La foto de la entrada del caso de Coral Gables traía una marca de agua «© Miami MLS 02/2020» (se eliminó con el recorte). Confirmar que WRG tiene derechos sobre esa imagen; si viene de un anuncio inmobiliario, reemplazarla.
+- [x] La foto de la entrada del caso de Coral Gables traía una marca de agua «© Miami MLS 02/2020» (se eliminó con el recorte). El cliente confirmó el 21 nov 2026 que WRG tiene derechos sobre la imagen.
 - [ ] Plan de redirecciones: incluir las URLs antiguas de los 4 casos del sitio anterior hacia las nuevas.
 - [ ] El historial de git del repositorio (público) conserva los nombres anteriores en commits viejos.
 
