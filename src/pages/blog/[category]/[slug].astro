@@ -1,25 +1,44 @@
 ---
+// One page per insight: editorial articles (structured, src/data/articles.ts)
+// and articles migrated from the previous site (Markdown, src/content/blog/).
+import { render } from 'astro:content';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
-import { articles, articleHref, type Article } from '../../../data/articles';
+import Photo from '../../../components/Photo.astro';
+import ReviewNote from '../../../components/ReviewNote.astro';
+import { getInsights, relatedTo, serviceFor, formatDate, topicLabel, type Insight } from '../../../data/insights';
 import { company, reviewMode, routes } from '../../../data/site';
 
-export function getStaticPaths() {
-  return articles.map((a) => ({ params: { category: a.category, slug: a.slug }, props: { a } }));
+export async function getStaticPaths() {
+  const all = await getInsights();
+  return all.map((i) => ({ params: { category: i.category, slug: i.slug }, props: { i, all } }));
 }
-const { a } = Astro.props as { a: Article };
-const others = articles.filter((o) => o.slug !== a.slug).slice(0, 3);
+const { i, all } = Astro.props as { i: Insight; all: Insight[] };
+const a = i.article;
+const e = i.entry;
+const rendered = e ? await render(e) : undefined;
+const Content = rendered?.Content;
+const toc = a ? a.sections.map((s) => ({ id: s.id, text: s.h })) : (rendered?.headings ?? []).filter((h) => h.depth === 2).map((h) => ({ id: h.slug, text: h.text }));
+const svc = a ? { name: a.service, href: a.serviceHref, cta: a.cta } : serviceFor(i.tags);
+const others = relatedTo(i, all);
+const updated = e?.data.updated;
 ---
-<BaseLayout title={a.title} description={a.description} active="blog" page="article">
+<BaseLayout title={i.title} description={i.summary} active="blog" page="article">
   <article aria-labelledby="t">
     <header class="sec ihero bg-canvas" style="--sb: clamp(40px, 4cqi, 56px)">
       <div class="wrap">
-        <Breadcrumbs items={[{ label: 'Insights', href: routes.blog }, { label: a.short }]} />
+        <Breadcrumbs items={[{ label: 'Insights', href: routes.blog }, { label: a ? a.short : i.title }]} />
         <div class="art-head">
-          <p class="eyebrow">{a.categoryLabel}</p>
-          <h1 class="h1" id="t">{a.title}</h1>
-          <p class="lead" style="max-width: 60ch">{a.summary}</p>
-          {reviewMode && (
+          <p class="eyebrow">{i.label}</p>
+          <h1 class="h1" id="t">{i.title}</h1>
+          <p class="lead" style="max-width: 60ch">{i.summary}</p>
+          {e ? (
+            <p class="byline pub">
+              <span><b style="color: var(--ink)">By</b> WRG Team</span>
+              <span><b style="color: var(--ink)">Published:</b> <time datetime={e.data.published.toISOString().slice(0, 10)}>{formatDate(e.data.published)}</time></span>
+              {updated && <span><b style="color: var(--ink)">Updated:</b> <time datetime={updated.toISOString().slice(0, 10)}>{formatDate(updated)}</time></span>}
+            </p>
+          ) : reviewMode && (
             <p class="byline">
               <span><b style="color: var(--ink)">Author:</b> pending approval</span>
               <span><b style="color: var(--ink)">Expert review:</b> pending</span>
@@ -27,6 +46,11 @@ const others = articles.filter((o) => o.slug !== a.slug).slice(0, 3);
             </p>
           )}
         </div>
+        {i.image && (
+          <div class="art-photo">
+            <Photo src={i.image.src} alt={i.image.alt} max={Math.min(i.image.src.width, 1600)} sizes="(min-width: 1280px) 1168px, 100vw" priority />
+          </div>
+        )}
       </div>
     </header>
 
@@ -34,40 +58,58 @@ const others = articles.filter((o) => o.slug !== a.slug).slice(0, 3);
       <div class="wrap">
         <div class="art-grid">
           <div class="art-body">
-            <div class="answer"><b>Short answer</b><span>{a.answer}</span></div>
-            <div class="keypoints">
-              <p class="topic">Key points</p>
-              <ul>{a.points.map((x) => <li>{x}</li>)}</ul>
-            </div>
-            {a.sections.map((s) => (
+            {a ? (
               <>
-                <h2 id={s.id}>{s.h}</h2>
-                {s.p.map((x) => <p>{x}</p>)}
-                {s.list && <ul>{s.list.map((x) => <li>{x}</li>)}</ul>}
+                <div class="answer"><b>Short answer</b><span>{a.answer}</span></div>
+                <div class="keypoints">
+                  <p class="topic">Key points</p>
+                  <ul>{a.points.map((x) => <li>{x}</li>)}</ul>
+                </div>
+                {a.sections.map((s) => (
+                  <>
+                    <h2 id={s.id}>{s.h}</h2>
+                    {s.p.map((x) => <p>{x}</p>)}
+                    {s.list && <ul>{s.list.map((x) => <li>{x}</li>)}</ul>}
+                  </>
+                ))}
+                {a.project && (
+                  <p class="art-case">See it in practice: <a class="lnk" href={a.project.href}>{a.project.name} case study</a></p>
+                )}
               </>
-            ))}
-            {a.project && (
-              <p class="art-case">See it in practice: <a class="lnk" href={a.project.href}>{a.project.name} case study</a></p>
+            ) : (
+              Content && <div class="prose"><Content /></div>
             )}
             <div class="callout" style="margin-top: 48px">
-              <div class="stack g8"><p class="topic">Related service</p><p class="h3">{a.cta}</p></div>
-              <div class="cta-row"><a class="btn btn-blue" href={a.serviceHref}>{a.service}</a><a class="lnk" href={company.phone.href}>Call {company.phone.display}</a></div>
+              <div class="stack g8"><p class="topic">{svc ? 'Related service' : '24/7 phone support'}</p><p class="h3">{svc ? svc.cta : 'Have a question about your property? Talk to WRG.'}</p></div>
+              <div class="cta-row">{svc && <a class="btn btn-blue" href={svc.href}>{svc.name}</a>}<a class="lnk" href={company.phone.href}>Call {company.phone.display}</a></div>
             </div>
             <div class="sources">
               <b style="color: var(--ink)">Note</b>
               <span>This article offers general information, not instructions for a specific property or professional advice.</span>
-              <b style="color: var(--ink); margin-top: 8px">References</b>
-              <ul class="refs">{a.refs.map((r) => <li>{r.href ? <a href={r.href} target="_blank" rel="noopener">{r.label}</a> : r.label}</li>)}</ul>
-              {reviewMode && (
+              {a && (
+                <>
+                  <b style="color: var(--ink); margin-top: 8px">References</b>
+                  <ul class="refs">{a.refs.map((r) => <li>{r.href ? <a href={r.href} target="_blank" rel="noopener">{r.label}</a> : r.label}</li>)}</ul>
+                </>
+              )}
+              {a && reviewMode && (
                 <span>Editorial draft pending WRG’s professional review.{a.source && <> Topic covered on the previous site: <a href={a.source} target="_blank" rel="noopener">{a.source}</a></>}</span>
               )}
+              <span class="tagline">Topics: {i.tags.map((t, n) => <>{n > 0 && ' · '}<a href={`/blog/${t}/`}>{topicLabel(t)}</a></>)}</span>
             </div>
+            {e && (
+              <ReviewNote title="Migrated from the previous site." style="margin-top: 24px">
+                Original text, author “{e.data.originalAuthor}”. {e.data.edits?.length ? <>Changes made during the migration: {e.data.edits.join(' ')}</> : 'No changes to the text.'}
+              </ReviewNote>
+            )}
           </div>
           <aside class="art-aside" aria-label="In this article">
-            <nav class="toc" aria-label="Contents">
-              <p class="aside-h" style="color: var(--muted); margin-bottom: 6px">In this article</p>
-              {a.sections.map((s) => <a href={`#${s.id}`}>{s.h}</a>)}
-            </nav>
+            {toc.length > 1 && (
+              <nav class="toc" aria-label="Contents">
+                <p class="aside-h" style="color: var(--muted); margin-bottom: 6px">In this article</p>
+                {toc.map((h) => <a href={`#${h.id}`}>{h.text}</a>)}
+              </nav>
+            )}
             <div class="toc" style="gap: 10px; background: var(--mist); border-color: transparent">
               <p class="aside-h" style="color: var(--muted)">{company.support}</p>
               <a class="tel" href={company.phone.href} style="border: 0; font-size: 22px">{company.phone.display}</a>
@@ -80,10 +122,13 @@ const others = articles.filter((o) => o.slug !== a.slug).slice(0, 3);
 
   <section class="sec bg-canvas" aria-labelledby="more">
     <div class="wrap">
-      <div class="sec-head"><div class="stack"><p class="eyebrow">Keep reading</p><h2 class="h2" id="more">More insights</h2></div></div>
+      <div class="sec-head">
+        <div class="stack"><p class="eyebrow">Keep reading</p><h2 class="h2" id="more">More insights</h2></div>
+        <div class="aside"><a class="lnk" href={routes.blog}>All insights</a></div>
+      </div>
       <div class="related">
         {others.map((o) => (
-          <article class="rel-card txt"><p class="topic">{o.categoryLabel}</p><h3 class="h3">{o.title}</h3><a class="lnk stretch" href={articleHref(o)}>Read the insight</a></article>
+          <article class="rel-card txt"><p class="topic">{o.label}</p><h3 class="h3">{o.title}</h3><a class="lnk stretch" href={o.href}>Read the insight</a></article>
         ))}
       </div>
     </div>

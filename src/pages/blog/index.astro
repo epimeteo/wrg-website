@@ -5,13 +5,15 @@ import Icon from '../../components/Icon.astro';
 import Photo from '../../components/Photo.astro';
 import { blogFeatured } from '../../data/photos';
 import ReviewFlag from '../../components/ReviewFlag.astro';
-import { articles, articleHref } from '../../data/articles';
+import { getInsights, topicsOf, formatDate } from '../../data/insights';
 import { services, serviceHref } from '../../data/services';
 import { company } from '../../data/site';
-const [featured, ...more] = articles;
+const all = await getInsights();
+const [featured, ...more] = all;
+const topics = topicsOf(all);
 const related = services.filter((s) => ['water', 'fire', 'mold', 'environmental'].includes(s.key));
 ---
-<BaseLayout title="Insights" description="Practical information about water damage, mold, fire restoration and specialized cleanup, and the questions property owners and managers often bring to WRG." active="blog" page="insights">
+<BaseLayout title="Insights" description="Practical information about water damage, mold, fire restoration, hurricane preparedness and specialized cleanup, and the questions property owners and managers often bring to WRG." active="blog" page="insights">
   <section class="sec ihero bg-canvas" aria-labelledby="t">
     <div class="wrap">
       <Breadcrumbs items={[{ label: 'Insights' }]} />
@@ -24,7 +26,7 @@ const related = services.filter((s) => ['water', 'fire', 'mold', 'environmental'
         <nav class="stack g12" aria-label="Topics">
           <p class="aside-h" style="color: var(--muted)">Topics</p>
           <div class="topics">
-            {articles.map((a) => <a href={articleHref(a)}>{a.categoryLabel}</a>)}
+            {topics.map((t) => <a href={`/blog/${t.slug}/`}>{t.label}<span class="count">{t.count}</span></a>)}
           </div>
         </nav>
       </div>
@@ -36,20 +38,23 @@ const related = services.filter((s) => ['water', 'fire', 'mold', 'environmental'
       <article class="ifeat on-dark">
         <Photo src={blogFeatured.src} alt={blogFeatured.alt} max={blogFeatured.max} position={blogFeatured.pos} sizes="(min-width: 1024px) 600px, 100vw" depth={0.05} />
         <div class="ifeat-body">
-          <p class="topic">Featured · {featured.categoryLabel}</p>
+          <p class="topic">Featured · {featured.label}</p>
           <h2 class="h2" id="ft">{featured.title}</h2>
           <p class="lead">{featured.summary}</p>
-          <a class="lnk stretch" href={articleHref(featured)}>Read the insight<Icon name="arrow" /></a>
+          <a class="lnk stretch" href={featured.href}>Read the insight<Icon name="arrow" /></a>
         </div>
       </article>
 
-      <h2 class="sr">More insights</h2>
-      <div class="alist" style="margin-top: clamp(40px, 5cqi, 64px)">
-        {more.map((a, i) => (
-          <article class={`arow rv${i ? ' d2' : ''}`}>
-            <p class="topic">{a.categoryLabel}</p>
+      <div class="sec-head" style="margin-top: clamp(48px, 6cqi, 80px)">
+        <div class="stack"><h2 class="h2" id="all">All insights</h2></div>
+        <p class="muted aside">{all.length} articles, the newest first. Filter by topic above.</p>
+      </div>
+      <div class="alist">
+        {more.map((a) => (
+          <article class="arow">
+            <div class="stack g8"><p class="topic">{a.label}</p>{a.published && <p class="xs muted"><time datetime={a.published.toISOString().slice(0, 10)}>{formatDate(a.published)}</time></p>}</div>
             <div class="stack g8"><h3>{a.title}</h3><p class="muted small">{a.summary}</p></div>
-            <a class="go stretch" href={articleHref(a)} aria-label={`Read: ${a.title}`}><Icon name="arrow" /></a>
+            <a class="go stretch" href={a.href} aria-label={`Read: ${a.title}`}><Icon name="arrow" /></a>
           </article>
         ))}
       </div>
@@ -61,9 +66,9 @@ const related = services.filter((s) => ['water', 'fire', 'mold', 'environmental'
       <div class="duo">
         <div class="duo-card">
           <p class="topic">Authors &amp; reviewers</p>
-          <h2 class="h3" id="au">Written from WRG’s knowledge, reviewed by real experts.</h2>
-          <p class="muted small">Author and reviewer names appear only when they have been confirmed. Until then, articles show no byline and no review date.</p>
-          <ReviewFlag>Editorial drafts: WRG’s professional review, author and date pending</ReviewFlag>
+          <h2 class="h3" id="au">Written from WRG’s field experience.</h2>
+          <p class="muted small">Articles carried over from WRG’s previous site keep their original publication date. New articles show a byline once the author and reviewer are confirmed.</p>
+          <ReviewFlag>New editorial articles: WRG’s review, author and date pending. Migrated articles: author per article to confirm</ReviewFlag>
         </div>
         <div class="duo-card">
           <p class="topic">Related services</p>

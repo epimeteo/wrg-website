@@ -1,20 +1,31 @@
-// Insights: /blog/{category}/{slug}/ (WRG_Sitemap_Review-3).
+// Editorial insights written for the new site: /blog/{category}/{slug}/.
+// Articles migrated from the previous site live in src/content/blog/ and are
+// merged with these in src/data/insights.ts.
 // Editorial drafts written for the new site while the articles of the previous
 // site are migrated. They use general, publicly documented guidance (sources
 // listed per article) and still need WRG's professional review: no author,
 // reviewer or date is shown until they are confirmed.
+
+import type { ImageMetadata } from 'astro';
+import imgTimeline from '../assets/blog/condo-hallway-drying.jpg';
+import imgMoldHumid from '../assets/blog/posts/mold-prevention-in-humid-climates.jpg';
+import imgFireProcess from '../assets/blog/posts/fire-damage-restoration-process.jpg';
+import imgEnvironmental from '../assets/blog/posts/what-is-environmental-cleanup.jpg';
 
 export type Section = { id: string; h: string; p: string[]; list?: string[] };
 
 export type Article = {
   category: string;
   categoryLabel: string;
+  /** Topic pages the article is listed under; the first one is the URL category. */
+  tags: string[];
   slug: string;
   title: string;
   short: string;
   description: string;
   summary: string;
   answer: string;
+  image?: { src: ImageMetadata; alt: string };
   /** Key points shown before the body. */
   points: string[];
   sections: Section[];
@@ -40,7 +51,9 @@ export const articles: Article[] = [
   {
     category: 'humidity',
     categoryLabel: 'Water damage',
+    tags: ['humidity', 'water-damage', 'flood-damage', 'mold-damage'],
     slug: 'how-long-does-water-damage-restoration-take',
+    image: { src: imgTimeline, alt: 'Air movers lined along a condominium hallway during drying work.' },
     title: 'How Long Does Water Damage Restoration Take?',
     short: 'Water damage timeline',
     description: 'Water damage restoration happens in stages: emergency mitigation, structural drying and repairs. Here is what shapes the timeline of each one.',
@@ -120,7 +133,9 @@ export const articles: Article[] = [
   {
     category: 'mold-damage',
     categoryLabel: 'Mold damage',
+    tags: ['mold-damage', 'humidity'],
     slug: 'mold-prevention-in-humid-climates',
+    image: { src: imgMoldHumid, alt: 'Dark mold and moisture stains spreading across a floor along the base of a wall.' },
     title: 'Mold Prevention in Humid Climates',
     short: 'Mold prevention',
     description: 'In humid climates, preventing mold is mostly moisture control: indoor humidity, air conditioning, leaks and knowing when a concern needs a professional assessment.',
@@ -202,7 +217,9 @@ export const articles: Article[] = [
   {
     category: 'fire-damage',
     categoryLabel: 'Fire damage',
+    tags: ['fire-damage', 'smoke-damage'],
     slug: 'fire-damage-restoration-process',
+    image: { src: imgFireProcess, alt: 'A house with its roof and attic burned through after a fire, with smoke rising.' },
     title: 'The Fire Damage Restoration Process',
     short: 'Fire damage restoration process',
     description: 'What happens after the fire is out: securing the property, assessing fire, smoke and water damage, cleaning soot, treating odor and rebuilding.',
@@ -290,7 +307,9 @@ export const articles: Article[] = [
   {
     category: 'environmental-cleanup',
     categoryLabel: 'Environmental cleanup',
+    tags: ['environmental-cleanup'],
     slug: 'what-is-environmental-cleanup',
+    image: { src: imgEnvironmental, alt: 'A technician in a protective suit and mask spraying a disinfectant between rows of gym treadmills.' },
     title: 'What Is Environmental Cleanup, and When Does a Property Need It?',
     short: 'Environmental cleanup',
     description: 'Environmental cleanup deals with contamination that routine cleaning is not designed for. Learn when it applies, how it differs from janitorial work and what the process involves.',

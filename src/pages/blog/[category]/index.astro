@@ -1,26 +1,26 @@
 ---
-// Category listing, e.g. /blog/humidity/. Not in the sitemap, but keeps the
-// parent path of each article from returning a 404.
+// Topic listing, e.g. /blog/mold-damage/. Lists every insight tagged with the
+// topic, so the parent path of each article URL resolves.
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 import Icon from '../../../components/Icon.astro';
-import { articles, articleHref, type Article } from '../../../data/articles';
+import { getInsights, topicsOf, formatDate, type Insight } from '../../../data/insights';
 import { routes } from '../../../data/site';
 
-export function getStaticPaths() {
-  const cats = [...new Set(articles.map((a) => a.category))];
-  return cats.map((category) => ({ params: { category }, props: { list: articles.filter((a) => a.category === category) } }));
+export async function getStaticPaths() {
+  const all = await getInsights();
+  return topicsOf(all).map((t) => ({ params: { category: t.slug }, props: { label: t.label, list: all.filter((i) => i.tags.includes(t.slug)) } }));
 }
-const { list } = Astro.props as { list: Article[] };
-const label = list[0].categoryLabel;
+const { label, list } = Astro.props as { label: string; list: Insight[] };
 ---
-<BaseLayout title={`${label} — Insights`} description={`WRG insights about ${label.toLowerCase()}.`} active="blog" page="insights">
+<BaseLayout title={`${label} — Insights`} description={`WRG insights about ${label.toLowerCase()}: ${list.length} articles for property owners and managers.`} active="blog" page="insights">
   <section class="sec ihero bg-canvas" aria-labelledby="t">
     <div class="wrap">
       <Breadcrumbs items={[{ label: 'Insights', href: routes.blog }, { label }]} />
       <div class="art-head">
         <p class="eyebrow">Insights</p>
         <h1 class="h1" id="t">{label}</h1>
+        <p class="lead">{list.length} {list.length === 1 ? 'article' : 'articles'}</p>
       </div>
     </div>
   </section>
@@ -29,9 +29,9 @@ const label = list[0].categoryLabel;
       <div class="alist">
         {list.map((a) => (
           <article class="arow">
-            <p class="topic">{a.categoryLabel}</p>
+            <div class="stack g8"><p class="topic">{a.label}</p>{a.published && <p class="xs muted"><time datetime={a.published.toISOString().slice(0, 10)}>{formatDate(a.published)}</time></p>}</div>
             <div class="stack g8"><h2 class="h3">{a.title}</h2><p class="muted small">{a.summary}</p></div>
-            <a class="go stretch" href={articleHref(a)} aria-label={`Read: ${a.title}`}><Icon name="arrow" /></a>
+            <a class="go stretch" href={a.href} aria-label={`Read: ${a.title}`}><Icon name="arrow" /></a>
           </article>
         ))}
       </div>

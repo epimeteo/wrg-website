@@ -25,6 +25,7 @@ Fuente: **WRG_Sitemap_Review-3** (thewaterrestorationgroup.com). Todas las rutas
 | `/blog/mold-damage/mold-prevention-in-humid-climates/` | Mold Prevention in Humid Climates | ídem |
 | `/blog/fire-damage/fire-damage-restoration-process/` | The Fire Damage Restoration Process | ídem |
 | `/blog/environmental-cleanup/what-is-environmental-cleanup/` | What Is Environmental Cleanup, and When Does a Property Need It? (artículo nuevo, no figura en el sitemap revisado) | ídem |
+| `/blog/{categoría}/{slug}/` (52 artículos migrados) | Artículos del sitio anterior, con la misma URL | `blog/[category]/[slug].astro` + `src/content/blog/` (ver [blog-migracion.md](blog-migracion.md)) |
 | `/faqs/` | FAQ | `src/pages/faqs.astro` + `data/faqs.ts` |
 | `/contact/` | Contact | `src/pages/contact.astro` |
 | `/privacy-policy/` | Privacy Policy | `src/pages/privacy-policy.astro` |
@@ -32,7 +33,7 @@ Fuente: **WRG_Sitemap_Review-3** (thewaterrestorationgroup.com). Todas las rutas
 | `/thank-you/` | Thank You (noindex) | `src/pages/thank-you.astro` |
 | 404 | Page Not Found | `src/pages/404.astro` |
 
-Rutas extra: `/blog/{categoría}/` lista los artículos de cada categoría, para que la ruta padre de un artículo no dé 404. `/sitemap.xml` y `/robots.txt` se generan en el build.
+Rutas extra: `/blog/{tema}/` lista los artículos de cada tema (las categorías del sitio anterior), para que la ruta padre de un artículo no dé 404. `/sitemap.xml` y `/robots.txt` se generan en el build.
 
 ## Fuera del sitio (decisiones)
 

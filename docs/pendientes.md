@@ -29,6 +29,8 @@ Mientras `PUBLIC_REVIEW_MODE` no sea `false`, el sitio muestra estas advertencia
 - [ ] Reseñas: plataforma, fecha, enlace y permiso de cada testimonio. Solo entonces se muestran en las páginas locales.
 - [ ] Perfiles de expertos (hasta 3): nombre, cargo y credenciales. La sección de About ya es pública con los dos retratos aprobados, sin nombres.
 - [ ] Blog: los 4 artículos son textos editoriales nuevos (12 nov 2026), escritos con guías públicas de EPA, CDC, OSHA, USFA e IICRC citadas al pie, mientras se migran los del sitio anterior. Falta la revisión profesional de WRG, el autor y la fecha de cada uno.
+- [x] Migración del blog (13 nov 2026): los 52 artículos del sitio anterior están en `src/content/blog/`, con la misma URL que tenían (no necesitan redirección), su fecha original e imagen destacada. Detalle en [blog-migracion.md](blog-migracion.md).
+- [ ] Blog migrado: confirmar el autor de cada artículo (hoy todos firman «WRG Team»; el sitio anterior mostraba «WRG Team» o «Felipe») y revisar las afirmaciones de licencias y certificaciones que traen algunos textos (ver blog-migracion.md).
 
 ## Decisiones del cliente
 
