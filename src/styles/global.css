@@ -281,9 +281,6 @@
 }
 
 /* §7 Mobile call bar ---------------------------------------------------- */
-.callbar{position:sticky;bottom:0;z-index:45;container-type:inline-size}
-.callbar-in{display:none}
-@container (max-width:639px){.callbar-in .btn-lg{padding:0 18px;font-size:17px}.callbar-in{display:flex;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:rgba(246,248,249,.95);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-top:1px solid var(--line)}.callbar-in .btn{width:100%}}
 
 /* §8 Footer ---------------------------------------------------------------- */
 .foot{margin-top:var(--sm);background:var(--deep);color:#fff;border-radius:var(--r-block) var(--r-block) 0 0}
