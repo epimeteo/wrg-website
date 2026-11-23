@@ -14,7 +14,7 @@ if (root && page) {
   const groups = Array.from(menu.querySelectorAll<HTMLButtonElement>('[data-group]'));
 
   const setInert = (on: boolean) => {
-    const els = [...page.querySelectorAll<HTMLElement>('.wrg-main, .wrg-foot, .callbar'), bar];
+    const els = [...page.querySelectorAll<HTMLElement>('.wrg-main, .wrg-foot'), bar];
     els.forEach((el) => (on ? el.setAttribute('inert', '') : el.removeAttribute('inert')));
     document.documentElement.style.overflow = on ? 'hidden' : '';
   };
