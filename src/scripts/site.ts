@@ -145,7 +145,6 @@ if (root && page) {
    state: full numbers, a filled progress line, a scrollable review list. */
 if (page) {
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
   const throttle = (fn: () => void) => {
     let f = 0;
     return () => {
@@ -212,24 +211,6 @@ if (page) {
       { threshold: 0.4 },
     );
     groups.forEach((g) => io.observe(g));
-  }
-
-  /* 3D tilt that follows the cursor, up to 2 degrees. */
-  if (fine && !reduce) {
-    page.querySelectorAll<HTMLElement>('[data-tilt]').forEach((el) => {
-      const max = parseFloat(el.dataset.tilt || '2');
-      el.addEventListener('pointermove', (e) => {
-        const r = el.getBoundingClientRect();
-        const x = (e.clientX - r.left) / r.width - 0.5;
-        const y = (e.clientY - r.top) / r.height - 0.5;
-        el.style.setProperty('--ry', `${(x * 2 * max).toFixed(2)}deg`);
-        el.style.setProperty('--rx', `${(-y * 2 * max).toFixed(2)}deg`);
-      });
-      el.addEventListener('pointerleave', () => {
-        el.style.setProperty('--rx', '0deg');
-        el.style.setProperty('--ry', '0deg');
-      });
-    });
   }
 
   /* Progress line: fills with scroll and lights each stage in order. */

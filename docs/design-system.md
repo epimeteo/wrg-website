@@ -47,7 +47,7 @@ Estilos en `src/styles/motion.css`; comportamiento en `src/scripts/site.ts`. Tod
 | Riel «On this page»: el punto activo crece y se vuelve azul; la etiqueta se desliza | Home, desde 1200 px | `<nav data-rail>` con enlaces a los `id` de las secciones |
 | Parallax de la foto y de la tarjeta de oficinas | Hero del home, desde 1024 px | `.float` + `data-depth` |
 | Cifras que suben en cascada y terminan juntas (~1,8 s) | Hero del home | `data-count-group` + `data-count` |
-| Inclinación 3D hasta 2°, zoom lento de la foto y título que se ensancha | Tarjetas de servicio del home | `data-tilt`, `.svc-bg` |
+| Zoom lento de la foto y título que se ensancha (la inclinación 3D se quitó el 23 nov 2026) | Tarjetas de servicio del home | `.svc-bg` |
 | Línea de progreso que se llena con el scroll y etapas que se encienden en orden | «How it works» | `data-progress` + `data-step` |
 | Carrusel de reseñas: avanza solo, frena con la sección centrada, se detiene con el cursor, el foco o el botón de pausa (WCAG 2.2.2) | Reseñas del home | `data-marquee` |
 | Zoom lento de la imagen | Artículos del home | `.ins-bg`, `.ins-thumb` |

@@ -63,11 +63,8 @@
   .stat{padding-top:20px}
 }
 
-/* Home services: photo under the blue, 3D tilt, slow zoom, title widens ------ */
-.svc-card{--rx:0deg;--ry:0deg;--s:1;overflow:hidden;isolation:isolate;transform:perspective(1000px) rotateX(var(--rx)) rotateY(var(--ry)) scale(var(--s));transition:transform var(--tz) var(--ease),box-shadow var(--tz) var(--ease),border-color var(--t2)}
-@media (hover:hover){.svc-card:hover{--s:1.035;transform:perspective(1000px) rotateX(var(--rx)) rotateY(var(--ry)) scale(var(--s))}}
-.svc-card:focus-visible,.svc-card.is-hover{--s:1.035;transform:perspective(1000px) rotateX(var(--rx)) rotateY(var(--ry)) scale(var(--s))}
-.svc-card:active{--s:1.02}
+/* Home services: photo under the blue, slow zoom, title widens ---------------- */
+.svc-card{overflow:hidden;isolation:isolate}
 .svc-card .svc-bg{position:absolute;inset:0;z-index:-1;margin:0;border-radius:0;background:var(--blue-d)}
 .svc-card .svc-bg .ph-img{top:0;height:100%;transform:scale(1.02);transition:transform 1.4s var(--ease)}
 .svc-card .svc-bg::after{background:linear-gradient(180deg,color-mix(in srgb,var(--blue-d) 86%,transparent) 0%,color-mix(in srgb,var(--blue-d) 92%,transparent) 100%)}

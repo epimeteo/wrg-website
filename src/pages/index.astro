@@ -99,7 +99,7 @@ const stages = [
         </div>
         <ol class="svc-grid">
           {services.map((s, i) => (
-            <li class={`rv d${i + 1}`}><a class="svc-card" href={serviceHref(s.slug)} data-tilt="2">
+            <li class={`rv d${i + 1}`}><a class="svc-card" href={serviceHref(s.slug)}>
               {serviceBand[s.slug] && <Photo src={serviceBand[s.slug]!.src} alt="" class="svc-bg" max={Math.min(serviceBand[s.slug]!.max ?? 960, 960)} position={serviceBand[s.slug]!.pos} sizes="(min-width: 1024px) 380px, (min-width: 640px) 50vw, 100vw" />}
               <span class="svc-top"><span class="ic"><Icon name={s.icon} /></span><span class="no" aria-hidden="true">{s.no}</span></span>
               <h3 class="svc-name">{s.name}</h3>
@@ -107,7 +107,7 @@ const stages = [
               <span class="svc-foot"><span>Explore this service</span><Icon name="arrow" /></span>
             </a></li>
           ))}
-          <li class="rv d6"><a class="svc-card svc-card-call" href={company.phone.href} data-tilt="2">
+          <li class="rv d6"><a class="svc-card svc-card-call" href={company.phone.href}>
             <span class="svc-top"><span class="ic"><Icon name="phone" /></span></span>
             <h3 class="svc-name">Not sure where to start?</h3>
             <span class="svc-desc">Describe what you have observed. The 24/7 phone team can help identify the right service.</span>
