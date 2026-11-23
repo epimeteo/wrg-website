@@ -1,0 +1,140 @@
+/* Motion layer (Nov 2026). Shared micro-interactions and the home page's
+   scroll-linked details. Behavior lives in src/scripts/site.ts; everything here
+   degrades to a static, complete layout without JS and with reduced motion
+   (the global reduced-motion block in global.css stops transitions/animations). */
+
+:root{--green:#1d7a45}
+
+/* Reveal: slower, clearer cascade for every .rv element ---------------------- */
+.rv{transition:opacity 480ms var(--ease),transform 480ms var(--ease)}
+.wrg-page[data-rv] .rv:not([data-in]){transform:translateY(18px)}
+.rv.d2{transition-delay:80ms}.rv.d3{transition-delay:160ms}.rv.d4{transition-delay:240ms}.rv.d5{transition-delay:320ms}.rv.d6{transition-delay:400ms}
+
+/* Live dot: the only looping animation -------------------------------------- */
+@keyframes wrg-pulse{
+  0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--red) 55%,transparent)}
+  70%{box-shadow:0 0 0 7px color-mix(in srgb,var(--red) 0%,transparent)}
+  100%{box-shadow:0 0 0 0 color-mix(in srgb,var(--red) 0%,transparent)}
+}
+.hdr-util::before,.live-dot{animation:wrg-pulse 2.2s var(--ease) infinite}
+
+/* Call now: one expanding ring on hover, a small press on click -------------- */
+@keyframes wrg-ring{
+  0%{opacity:1;box-shadow:0 0 0 0 color-mix(in srgb,var(--red) 50%,transparent)}
+  100%{opacity:0;box-shadow:0 0 0 14px color-mix(in srgb,var(--red) 0%,transparent)}
+}
+.btn-call{position:relative}
+.btn-call::after{content:"";position:absolute;inset:-1px;border-radius:inherit;pointer-events:none;opacity:0}
+@media (hover:hover){.btn-call:hover::after{animation:wrg-ring 700ms var(--ease) 1}}
+.btn-call:focus-visible::after{animation:wrg-ring 700ms var(--ease) 1}
+.btn-call:active{transform:scale(.97)}
+
+/* "On this page" rail (desktop) --------------------------------------------- */
+.rail-nav{display:none}
+@media (min-width:1200px){
+  .rail-nav{display:block;position:fixed;right:12px;top:50%;z-index:40;transform:translateY(-50%)}
+  .rail-nav ol{display:flex;flex-direction:column;margin:0;padding:8px 6px;list-style:none;border-radius:var(--r-pill);background:color-mix(in srgb,var(--white) 90%,transparent);border:1px solid var(--line);box-shadow:var(--sh-card);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+  .rail-nav a{position:relative;display:grid;place-items:center;width:32px;height:36px;border-radius:var(--r-pill)}
+  .rail-dot{width:7px;height:7px;border-radius:50%;background:var(--line-2);transition:transform var(--tm) var(--ease),background-color var(--tm) var(--ease)}
+  .rail-nav a:hover .rail-dot,.rail-nav a:focus-visible .rail-dot{background:var(--blue)}
+  .rail-nav a[aria-current] .rail-dot{transform:scale(1.7);background:var(--blue)}
+  .rail-label{position:absolute;right:calc(100% + 12px);top:50%;padding:7px 11px;border-radius:var(--r-sm);background:var(--blue-d);color:#fff;font-size:13px;font-weight:600;line-height:1;white-space:nowrap;opacity:0;transform:translate(10px,-50%);pointer-events:none;transition:opacity var(--tm) var(--ease),transform var(--tm) var(--ease)}
+  .rail-nav a[aria-current] .rail-label,.rail-nav a:hover .rail-label,.rail-nav a:focus-visible .rail-label{opacity:1;transform:translate(0,-50%)}
+}
+:where(#top,#services,#process,#offices,#property,#projects,#reviews,#insights,#talk){scroll-margin-top:72px}
+
+/* Hero: photo and office card drift at different speeds --------------------- */
+.float{transform:translate3d(0,var(--py,0px),0)}
+.hero-media > .float:first-child{will-change:transform}
+
+/* Hero figures ---------------------------------------------------------------- */
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin:clamp(32px,4cqi,56px) 0 0;border-top:1px solid var(--line)}
+.stat{position:relative;display:flex;flex-direction:column-reverse;justify-content:flex-end;gap:10px;padding:26px 24px 0 0}
+.stat + .stat{padding-left:24px;border-left:1px solid var(--line)}
+.stat::before{content:"";position:absolute;top:-1px;left:0;width:32px;height:2px;background:var(--blue)}
+.stat + .stat::before{left:24px}
+.stat dd{display:flex;align-items:baseline;margin:0;font:650 clamp(36px,3.6cqi,52px)/1 var(--f-d);letter-spacing:-.03em;color:var(--ink)}
+.stat dd small{margin-left:6px;font-size:.46em;font-weight:600;letter-spacing:0;color:var(--ink-2)}
+.stat dt{font-size:15px;line-height:1.4;color:var(--muted)}
+@container (max-width:639px){
+  .stats{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:8px}
+  .stat:nth-child(3){padding-left:0;border-left:0}
+  .stat:nth-child(3)::before{left:0}
+  .stat{padding-top:20px}
+}
+
+/* Home services: photo under the blue, 3D tilt, slow zoom, title widens ------ */
+.svc-card{--rx:0deg;--ry:0deg;--s:1;overflow:hidden;isolation:isolate;transform:perspective(1000px) rotateX(var(--rx)) rotateY(var(--ry)) scale(var(--s));transition:transform var(--tz) var(--ease),box-shadow var(--tz) var(--ease),border-color var(--t2)}
+@media (hover:hover){.svc-card:hover{--s:1.035;transform:perspective(1000px) rotateX(var(--rx)) rotateY(var(--ry)) scale(var(--s))}}
+.svc-card:focus-visible,.svc-card.is-hover{--s:1.035;transform:perspective(1000px) rotateX(var(--rx)) rotateY(var(--ry)) scale(var(--s))}
+.svc-card:active{--s:1.02}
+.svc-card .svc-bg{position:absolute;inset:0;z-index:-1;margin:0;border-radius:0;background:var(--blue-d)}
+.svc-card .svc-bg .ph-img{top:0;height:100%;transform:scale(1.02);transition:transform 1.4s var(--ease)}
+.svc-card .svc-bg::after{background:linear-gradient(180deg,color-mix(in srgb,var(--blue-d) 86%,transparent) 0%,color-mix(in srgb,var(--blue-d) 92%,transparent) 100%)}
+.svc-name{transition:letter-spacing var(--tz) var(--ease)}
+@media (hover:hover){
+  .svc-card:hover .svc-bg .ph-img{transform:scale(1.1)}
+  .svc-card:hover .svc-name{letter-spacing:.012em}
+}
+.svc-card:focus-visible .svc-bg .ph-img{transform:scale(1.1)}
+.svc-card:focus-visible .svc-name{letter-spacing:.012em}
+
+/* How it works: four stages on a line that fills with scroll ----------------- */
+.stages{position:relative;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;margin:0;padding:0;list-style:none}
+.stages-track{position:absolute;top:27px;left:28px;right:calc((100% - 72px) / 4 - 28px);height:2px;background:var(--line);pointer-events:none}
+.stages-fill{position:absolute;inset:0;background:linear-gradient(90deg,var(--blue-d),var(--blue));transform-origin:left center;transform:scaleX(var(--p,1));transition:transform 160ms linear}
+.stage{position:relative;display:flex;flex-direction:column;gap:10px}
+.stage-n{position:relative;z-index:1;display:grid;place-items:center;width:56px;height:56px;border-radius:50%;background:var(--white);border:2px solid var(--line-2);color:var(--muted);font:650 16px/1 var(--f-b);font-variant-numeric:tabular-nums;transition:background-color var(--tm) var(--ease),border-color var(--tm) var(--ease),color var(--tm),box-shadow var(--tm) var(--ease),transform var(--tm) var(--ease)}
+.stages:not([data-live]) .stage-n,.stage[data-on] .stage-n{background:var(--blue);border-color:var(--blue);color:#fff;box-shadow:0 0 0 6px color-mix(in srgb,var(--blue) 14%,transparent)}
+.stages[data-live] .stage:not([data-on]) .stage-n{transform:scale(.92)}
+.stage-t{margin-top:14px;font:640 clamp(20px,1.7cqi,23px)/1.2 var(--f-d);letter-spacing:-.012em}
+.stage-d{max-width:30ch;font-size:16px;line-height:1.5;color:var(--muted)}
+@container (max-width:1023px){.stages{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:40px}.stages-track{display:none}}
+@container (max-width:639px){
+  .stages{grid-template-columns:1fr;row-gap:28px}
+  .stage{padding-left:76px;min-height:56px}
+  .stage-n{position:absolute;left:0;top:0}
+  .stage-t{margin-top:12px}
+}
+@container (max-width:1023px){
+  .stage:not(:last-child)::after{content:"";position:absolute;left:27px;top:56px;bottom:-28px;width:2px;background:var(--line);transition:background-color var(--tm) var(--ease)}
+  .stages:not([data-live]) .stage:not(:last-child)::after,.stage[data-on]:has(+ .stage[data-on])::after{background:var(--blue)}
+}
+@container (min-width:640px) and (max-width:1023px){.stage:not(:last-child)::after{display:none}}
+
+/* Offices and audience cards: keep the reveal fade with their own transitions - */
+.loc-sec .office{transition:opacity 480ms var(--ease),transform var(--t2) var(--ease),box-shadow var(--t2),border-color var(--t2)}
+.aud-card{transition:opacity 480ms var(--ease),transform var(--t2) var(--ease),box-shadow var(--t2),border-color var(--t2),background-color var(--t2)}
+
+/* Reviews carousel ------------------------------------------------------------ */
+.marquee{position:relative;margin-top:clamp(8px,1cqi,16px)}
+.marquee-view{overflow-x:auto;scroll-snap-type:x proximity;padding:8px var(--pad) 28px;scrollbar-width:thin}
+.marquee-track{display:flex;align-items:flex-start;gap:20px;width:max-content}
+.marquee .rev{flex:none;width:min(360px,82vw);margin:0;scroll-snap-align:start}
+.marquee .rev:nth-child(even){margin-top:36px}
+.marquee[data-live] .marquee-view{overflow:hidden;padding-inline:0;-webkit-mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent)}
+.marquee[data-live] .marquee-track{will-change:transform}
+.marquee-ctl{display:flex;justify-content:flex-end}
+.marquee-btn{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 16px;border-radius:var(--r-sm);border:1px solid var(--line-2);background:var(--white);color:var(--ink);font:600 15px/1 var(--f-b);cursor:pointer;transition:border-color var(--t1)}
+.marquee-btn:hover{border-color:var(--ink)}
+.marquee-btn svg{width:16px;height:16px}
+.marquee-btn .i-play,.marquee-btn[aria-pressed="true"] .i-pause{display:none}
+.marquee-btn[aria-pressed="true"] .i-play{display:block}
+
+/* Insights: slow zoom on the article images ---------------------------------- */
+.ins-feat .ins-bg .ph-img,.ins-card .ins-thumb .ph-img{transition:transform 1.4s var(--ease)}
+@media (hover:hover){.ins-feat:hover .ins-bg .ph-img,.ins-card:hover .ins-thumb .ph-img{transform:scale(1.07)}}
+.ins-feat:has(:focus-visible) .ins-bg .ph-img,.ins-card:has(:focus-visible) .ins-thumb .ph-img{transform:scale(1.07)}
+
+/* Copy number ------------------------------------------------------------------ */
+.btn-copy{transition:background-color var(--tm) var(--ease),border-color var(--tm) var(--ease),color var(--tm),transform 140ms var(--ease)}
+.btn-copy:active{transform:scale(.97)}
+.copy-ics{display:grid;width:19px;height:19px}
+.copy-ics svg{grid-area:1 / 1;width:19px;height:19px;transition:opacity var(--t1)}
+.check-ic{opacity:0}
+.check-ic path{stroke-dasharray:1;stroke-dashoffset:1}
+.btn.btn-copy[data-copied],.btn.btn-copy[data-copied]:hover{background:var(--green);border-color:var(--green);color:#fff}
+.btn-copy[data-copied] .copy-ic{opacity:0}
+.btn-copy[data-copied] .check-ic{opacity:1}
+.btn-copy[data-copied] .check-ic path{stroke-dashoffset:0;transition:stroke-dashoffset 420ms var(--ease) 60ms}
+.callcard-btns{display:flex;flex-wrap:wrap;gap:10px}
