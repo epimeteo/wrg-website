@@ -35,3 +35,21 @@ Secciones con `data-cur` y los `span` decorativos `.cur` (`.start` / `.end`), `.
 ## Accesibilidad
 
 Objetivo WCAG 2.2 AA: foco visible de 2 px, objetivos táctiles ≥ 44 px, menú modal con trampa de foco, Escape, `inert` en el fondo y retorno del foco al botón Menu; contenido completo sin JavaScript; parallax solo en imágenes.
+
+## Movimiento (23 nov 2026)
+
+Estilos en `src/styles/motion.css`; comportamiento en `src/scripts/site.ts`. Todo se activa con atributos `data-*`, así que cualquier página puede usarlo. Sin JS o con movimiento reducido, el contenido se muestra completo y quieto.
+
+| Elemento | Dónde | Cómo se activa |
+|---|---|---|
+| Punto «en vivo» con pulso (única animación en bucle) | Header y hero | `.hdr-util::before`, `.live-dot` |
+| Anillo al pasar el cursor y leve encogimiento al presionar | Todos los botones «Call now» | `.btn-call` |
+| Riel «On this page»: el punto activo crece y se vuelve azul; la etiqueta se desliza | Home, desde 1200 px | `<nav data-rail>` con enlaces a los `id` de las secciones |
+| Parallax de la foto y de la tarjeta de oficinas | Hero del home, desde 1024 px | `.float` + `data-depth` |
+| Cifras que suben en cascada y terminan juntas (~1,8 s) | Hero del home | `data-count-group` + `data-count` |
+| Inclinación 3D hasta 2°, zoom lento de la foto y título que se ensancha | Tarjetas de servicio del home | `data-tilt`, `.svc-bg` |
+| Línea de progreso que se llena con el scroll y etapas que se encienden en orden | «How it works» | `data-progress` + `data-step` |
+| Carrusel de reseñas: avanza solo, frena con la sección centrada, se detiene con el cursor, el foco o el botón de pausa (WCAG 2.2.2) | Reseñas del home | `data-marquee` |
+| Zoom lento de la imagen | Artículos del home | `.ins-bg`, `.ins-thumb` |
+| «Copy number»: dibuja un check, se pone verde y dice «Copied» 1,8 s | Cierre del home y banda final de las páginas interiores | `CopyNumber.astro` (`data-copy`) |
+| Entrada escalonada | Tarjetas de servicios, oficinas, reseñas y artículos | `.rv` + `.d2`…`.d6` |

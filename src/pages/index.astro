@@ -5,6 +5,10 @@ import { services, serviceHref } from '../data/services';
 import { articles, articleHref } from '../data/articles';
 import { company } from '../data/site';
 import Photo from '../components/Photo.astro';
+import ReviewCard from '../components/ReviewCard.astro';
+import CopyNumber from '../components/CopyNumber.astro';
+import { googleReviews } from '../data/reviews';
+import { serviceBand } from '../data/photos';
 import heroPhoto from '../assets/home/wrg-technician-moisture-documentation.jpg';
 import commercialPhoto from '../assets/home/wrg-truck-high-rise.jpg';
 import iconBayPhoto from '../assets/home/project-edgewater-high-rise.jpg';
@@ -12,11 +16,30 @@ import gablesPhoto from '../assets/home/project-coral-gables-condominium.jpg';
 import stLouisPhoto from '../assets/home/project-brickell-key-tower.jpg';
 import southPointPhoto from '../assets/home/project-fort-lauderdale-towers.jpg';
 const [featured, ...more] = articles;
+// Home carousel: shorter reviews only, so each card reads at a glance. All of
+// them are on /reviews/. These are South Florida reviews (see docs/resenas.md).
+const homeReviews = googleReviews.filter((r) => r.text.length <= 340);
+const rail = [
+  ['top', 'Overview'], ['services', 'Services'], ['process', 'How it works'], ['offices', 'Offices'],
+  ['property', 'Your property'], ['projects', 'Projects'], ['reviews', 'Reviews'], ['insights', 'Insights'], ['talk', 'Contact'],
+];
+const stages = [
+  ['Call & respond', 'Describe the damage to the 24/7 phone team. The response starts on the first call.'],
+  ['Assess', 'Review the affected areas and materials to define the scope of work.'],
+  ['Mitigate & dry', 'Water removal, cleanup and drying, with moisture readings documented.'],
+  ['Rebuild', 'Repairs to rooms and finishes once conditions are addressed.'],
+];
 ---
 <BaseLayout title="Water, Fire & Mold Restoration in South Florida and Metro Atlanta" description="Water, fire and mold restoration and reconstruction for homes and businesses, with offices in Miami, West Palm Beach and Smyrna. Call 24/7: (844) 379-9283." page="home" active="home">
 
+    <nav class="rail-nav" aria-label="On this page" data-rail>
+      <ol>
+        {rail.map(([id, label]) => <li><a href={`#${id}`}><span class="rail-label">{label}</span><span class="rail-dot" aria-hidden="true"></span></a></li>)}
+      </ol>
+    </nav>
+
     <!-- 1 · Respond: emergency-first hero. The recovery line starts here. -->
-    <section class="sec hero bg-canvas" data-cur="" aria-labelledby="hero-title">
+    <section class="sec hero bg-canvas" id="top" data-cur="" aria-labelledby="hero-title">
       <span class="cur start" aria-hidden="true"></span>
       <span class="cur-node" aria-hidden="true"></span>
       <div class="wrap">
@@ -38,8 +61,10 @@ const [featured, ...more] = articles;
           </div>
 
           <div class="hero-media">
+            <div class="float" data-depth="0.035">
             <Photo src={heroPhoto} class="ph-hero" alt="A WRG technician in a company polo works on a tablet and phone beside an air mover in a residential hallway." widths={[480, 720, 960, 1360]} sizes="(min-width: 1100px) 460px, (min-width: 640px) 680px, 100vw" position="100% 50%" priority />
-            <nav class="hero-card" aria-label="Our offices">
+            </div>
+            <nav class="hero-card float" data-depth="0.11" aria-label="Our offices">
               <p class="aside-h">Three offices</p>
               <a href="/locations/miami-fl/"><b>Miami, FL</b><span>Headquarters</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
               <a href="/locations/west-palm-beach-fl/"><b>West Palm Beach, FL</b><span>Palm Beach County</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
@@ -48,19 +73,17 @@ const [featured, ...more] = articles;
           </div>
         </div>
 
-        <ul class="trust" aria-label="At a glance">
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"></circle><path d="M12 7.5V12l3 2"></path></svg>24/7 phone support</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="3.5" width="14" height="17" rx="2.5"></rect><path d="M9 8h1.5M13.5 8H15M9 12h1.5M13.5 12H15M10 20.5V17h4v3.5"></path></svg>Residential and commercial properties</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.2 7-11.6a7 7 0 1 0-14 0C5 14.8 12 21 12 21z"></path><circle cx="12" cy="9.5" r="2.6"></circle></svg>Miami · West Palm Beach · Atlanta/Smyrna</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 3 5 13.5h6L10 21l9-11h-6.5z"></path></svg>45 minutes or less rapid response time</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="9" r="5.5"></circle><path d="m8.5 13.5-1.5 7 5-2.5 5 2.5-1.5-7"></path></svg>More than 20 years serving South Florida</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 12.5 9.5 17.5 19.5 6.5"></path></svg>4,000+ projects completed</li>
-        </ul>
+        <dl class="stats" aria-label="At a glance" data-count-group>
+          <div class="stat rv"><dt>Years serving South Florida</dt><dd><span data-count="20">20</span>+</dd></div>
+          <div class="stat rv d2"><dt>Projects completed</dt><dd><span data-count="4000">4,000</span>+</dd></div>
+          <div class="stat rv d3"><dt>Or less rapid response time</dt><dd><span data-count="45">45</span><small>min</small></dd></div>
+          <div class="stat rv d4"><dt>Emergency phone support</dt><dd><span data-count="24">24</span>/7</dd></div>
+        </dl>
       </div>
     </section>
 
     <!-- 2 · Understand: services as cards that grow on hover/focus -->
-    <section class="sec bg-white" data-cur="" aria-labelledby="svc-title">
+    <section class="sec bg-white" id="services" data-cur="" aria-labelledby="svc-title">
       <span class="cur" aria-hidden="true"></span>
       <span class="cur-node" aria-hidden="true"></span>
       <div class="wrap">
@@ -75,15 +98,16 @@ const [featured, ...more] = articles;
           </div>
         </div>
         <ol class="svc-grid">
-          {services.map((s) => (
-            <li><a class="svc-card" href={serviceHref(s.slug)}>
+          {services.map((s, i) => (
+            <li class={`rv d${i + 1}`}><a class="svc-card" href={serviceHref(s.slug)} data-tilt="2">
+              {serviceBand[s.slug] && <Photo src={serviceBand[s.slug]!.src} alt="" class="svc-bg" max={Math.min(serviceBand[s.slug]!.max ?? 960, 960)} position={serviceBand[s.slug]!.pos} sizes="(min-width: 1024px) 380px, (min-width: 640px) 50vw, 100vw" />}
               <span class="svc-top"><span class="ic"><Icon name={s.icon} /></span><span class="no" aria-hidden="true">{s.no}</span></span>
               <h3 class="svc-name">{s.name}</h3>
               <span class="svc-desc">{s.short}</span>
               <span class="svc-foot"><span>Explore this service</span><Icon name="arrow" /></span>
             </a></li>
           ))}
-          <li><a class="svc-card svc-card-call" href={company.phone.href}>
+          <li class="rv d6"><a class="svc-card svc-card-call" href={company.phone.href} data-tilt="2">
             <span class="svc-top"><span class="ic"><Icon name="phone" /></span></span>
             <h3 class="svc-name">Not sure where to start?</h3>
             <span class="svc-desc">Describe what you have observed. The 24/7 phone team can help identify the right service.</span>
@@ -93,8 +117,33 @@ const [featured, ...more] = articles;
       </div>
     </section>
 
+    <!-- 2b · How it works: four stages joined by a line that fills with scroll -->
+    <section class="sec bg-canvas" id="process" data-cur="" aria-labelledby="proc-title">
+      <span class="cur" aria-hidden="true"></span>
+      <span class="cur-node" aria-hidden="true"></span>
+      <div class="wrap">
+        <div class="sec-head">
+          <div class="stack">
+            <p class="eyebrow">How it works</p>
+            <h2 class="h2" id="proc-title">Four stages, one clear line of work.</h2>
+          </div>
+          <p class="lead aside">Every property is assessed on its own. These are the stages the conversation follows.</p>
+        </div>
+        <ol class="stages" data-progress>
+          <li class="stages-track" aria-hidden="true"><span class="stages-fill"></span></li>
+          {stages.map(([t, d], i) => (
+            <li class="stage" data-step>
+              <span class="stage-n" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+              <h3 class="stage-t"><span class="sr">Stage {i + 1}: </span>{t}</h3>
+              <p class="stage-d">{d}</p>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+
     <!-- 3 · Local: three offices (the line branches across the office nodes) -->
-    <section class="sec bg-mist loc-sec" data-cur="" aria-labelledby="loc-title">
+    <section class="sec bg-mist loc-sec" id="offices" data-cur="" aria-labelledby="loc-title">
       <span class="cur" aria-hidden="true"></span>
       <span class="cur-node" aria-hidden="true"></span>
       <div class="wrap">
@@ -106,21 +155,21 @@ const [featured, ...more] = articles;
           <p class="lead aside">Find office information and restoration guidance for your area.</p>
         </div>
         <div class="offices">
-          <article class="office">
+          <article class="office rv">
             <p class="role">Corporate headquarters</p>
             <h3 class="city">Miami, FL</h3>
             <address>555 NW 95th St<br>Miami, FL 33150</address>
             <p class="focus">Condominiums, shared spaces and coordination between units and common areas.</p>
             <div class="office-links"><a class="lnk" href="/locations/miami-fl/">View this location<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></div>
           </article>
-          <article class="office">
+          <article class="office rv d2">
             <p class="role">Palm Beach County</p>
             <h3 class="city">West Palm Beach, FL</h3>
             <address>1705 Donna Road, Unit #10<br>West Palm Beach, FL 33409</address>
             <p class="focus">Property access, coordination with the people affected and recovery after leaks or storms.</p>
             <div class="office-links"><a class="lnk" href="/locations/west-palm-beach-fl/">View this location<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></div>
           </article>
-          <article class="office">
+          <article class="office rv d3">
             <p class="role">Atlanta-area office</p>
             <h3 class="city">Smyrna, GA</h3>
             <address>5028 S Atlanta Rd SE<br>Smyrna, GA 30080</address>
@@ -136,7 +185,7 @@ const [featured, ...more] = articles;
     </section>
 
     <!-- 4 · Your property: audiences -->
-    <section class="sec bg-canvas" data-cur="" aria-labelledby="aud-title">
+    <section class="sec bg-canvas" id="property" data-cur="" aria-labelledby="aud-title">
       <span class="cur" aria-hidden="true"></span>
       <span class="cur-node" aria-hidden="true"></span>
       <div class="wrap">
@@ -176,7 +225,7 @@ const [featured, ...more] = articles;
     </section>
 
     <!-- 5 · Proof: documented projects -->
-    <section class="sec bg-mist proof" data-cur="" aria-labelledby="proof-title">
+    <section class="sec bg-mist proof" id="projects" data-cur="" aria-labelledby="proof-title">
       <span class="cur" aria-hidden="true"></span>
       <span class="cur-node" aria-hidden="true"></span>
       <div class="wrap">
@@ -240,8 +289,36 @@ const [featured, ...more] = articles;
       </div>
     </section>
 
+    <!-- 5b · Reviews: a slow carousel of Google reviews -->
+    <section class="sec bg-canvas" id="reviews" data-cur="" aria-labelledby="rev-title">
+      <span class="cur" aria-hidden="true"></span>
+      <span class="cur-node" aria-hidden="true"></span>
+      <div class="wrap">
+        <div class="sec-head">
+          <div class="stack">
+            <p class="eyebrow">Google reviews</p>
+            <h2 class="h2" id="rev-title">In our clients’ words.</h2>
+          </div>
+          <div class="aside stack g12">
+            <p class="lead">Reviews from WRG’s South Florida Google Business Profile.</p>
+            <a class="lnk" href="/reviews/">Read all reviews<Icon name="arrow" /></a>
+          </div>
+        </div>
+      </div>
+      <div class="marquee" data-marquee>
+        <div class="marquee-view" role="region" aria-label="Client reviews" tabindex="0">
+          <div class="marquee-track" data-marquee-track>
+            {homeReviews.map((r, i) => <ReviewCard review={r} class={`rv d${(i % 4) + 1}`} />)}
+          </div>
+        </div>
+        <div class="wrap marquee-ctl">
+          <button type="button" class="marquee-btn" data-marquee-toggle aria-pressed="false" hidden><svg class="i-pause" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="7" y="5" width="3.5" height="14" rx="1"></rect><rect x="13.5" y="5" width="3.5" height="14" rx="1"></rect></svg><svg class="i-play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.4-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z"></path></svg><span>Pause</span><b class="sr"> review carousel</b></button>
+        </div>
+      </div>
+    </section>
+
     <!-- 6 · Prepare: knowledge -->
-    <section class="sec bg-white" data-cur="" aria-labelledby="ins-title">
+    <section class="sec bg-white" id="insights" data-cur="" aria-labelledby="ins-title">
       <span class="cur" aria-hidden="true"></span>
       <span class="cur-node" aria-hidden="true"></span>
       <div class="wrap">
@@ -279,7 +356,7 @@ const [featured, ...more] = articles;
     </section>
 
     <!-- 7 · Talk to WRG: closing call (the line ends beside Call now) -->
-    <section class="sec sheet dark close-sec" data-cur="" data-tone="dark" aria-labelledby="close-title">
+    <section class="sec sheet dark close-sec" id="talk" data-cur="" data-tone="dark" aria-labelledby="close-title">
       <span class="cur end" aria-hidden="true"></span>
       <span class="cur-node" aria-hidden="true"></span>
       <span class="cur-node final" aria-hidden="true"></span>
@@ -295,6 +372,7 @@ const [featured, ...more] = articles;
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.6 3.5h2.6l1.6 4.2-2.1 1.3a11.5 11.5 0 0 0 6.3 6.3l1.3-2.1 4.2 1.6v2.6a2 2 0 0 1-2.2 2A16.6 16.6 0 0 1 4.6 5.7a2 2 0 0 1 2-2.2z"></path></svg>
               <span>Call now</span>
             </a>
+            <CopyNumber large />
             <a class="btn btn-ghost btn-lg" href="/locations/">Find your office</a>
           </div>
         </div>
