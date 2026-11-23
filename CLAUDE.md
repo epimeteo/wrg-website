@@ -38,7 +38,7 @@ Before committing: `npm run build && npm run check:links`.
 - Templates: `src/pages/services/[slug].astro`, `projects/[slug].astro`, `blog/[category]/[slug].astro` (renders both kinds of insight), `blog/[category]/index.astro` (topic listings).
 - Hand-written pages: home, about, reviews, careers, locations (each office page is its own file), contact, faqs, legal, thank-you, 404.
 - Layout and shared UI: `src/layouts/BaseLayout.astro`, `src/components/`.
-- Behavior: `src/scripts/site.ts` (menu: focus trap, Escape, inert, focus return; scroll engine: `data-cur`, `data-depth`, `.rv`, header tone; shared micro-interactions opted in with `data-rail`, `data-count-group`, `data-tilt`, `data-progress`, `data-marquee`, `data-copy`). Motion styles in `src/styles/motion.css`; see `docs/design-system.md` § Movimiento.
+- Behavior: `src/scripts/site.ts` (menu: focus trap, Escape, inert, focus return; scroll engine: `data-cur`, `data-depth`, `.rv`, header tone; shared micro-interactions opted in with `data-rail`, `data-count-group`, `data-progress`, `data-marquee`, `data-copy`). Motion styles in `src/styles/motion.css`; see `docs/design-system.md` § Movimiento.
 - Styles: `src/styles/global.css` (tokens §1, components) and `src/styles/pages.css` (interior templates). Use tokens; don't hard-code colors.
 
 ## Design rules (see docs/design-system.md)
